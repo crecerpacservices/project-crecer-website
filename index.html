@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 
 <body>
@@ -70,7 +71,7 @@
                         stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg></a>
-                <a href="#">Contacts</a>
+                <a href="#contacts">Contacts</a>
             </nav>
             <button class="header__menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
                 <span></span>
@@ -212,6 +213,47 @@
             <div class="trust-bar">
                 <p class="trust-statement">“We provide clear documentation, detailed planning, and on-time progress
                     updates.”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Email Card -->
+                <div class="contact-card clickable-card">
+                    <div class="contact-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>For inquiries and detailed proposals</p>
+                    <a href="mailto:crecerpacservices@gmail.com?subject=Inquiry%20-%20Crecer%20Plumbing%20and%20Construction%20Services"
+                        class="contact-card__link">crecerpacservices@gmail.com</a>
+                </div>
+
+                <!-- Phone Card -->
+                <div class="contact-card clickable-card">
+                    <div class="contact-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                    </div>
+                    <h3>Call / Viber</h3>
+                    <p>Immediate response for urgent needs</p>
+                    <a href="tel:09260586209" class="contact-card__link">0926-058-6209</a>
+                </div>
             </div>
         </div>
     </section>
