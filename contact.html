@@ -163,57 +163,61 @@
           </ul>
         </div>
         <div class="form-right">
-          <form>
+          <form action="https://formspree.io/f/mzdkjadb" method="POST" enctype="multipart/form-data">
             <div class="form-grid">
               <div class="form-group">
                 <label>CONTACT NAME</label>
-                <input type="text" placeholder="e.g. Michael Chen">
+                <input type="text" name="Client Name" placeholder="e.g. Michael Chen" required>
               </div>
               <div class="form-group">
                 <label>COMPANY</label>
-                <input type="text" placeholder="e.g. Horizon Development">
+                <input type="text" name="Company Name" placeholder="e.g. Horizon Development">
+              </div>
+              <div class="form-group">
+                <label>PHONE NUMBER (REQUIRED)</label>
+                <input type="tel" name="Phone Number" placeholder="e.g. 0926..." required>
               </div>
               <div class="form-group">
                 <label>WORK EMAIL</label>
-                <input type="email" placeholder="m.chen@company.com">
+                <input type="email" name="_replyto" placeholder="m.chen@company.com" required>
               </div>
               <div class="form-group">
                 <label>SERVICE TYPE (DISCIPLINE)</label>
-                <select id="service-type">
+                <select id="service-type" name="Discipline" required>
                   <option value="" disabled selected>Select Discipline...</option>
-                  <option>Plumbing / Sanitary</option>
-                  <option>Fire Protection (Sprinkler System)</option>
-                  <option>Electrical</option>
-                  <option>Lighting / Signages</option>
-                  <option>Civil Works</option>
-                  <option disabled>Structural Engineering (Coming Soon)</option>
+                  <option value="Plumbing / Sanitary">Plumbing / Sanitary</option>
+                  <option value="Fire Protection">Fire Protection (Sprinkler System)</option>
+                  <option value="Electrical">Electrical</option>
+                  <option value="Lighting">Lighting / Signages</option>
+                  <option value="Civil Works">Civil Works</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>PROJECT TYPE (WORK SCOPE)</label>
-                <select>
+                <select id="project-type" name="Work Scope" required>
                   <option value="" disabled selected>Select Work Scope...</option>
-                  <option>Installation</option>
-                  <option>Repair / Maintenance</option>
-                  <option>Renovation / Upgrade</option>
-                  <option>Inspection / Assessment</option>
-                  <option>Design & Build</option>
+                  <option value="Installation">Installation</option>
+                  <option value="Repair / Maintenance">Repair / Maintenance</option>
+                  <option value="Renovation / Upgrade">Renovation / Upgrade</option>
+                  <option value="Inspection / Assessment">Inspection / Assessment</option>
+                  <option value="Design & Build">Design & Build</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>SAMPLE PICTURES (OPTIONAL)</label>
-                <input type="file" multiple accept="image/*" style="padding: 0.8rem; background: var(--clr-light); border: 1px dashed var(--clr-gray-border);">
+                <input type="file" name="Project Attachments" multiple accept="image/*" style="padding: 0.8rem; background: var(--clr-light); border: 1px dashed var(--clr-gray-border);">
               </div>
               <div class="form-group full">
                 <label>BRIEF DESCRIPTION OF CONCERN</label>
-                <textarea placeholder="Please provide a brief description of your technical concern or project requirements..."></textarea>
+                <textarea name="Project Description" id="description" placeholder="Please provide a brief description of your technical concern or project requirements..." required></textarea>
               </div>
             </div>
             <button type="submit" class="btn btn-yellow">SUBMIT INQUIRY</button>
           </form>
-            <script>
-              // Script to handle any form dynamics if needed
-            </script>
+
+          <script>
+            // Form handling now managed by Formspree
+          </script>
         </div>
       </div>
     </div>
