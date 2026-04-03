@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crecer - Contact Us</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
   <style>
     .contact-hero { background-color: var(--clr-dark-green); padding: 8rem 0 12rem; color: white; position: relative; }
@@ -39,10 +41,17 @@
     .form-group.full { grid-column: span 2; }
     .form-right .btn { width: 100%; margin-top: 1.5rem; padding: 1.25rem; font-size: 1rem; }
     
-    .map-section { height: 500px; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80') center/cover; position: relative; }
-    .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
-    .map-label { background: white; padding: 0.5rem 1.5rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .map-icon { width: 40px; height: 40px; background: var(--clr-yellow); color: var(--clr-heading); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .map-section { height: 550px; position: relative; }
+    #ph-map { width: 100%; height: 100%; z-index: 1; }
+    .map-overlay-banner { position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(30, 64, 42, 0.92); backdrop-filter: blur(8px); color: white; padding: 0.75rem 2rem; border-radius: 8px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.25); pointer-events: none; }
+    .map-overlay-banner h3 { font-size: 1.1rem; margin: 0 0 0.15rem; color: #fbbf24; letter-spacing: 1px; text-transform: uppercase; }
+    .map-overlay-banner p { font-size: 0.85rem; margin: 0; color: rgba(255,255,255,0.85); }
+    .leaflet-popup-content-wrapper { border-radius: 10px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important; }
+    .leaflet-popup-content { margin: 0 !important; padding: 0 !important; }
+    .popup-content { padding: 1rem 1.25rem; text-align: center; }
+    .popup-content .popup-badge { display: inline-block; background: #1e402a; color: #fbbf24; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.2rem 0.75rem; border-radius: 3px; margin-bottom: 0.5rem; }
+    .popup-content h4 { margin: 0 0 0.25rem; font-size: 1rem; color: #1e402a; font-family: 'Outfit', sans-serif; }
+    .popup-content p { margin: 0; font-size: 0.8rem; color: #6b7280; }
     
     @media (max-width: 1024px) {
       .contact-cards, .form-wrapper { flex-direction: column; }
@@ -107,7 +116,7 @@
           <div class="cc-header">CALL US <i data-lucide="phone"></i></div>
           <div class="cc-body">
             <p>Direct Line</p>
-            <h3>09260586209</h3>
+            <h3><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a></h3>
             <small>Mon-Fri: 8:00 AM - 6:00 PM</small>
           </div>
         </div>
@@ -115,7 +124,7 @@
           <div class="cc-header">EMAIL US <i data-lucide="mail"></i></div>
           <div class="cc-body">
             <p>Project Inquiries</p>
-            <h3 style="font-size: 1.1rem;">crecerpacservices@gmail.com</h3>
+            <h3 style="font-size: 1.1rem;"><a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="color: inherit; text-decoration: none;">crecerpacservices@gmail.com</a></h3>
             <small>We respond within 12 business hours</small>
           </div>
         </div>
@@ -155,61 +164,97 @@
                 <input type="email" placeholder="m.chen@company.com">
               </div>
               <div class="form-group">
-                <label>SERVICE TYPE</label>
-                <select>
-                  <option>Structural Engineering</option>
-                  <option>Plumbing & Sanitary</option>
+                <label>SERVICE TYPE (DISCIPLINE)</label>
+                <select id="service-type">
+                  <option value="" disabled selected>Select Discipline...</option>
+                  <option>Plumbing / Sanitary</option>
+                  <option>Fire Protection (Sprinkler System)</option>
                   <option>Electrical</option>
+                  <option>Lighting / Signages</option>
+                  <option>Civil Works</option>
+                  <option disabled>Structural Engineering (Coming Soon)</option>
+                  <option>Others (Please Specify)</option>
+                </select>
+              </div>
+              <div class="form-group" id="other-service-group" style="display: none;">
+                <label>SPECIFY OTHER SERVICE</label>
+                <input type="text" placeholder="Please specify your service need">
+              </div>
+              <div class="form-group">
+                <label>PROJECT TYPE (WORK SCOPE)</label>
+                <select>
+                  <option value="" disabled selected>Select Work Scope...</option>
+                  <option>Installation</option>
+                  <option>Repair / Maintenance</option>
+                  <option>Renovation / Upgrade</option>
+                  <option>Inspection / Assessment</option>
+                  <option>Testing Works</option>
+                  <option>Design &/ or Build</option>
                 </select>
               </div>
               <div class="form-group">
-                <label>ESTIMATED PROJECT BUDGET</label>
-                <select>
-                  <option>Php 5M - Php 25M</option>
-                  <option>Php 25M - Php 50M</option>
-                  <option>Php 50M+</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>EXPECTED TIMELINE</label>
-                <select>
-                  <option>Immediate (1-3 months)</option>
-                  <option>Flexible</option>
-                </select>
+                <label>SAMPLE PICTURES (OPTIONAL)</label>
+                <input type="file" multiple accept="image/*" style="padding: 0.8rem; background: var(--clr-light); border: 1px dashed var(--clr-gray-border);">
               </div>
               <div class="form-group full">
-                <label>PROJECT BRIEF</label>
-                <textarea placeholder="Describe your technical requirements and goals..."></textarea>
+                <label>BRIEF DESCRIPTION OF CONCERN</label>
+                <textarea placeholder="Please provide a brief description of your technical concern or project requirements..."></textarea>
               </div>
             </div>
             <button type="submit" class="btn btn-yellow">SUBMIT INQUIRY</button>
           </form>
+          <script>
+            document.getElementById('service-type').addEventListener('change', function() {
+              const otherGroup = document.getElementById('other-service-group');
+              if (this.value === 'Others (Please Specify)') {
+                otherGroup.style.display = 'block';
+              } else {
+                otherGroup.style.display = 'none';
+              }
+            });
+          </script>
         </div>
       </div>
     </div>
   </section>
 
   <section class="map-section">
-    <div class="map-pin">
-      <div class="map-label">Crecer HQ</div>
-      <div class="map-icon"><i data-lucide="map-pin"></i></div>
+    <div class="map-overlay-banner">
+      <h3>🇵🇭 National Service Area</h3>
+      <p>Registered Address: Tondo, Manila · Serving clients nationwide</p>
+      <p style="margin-top: 0.25rem; color: #fbbf24; font-weight: 600; font-size: 0.85rem;">★ Preferred Service Area: Metro Manila</p>
     </div>
+    <div id="ph-map"></div>
   </section>
 
   <footer>
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-logo"><div style="display: flex; align-items: center; gap: 0.25rem;">
-  <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M45 5 A 45 45 0 1 0 75 90 A 50 50 0 1 1 45 5" fill="#fbbf24"/>
-    <path d="M40 90 Q 30 40 15 40 Q 30 60 38 80" fill="#1f8a4c"/>
-    <path d="M40 90 Q 50 40 65 40 Q 50 60 42 80" fill="#1f8a4c"/>
-    <path d="M40 90 Q 40 30 40 15 Q 45 35 42 80" fill="#1f8a4c"/>
+        <div class="footer-col" style="padding-right: 2rem;">
+          <a href="index.html" style="display:inline-block; margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center;">
+  <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Crescent Moon -->
+    <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="url(#moonGrad)"/>
+    <!-- Leaf Stalk -->
+    <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
+    <!-- Left Leaf -->
+    <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
+    <!-- Top Leaf -->
+    <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
+    <!-- Right Leaf -->
+    <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
+    <defs>
+      <linearGradient id="moonGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#fde047"/>
+        <stop offset="100%" stop-color="#eab308"/>
+      </linearGradient>
+    </defs>
   </svg>
-  <span style="color: var(--clr-yellow); font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; letter-spacing: 0.5px;">Crecer</span>
-</div></div>
-          <p style="font-size: 0.9rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
+  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
+</div>
+          </a>
+          <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
           <div class="footer-socials">
             <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -222,22 +267,135 @@
             </a>
           </div>
         </div>
-        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Our Mission</a></li><li><a href="services.html">Our Services</a></li><li><a href="projects.html">Latest Projects</a></li></ul></div>
-        <div class="footer-col"><h4>Expertise</h4><ul><li><a href="#">Civil Engineering</a></li><li><a href="#">Electrical Engineering</a></li><li><a href="#">Fire Safety Systems</a></li></ul></div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Our Mission</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="projects.html">Latest Projects</a></li>
+            <li><a href="#">Sustainability Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Expertise</h4>
+          <ul>
+            <li><a href="#">Civil Engineering</a></li>
+            <li><a href="#">Fire Safety Systems</a></li>
+            <li><a href="#">Sustainable Infrastructure</a></li>
+            <li><a href="#">Electrical Engineering</a></li>
+            <li><a href="#">Project Management</a></li>
+          </ul>
+        </div>
         <div class="footer-col">
           <h4>Contact Us</h4>
-          <ul>
-            <li style="display: flex; gap: 0.5rem;"><i data-lucide="map-pin"></i> 123 Engineering Way</li>
-            <li style="display: flex; gap: 0.5rem;"><i data-lucide="phone"></i> +63 8888 0000</li>
+          <ul style="gap: 1.5rem;">
+            <li style="display: flex; gap: 1rem; align-items: flex-start;"><i data-lucide="map-pin" style="margin-top: 3px;"></i> <div>Tondo, Manila</div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <div><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="mail"></i> <div><a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="color: inherit; text-decoration: none;">crecerpacservices@gmail.com</a></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="clock"></i> <div>Mon - Fri: 8:00 AM - 6:00 PM</div></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Crecer. All Rights Reserved.</p>
+        <div style="display: flex; gap: 2rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script>lucide.createIcons();</script>
+  <script>
+    lucide.createIcons();
+
+    // Initialize Philippines Map
+    (function() {
+      const map = L.map('ph-map', {
+        center: [12.5, 122.0],
+        zoom: 6,
+        scrollWheelZoom: false,
+        zoomControl: true
+      });
+
+      // Clean, elegant tile layer
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      // Custom HQ marker icon
+      const hqIcon = L.divIcon({
+        className: 'custom-hq-marker',
+        html: `<div style="
+          width: 44px; height: 44px;
+          background: linear-gradient(135deg, #fbbf24, #f59e0b);
+          border: 3px solid #fff;
+          border-radius: 50% 50% 50% 0;
+          transform: rotate(-45deg);
+          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+          display: flex; align-items: center; justify-content: center;
+        "><svg style="transform:rotate(45deg);" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e402a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>`,
+        iconSize: [44, 44],
+        iconAnchor: [22, 44],
+        popupAnchor: [0, -44]
+      });
+
+      // Tondo, Manila marker
+      const tondoCoords = [14.6130, 120.9670];
+      const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
+      hqMarker.bindPopup(`
+        <div class="popup-content">
+          <span class="popup-badge">Registered Address</span>
+          <h4>Crecer PAC Services</h4>
+          <p>Tondo, Manila, Philippines</p>
+        </div>
+      `, { offset: [0, 0] }).openPopup();
+
+      // Load actual Philippines GeoJSON boundary (covers ALL islands)
+      const phStyle = {
+        color: '#1e402a',
+        weight: 2,
+        opacity: 0.8,
+        fillColor: '#22c55e',
+        fillOpacity: 0.15,
+        dashArray: '6, 4'
+      };
+
+      fetch('ph-boundary.json')
+        .then(r => r.json())
+        .then(data => {
+          L.geoJSON(data, {
+            style: phStyle
+          }).addTo(map).bindTooltip('National Service Coverage', {
+            permanent: false,
+            direction: 'center',
+            className: 'service-tooltip'
+          });
+        })
+        .catch(() => {
+          // Fallback: use approximate bounding rectangle if fetch fails
+          L.rectangle([[4.5, 116.5], [21.2, 127.0]], phStyle).addTo(map);
+        });
+
+      // Add pulsing circle around Tondo
+      L.circle(tondoCoords, {
+        radius: 15000,
+        color: '#fbbf24',
+        weight: 2,
+        opacity: 0.6,
+        fillColor: '#fbbf24',
+        fillOpacity: 0.1
+      }).addTo(map);
+
+      // Enable scroll zoom on click
+      map.on('click', function() { map.scrollWheelZoom.enable(); });
+      map.on('mouseout', function() { map.scrollWheelZoom.disable(); });
+    })();
+    lucide.createIcons();
+  </script>
 </body>
 </html>
