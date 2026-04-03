@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crecer - Home Variant 2</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    /* Specific styles for Home V2 */
+    .split-hero { display: flex; min-height: 85vh; border-bottom: 5px solid var(--clr-dark); }
+    .split-left { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem 10%; background: var(--clr-white); }
+    .split-right { flex: 1; background: url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80') center/cover; filter: grayscale(100%); }
+    
+    .split-hero h1 { font-size: 5rem; line-height: 0.9; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; }
+    .split-hero h1 .text-green { color: var(--clr-green); }
+    .split-hero h1 .text-grey { color: #9ca3af; }
+    .split-hero p { font-size: 1.1rem; max-width: 450px; margin-bottom: 3rem; }
+    
+    .btn-group { display: flex; gap: 1.5rem; }
+    .btn-group .btn-outline { color: var(--clr-green); border-color: var(--clr-green); }
+    .btn-group .btn-outline:hover { background: var(--clr-green); color: white; }
+    
+    .logo-strip { background: var(--clr-white); border-bottom: 1px solid var(--clr-gray-border); padding: 2rem 0; }
+    .strip-flex { display: flex; justify-content: space-between; align-items: center; opacity: 0.6; }
+    
+    .core-systems { background: var(--clr-green-dark); color: white; padding: 6rem 0; }
+    .core-systems h2 { color: white; margin-bottom: 3rem; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 1rem; display: inline-block; }
+    .sys-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .sys-card { background: rgba(255,255,255,0.1); padding: 2rem; border-radius: var(--radius); border-top: 3px solid rgba(255,255,255,0.2); transition: 0.3s; }
+    .sys-card:hover { background: rgba(255,255,255,0.15); border-top-color: var(--clr-yellow); }
+    .sys-icon { color: var(--clr-yellow); margin-bottom: 1.5rem; }
+    
+    .methodology { padding: 8rem 0; }
+    .method-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .method-left h2 { font-size: 3rem; color: var(--clr-green); margin-bottom: 1rem; line-height: 1.1; }
+    .method-left > p { margin-bottom: 4rem; font-size: 1.1rem; }
+    
+    .method-step { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .step-num { font-size: 2.5rem; font-weight: 800; color: rgba(251, 191, 36, 0.4); font-family: var(--font-heading); }
+    .step-content h4 { color: var(--clr-green); font-size: 1.1rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+    
+    .method-right { position: relative; }
+    .method-img { border-radius: var(--radius); overflow: hidden; height: 600px; }
+    .method-img img { width: 100%; height: 100%; object-fit: cover; }
+    .years-box { position: absolute; bottom: -20px; left: -20px; background: var(--clr-green); color: white; padding: 2rem; border-radius: var(--radius); }
+    .years-box h3 { font-size: 3rem; color: white; margin-bottom: 0; }
+    
+    .asset-portfolio { padding: 6rem 0; background-color: var(--clr-light); }
+    .asset-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--clr-green); padding-bottom: 1rem; margin-bottom: 3rem; }
+    .asset-header h2 { color: var(--clr-green); margin: 0; }
+    
+    .initiate-box { background: var(--clr-green-dark); padding: 5rem 2rem; border-radius: var(--radius); text-align: center; margin: 4rem auto; max-width: 1000px; color: white; border-top: 5px solid var(--clr-green); }
+    .initiate-box h2 { font-size: 3rem; text-transform: uppercase; color: white; }
+    
+    @media (max-width: 1024px) {
+      .split-hero { flex-direction: column; }
+      .split-hero h1 { font-size: 4rem; }
+      .sys-grid { grid-template-columns: repeat(2, 1fr); }
+      .method-split { grid-template-columns: 1fr; }
+      .method-img { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <div class="crecer-logo" style="display: flex; flex-direction: column; align-items: flex-start; background: white; padding: 0.5rem 1rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+    <div style="color: var(--clr-green); display: flex;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+    <div style="color: var(--clr-heading); font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; letter-spacing: 5px;">CRECER</div>
+  </div>
+  <div style="font-size: 0.45rem; color: #6b7280; font-family: var(--font-body); font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Engineering and Construction Services</div>
+</div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+    </div>
+  </header>
+
+  <!-- SPLIT HERO -->
+  <section class="split-hero">
+    <div class="split-left">
+      <h1>
+        <div class="text-green">ENGINEERING</div>
+        <div class="text-green">EXCELLENCE.</div>
+        <div class="text-grey">SUSTAINABLE</div>
+        <div class="text-grey">GROWTH.</div>
+      </h1>
+      <p>Precision-engineered solutions protecting community assets and powering vast infrastructure operations across industries.</p>
+      <div class="btn-group">
+        <a href="services.html" class="btn btn-green">Our Services</a>
+        <a href="#" class="btn btn-outline">Technical Specs</a>
+      </div>
+    </div>
+    <div class="split-right">
+      <!-- Background Image -->
+    </div>
+  </section>
+
+  <!-- LOGO STRIP -->
+  <section class="logo-strip">
+    <div class="container strip-flex">
+      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: 2px;">ISO 9001</div>
+      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: 2px;">OSHA SECURE</div>
+      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: 2px;">VERITAS</div>
+      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: 2px;">LEED PLATINUM</div>
+    </div>
+  </section>
+
+  <!-- CORE SYSTEMS -->
+  <section class="core-systems">
+    <div class="container">
+      <h2>Core Systems</h2>
+      <div class="sys-grid">
+        <div class="sys-card">
+          <i data-lucide="droplet" class="sys-icon" style="width: 32px; height: 32px;"></i>
+          <h3 style="color: white; margin-bottom: 1rem;">Plumbing & Fluids</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.5rem;">Strategic water distribution utility systems and fluid transfer lines for industrial sites.</p>
+          <a href="#" style="color: var(--clr-yellow); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Explore &rarr;</a>
+        </div>
+        <div class="sys-card">
+          <i data-lucide="shield-alert" class="sys-icon" style="width: 32px; height: 32px;"></i>
+          <h3 style="color: white; margin-bottom: 1rem;">Fire Protection</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.5rem;">Automated suppression arrays protecting asset continuity and life systems.</p>
+          <a href="#" style="color: var(--clr-yellow); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Explore &rarr;</a>
+        </div>
+        <div class="sys-card">
+          <i data-lucide="cpu" class="sys-icon" style="width: 32px; height: 32px;"></i>
+          <h3 style="color: white; margin-bottom: 1rem;">Smart Grid</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.5rem;">Total power infrastructure from auxiliary units to primary transmission arrays.</p>
+          <a href="#" style="color: var(--clr-yellow); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Explore &rarr;</a>
+        </div>
+        <div class="sys-card">
+          <i data-lucide="landmark" class="sys-icon" style="width: 32px; height: 32px;"></i>
+          <h3 style="color: white; margin-bottom: 1rem;">Civil Assets</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.5rem;">Foundational deep works, surface integrations, and base reinforcements.</p>
+          <a href="#" style="color: var(--clr-yellow); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Explore &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="methodology">
+    <div class="container">
+      <div class="method-split">
+        <div class="method-left">
+          <h2>THE CRECER<br>METHODOLOGY</h2>
+          <p>Our process drives numbers and safety. Every implementation adheres to a systematic and rigorous blueprint.</p>
+          
+          <div class="method-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h4>Technical Legitimacy</h4>
+              <p>Site operations rooted in verifiable codes, full audits, and hardware approvals.</p>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h4>Milestone Transparency</h4>
+              <p>Real-time updates assure you are fully synced with the project execution planner.</p>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h4>Precision Execution</h4>
+              <p>Delivery led by our exact specifications logic mapping to structural blueprints.</p>
+            </div>
+          </div>
+        </div>
+        <div class="method-right">
+          <div class="method-img">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000" alt="Warehouse">
+          </div>
+          <div class="years-box">
+            <h3>15+</h3>
+            <p style="color:rgba(255,255,255,0.8); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Years of Excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="asset-portfolio">
+    <div class="container">
+      <div class="asset-header">
+        <h2>ASSET PORTFOLIO</h2>
+        <div>
+          <button class="btn btn-outline" style="border-color: var(--clr-green); color: var(--clr-green); padding: 0.5rem 1rem;">&larr;</button>
+          <button class="btn btn-outline" style="border-color: var(--clr-green); color: var(--clr-green); padding: 0.5rem 1rem;">&rarr;</button>
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+        <img style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius);" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" alt="Building">
+        <img style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius);" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80" alt="Solar">
+        <img style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius);" src="https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80" alt="Pipes">
+        <img style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius); filter: grayscale(100%);" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80" alt="Warehouse">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="container">
+    <div class="initiate-box">
+      <h2>Initiate Infrastructure Protocol</h2>
+      <p style="margin: 1.5rem 0 2.5rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">Join leading regional operators solving heavy industrial and commercial constraints right to the physical site.</p>
+      <a href="contact.html" class="btn btn-yellow">Request Engineering Audit</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <div style="display: flex; align-items: center; gap: 0.25rem;">
+  <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M45 5 A 45 45 0 1 0 75 90 A 50 50 0 1 1 45 5" fill="#fbbf24"/>
+    <path d="M40 90 Q 30 40 15 40 Q 30 60 38 80" fill="#1f8a4c"/>
+    <path d="M40 90 Q 50 40 65 40 Q 50 60 42 80" fill="#1f8a4c"/>
+    <path d="M40 90 Q 40 30 40 15 Q 45 35 42 80" fill="#1f8a4c"/>
+  </svg>
+  <span style="color: var(--clr-yellow); font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; letter-spacing: 0.5px;">Crecer</span>
+</div>
+          </div>
+          <p style="font-size: 0.9rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Our Mission</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="projects.html">Latest Projects</a></li>
+            <li><a href="#">Sustainability Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Expertise</h4>
+          <ul>
+            <li><a href="#">Civil Engineering</a></li>
+            <li><a href="#">Fire Safety Systems</a></li>
+            <li><a href="#">Sustainable Infrastructure</a></li>
+            <li><a href="#">Electrical Engineering</a></li>
+            <li><a href="#">Project Management</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li style="display: flex; gap: 0.5rem;"><i data-lucide="map-pin"></i> 123 Engineering Way, Innovation District, PH 12345</li>
+            <li style="display: flex; gap: 0.5rem;"><i data-lucide="phone"></i> +63 (2) 8888-0000</li>
+            <li style="display: flex; gap: 0.5rem;"><i data-lucide="mail"></i> crecerpacservices@gmail.com</li>
+            <li style="display: flex; gap: 0.5rem;"><i data-lucide="clock"></i> Mon - Fri: 8:00 AM - 6:00 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Crecer. All Rights Reserved.</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

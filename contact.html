@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crecer - Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .contact-hero { background-color: var(--clr-dark-green); padding: 8rem 0 12rem; color: white; position: relative; }
+    .contact-hero .label { display: inline-block; background: rgba(251, 191, 36, 0.1); color: var(--clr-yellow); padding: 0.3rem 1rem; border-radius: 4px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+    .contact-hero h1 { font-size: 4rem; color: white; margin-bottom: 1.5rem; }
+    .contact-hero h1 span { color: var(--clr-yellow); }
+    .contact-hero p { font-size: 1.15rem; max-width: 600px; color: rgba(255,255,255,0.8); }
+    
+    .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: -6rem; position: relative; z-index: 10; margin-bottom: 4rem; }
+    .cc-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .cc-header { background: var(--clr-green); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; color: white; text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+    .cc-body { padding: 2rem 1.5rem; }
+    .cc-body p { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.25rem; font-weight: 600; text-transform: uppercase; }
+    .cc-body h3 { font-size: 1.25rem; color: var(--clr-heading); margin-bottom: 1rem; }
+    .cc-body small { font-size: 0.8rem; color: #9ca3af; }
+    
+    .form-section { background: var(--clr-light); padding-bottom: 6rem; }
+    .form-wrapper { display: flex; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-radius: var(--radius); overflow: hidden; }
+    .form-left { background: var(--clr-green); color: white; padding: 4rem; flex: 1; }
+    .form-left h2 { color: white; font-size: 2.2rem; margin-bottom: 1.5rem; }
+    .form-left p { color: rgba(255,255,255,0.9); margin-bottom: 3rem; line-height: 1.8; }
+    .form-left ul li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; font-weight: 500; }
+    .form-left i { color: var(--clr-yellow); }
+    
+    .form-right { background: white; padding: 4rem; flex: 1.5; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-size: 0.75rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .form-group input, .form-group select { padding: 1rem; border: 1px solid var(--clr-gray-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--clr-green); }
+    .form-group textarea { padding: 1rem; border: 1px solid var(--clr-gray-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; outline: none; resize: vertical; min-height: 150px; }
+    .form-group.full { grid-column: span 2; }
+    .form-right .btn { width: 100%; margin-top: 1.5rem; padding: 1.25rem; font-size: 1rem; }
+    
+    .map-section { height: 500px; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80') center/cover; position: relative; }
+    .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .map-label { background: white; padding: 0.5rem 1.5rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .map-icon { width: 40px; height: 40px; background: var(--clr-yellow); color: var(--clr-heading); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    
+    @media (max-width: 1024px) {
+      .contact-cards, .form-wrapper { flex-direction: column; }
+      .contact-cards { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><div class="crecer-logo" style="display: flex; flex-direction: column; align-items: flex-start; background: white; padding: 0.5rem 1rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+    <div style="color: var(--clr-green); display: flex;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+    <div style="color: var(--clr-heading); font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; letter-spacing: 5px;">CRECER</div>
+  </div>
+  <div style="font-size: 0.45rem; color: #6b7280; font-family: var(--font-body); font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Engineering and Construction Services</div>
+</div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="container">
+      <span class="label">ENGINEERING & CONSTRUCTION</span>
+      <h1>Start Your <span>Project<br>Growth</span></h1>
+      <p>Bring your commercial vision to life with our expert engineering team. Let's discuss your next landmark project.</p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="container">
+      <div class="contact-cards">
+        <div class="cc-card">
+          <div class="cc-header">CALL US <i data-lucide="phone"></i></div>
+          <div class="cc-body">
+            <p>Direct Line</p>
+            <h3>+1 (555) 824-9000</h3>
+            <small>Mon-Fri: 8:00 AM - 6:00 PM</small>
+          </div>
+        </div>
+        <div class="cc-card">
+          <div class="cc-header">EMAIL US <i data-lucide="mail"></i></div>
+          <div class="cc-body">
+            <p>Project Inquiries</p>
+            <h3 style="font-size: 1.1rem;">crecerpacservices@gmail.com</h3>
+            <small>We respond within 12 business hours</small>
+          </div>
+        </div>
+        <div class="cc-card">
+          <div class="cc-header">VISIT US <i data-lucide="map-pin"></i></div>
+          <div class="cc-body">
+            <p>Headquarters</p>
+            <h3>450 Engineering Plaza, NY</h3>
+            <small>Design District, Suite 1200</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-wrapper">
+        <div class="form-left">
+          <h2>Let's Build Together</h2>
+          <p>Fill out the form to receive a detailed technical proposal or schedule a preliminary site consultation with our lead engineers.</p>
+          <ul>
+            <li><i data-lucide="check-circle"></i> Comprehensive Site Assessment</li>
+            <li><i data-lucide="check-circle"></i> Budget-Optimized Solutions</li>
+            <li><i data-lucide="check-circle"></i> Accelerated Project Timelines</li>
+          </ul>
+        </div>
+        <div class="form-right">
+          <form>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>CONTACT NAME</label>
+                <input type="text" placeholder="e.g. Michael Chen">
+              </div>
+              <div class="form-group">
+                <label>COMPANY</label>
+                <input type="text" placeholder="e.g. Horizon Development">
+              </div>
+              <div class="form-group">
+                <label>WORK EMAIL</label>
+                <input type="email" placeholder="m.chen@company.com">
+              </div>
+              <div class="form-group">
+                <label>SERVICE TYPE</label>
+                <select>
+                  <option>Structural Engineering</option>
+                  <option>Plumbing & Sanitary</option>
+                  <option>Electrical</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>ESTIMATED PROJECT BUDGET</label>
+                <select>
+                  <option>$100k - $500k</option>
+                  <option>$500k - $1M</option>
+                  <option>$1M+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>EXPECTED TIMELINE</label>
+                <select>
+                  <option>Immediate (1-3 months)</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label>PROJECT BRIEF</label>
+                <textarea placeholder="Describe your technical requirements and goals..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-yellow">SUBMIT INQUIRY</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="map-pin">
+      <div class="map-label">Crecer HQ</div>
+      <div class="map-icon"><i data-lucide="map-pin"></i></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><div style="display: flex; align-items: center; gap: 0.25rem;">
+  <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M45 5 A 45 45 0 1 0 75 90 A 50 50 0 1 1 45 5" fill="#fbbf24"/>
+    <path d="M40 90 Q 30 40 15 40 Q 30 60 38 80" fill="#1f8a4c"/>
+    <path d="M40 90 Q 50 40 65 40 Q 50 60 42 80" fill="#1f8a4c"/>
+    <path d="M40 90 Q 40 30 40 15 Q 45 35 42 80" fill="#1f8a4c"/>
+  </svg>
+  <span style="color: var(--clr-yellow); font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; letter-spacing: 0.5px;">Crecer</span>
+</div></div>
+          <p style="font-size: 0.9rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Our Mission</a></li><li><a href="services.html">Our Services</a></li><li><a href="projects.html">Latest Projects</a></li></ul></div>
+        <div class="footer-col"><h4>Expertise</h4><ul><li><a href="#">Civil Engineering</a></li><li><a href="#">Electrical Engineering</a></li><li><a href="#">Fire Safety Systems</a></li></ul></div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li style="display: flex; gap: 0.5rem;"><i data-lucide="map-pin"></i> 123 Engineering Way</li>
+            <li style="display: flex; gap: 0.5rem;"><i data-lucide="phone"></i> +63 8888 0000</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Crecer. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>

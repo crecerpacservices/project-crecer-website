@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crecer - Our Services</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .services-hero { padding: 6rem 0; background-color: var(--clr-green-dark); background-image: linear-gradient(rgba(18, 84, 45, 0.4), rgba(18, 84, 45, 0.7)), url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; color: white; border-bottom: 5px solid var(--clr-yellow); }
+    .services-hero h1 { font-size: 3.5rem; color: white; display: inline-block; border-bottom: 4px solid var(--clr-yellow); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .services-hero p { font-size: 1.1rem; max-width: 600px; color: rgba(255,255,255,0.9); }
+    
+    .services-grid-page { padding: 6rem 0; background: var(--clr-light); }
+    .sg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .sg-card { background: white; padding: 3rem; border-radius: var(--radius); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .sg-icon { width: 40px; height: 40px; color: var(--clr-green-dark); margin-bottom: 1.5rem; }
+    .sg-card h3 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--clr-heading); }
+    .sg-card p { font-size: 0.95rem; color: var(--clr-text); margin-bottom: 2rem; }
+    .sg-features { margin-bottom: 2.5rem; flex-grow: 1; }
+    .sg-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.85rem; color: var(--clr-heading); }
+    .sg-item i { color: var(--clr-yellow); width: 18px; flex-shrink: 0; }
+    .sg-card .btn { width: 100%; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    
+    .ready-banner { background: var(--clr-dark-green); padding: 6rem 0; color: white; text-align: center; position: relative; overflow: hidden; }
+    .ready-circle-1 { position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--clr-yellow); border-radius: 50%; opacity: 0.9; }
+    .ready-circle-2 { position: absolute; bottom: -50px; left: -50px; width: 150px; height: 150px; background: var(--clr-yellow); border-radius: 50%; opacity: 0.9; }
+    .ready-content { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; }
+    .ready-content h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
+    .ready-content p { color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><div class="crecer-logo" style="display: flex; flex-direction: column; align-items: flex-start; background: white; padding: 0.5rem 1rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+    <div style="color: var(--clr-green); display: flex;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+    <div style="color: var(--clr-heading); font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; letter-spacing: 5px;">CRECER</div>
+  </div>
+  <div style="font-size: 0.45rem; color: #6b7280; font-family: var(--font-body); font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Engineering and Construction Services</div>
+</div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="services-hero">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>Specialized engineering and construction solutions delivered with precision and industrial excellence.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="services-grid-page">
+    <div class="container sg-grid">
+      <div class="sg-card">
+        <i data-lucide="wrench" class="sg-icon"></i>
+        <h3>Plumbing</h3>
+        <p>High-performance water distribution and waste management systems for industrial complexes and commercial infrastructures.</p>
+        <div class="sg-features">
+          <div class="sg-item"><i data-lucide="check"></i> Water Distribution Systems</div>
+          <div class="sg-item"><i data-lucide="check"></i> Sanitary Drainage & Venting</div>
+          <div class="sg-item"><i data-lucide="check"></i> Storm Water Management</div>
+          <div class="sg-item"><i data-lucide="check"></i> Industrial Waste Treatment</div>
+        </div>
+        <a href="#" class="btn btn-yellow">Request a Quote</a>
+      </div>
+      
+      <div class="sg-card">
+        <i data-lucide="flame" class="sg-icon"></i>
+        <h3>Fire Protection</h3>
+        <p>State-of-the-art suppression and detection systems designed to protect life and asset integrity across all facilities.</p>
+        <div class="sg-features">
+          <div class="sg-item"><i data-lucide="check"></i> Automatic Sprinkler Systems</div>
+          <div class="sg-item"><i data-lucide="check"></i> Special Hazard Suppression</div>
+          <div class="sg-item"><i data-lucide="check"></i> Fire Pumps & Water Storage</div>
+          <div class="sg-item"><i data-lucide="check"></i> Advanced Smoke Detection</div>
+        </div>
+        <a href="#" class="btn btn-yellow">Request a Quote</a>
+      </div>
+      
+      <div class="sg-card">
+        <i data-lucide="zap" class="sg-icon"></i>
+        <h3>Electrical</h3>
+        <p>Complete electrical engineering services, from medium voltage substations to intelligent lighting control systems.</p>
+        <div class="sg-features">
+          <div class="sg-item"><i data-lucide="check"></i> Power Substations & MV Wiring</div>
+          <div class="sg-item"><i data-lucide="check"></i> Emergency Backup Generators</div>
+          <div class="sg-item"><i data-lucide="check"></i> Lighting Control & Automation</div>
+          <div class="sg-item"><i data-lucide="check"></i> Energy Audits & Efficiency</div>
+        </div>
+        <a href="#" class="btn btn-yellow">Request a Quote</a>
+      </div>
+      
+      <div class="sg-card">
+        <i data-lucide="hard-hat" class="sg-icon"></i>
+        <h3>Civil Works</h3>
+        <p>Foundational structural work and site preparation ensuring the highest standards of durability and precision.</p>
+        <div class="sg-features">
+          <div class="sg-item"><i data-lucide="check"></i> Excavation & Site Preparation</div>
+          <div class="sg-item"><i data-lucide="check"></i> Reinforced Concrete Foundations</div>
+          <div class="sg-item"><i data-lucide="check"></i> Paving & Site Infrastructure</div>
+          <div class="sg-item"><i data-lucide="check"></i> Structural Steel Erection</div>
+        </div>
+        <a href="#" class="btn btn-yellow">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- READY BANNER -->
+  <section class="ready-banner">
+    <div class="ready-circle-1"></div>
+    <div class="ready-circle-2"></div>
+    <div class="container ready-content">
+      <h2>Ready to start your next project?</h2>
+      <p>Consult with our expert engineering team for specialized technical analysis and project implementation.</p>
+      <a href="contact.html" class="btn btn-yellow">Speak With An Expert</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><div style="display: flex; align-items: center; gap: 0.25rem;">
+  <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M45 5 A 45 45 0 1 0 75 90 A 50 50 0 1 1 45 5" fill="#fbbf24"/>
+    <path d="M40 90 Q 30 40 15 40 Q 30 60 38 80" fill="#1f8a4c"/>
+    <path d="M40 90 Q 50 40 65 40 Q 50 60 42 80" fill="#1f8a4c"/>
+    <path d="M40 90 Q 40 30 40 15 Q 45 35 42 80" fill="#1f8a4c"/>
+  </svg>
+  <span style="color: var(--clr-yellow); font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; letter-spacing: 0.5px;">Crecer</span>
+</div></div>
+          <p style="font-size: 0.9rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Our Mission</a></li><li><a href="services.html">Our Services</a></li><li><a href="projects.html">Latest Projects</a></li><li><a href="#">Sustainability Reports</a></li></ul></div>
+        <div class="footer-col"><h4>Expertise</h4><ul><li><a href="#">Civil Engineering</a></li><li><a href="#">Fire Safety Systems</a></li><li><a href="#">Sustainable Infrastructure</a></li><li><a href="#">Electrical Engineering</a></li><li><a href="#">Project Management</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4><ul><li style="display: flex; gap: 0.5rem;"><i data-lucide="map-pin"></i> 123 Engineering Way, Innovation District, PH 12345</li><li style="display: flex; gap: 0.5rem;"><i data-lucide="phone"></i> +63 (2) 8888-0000</li><li style="display: flex; gap: 0.5rem;"><i data-lucide="mail"></i> crecerpacservices@gmail.com</li><li style="display: flex; gap: 0.5rem;"><i data-lucide="clock"></i> Mon - Fri: 8:00 AM - 6:00 PM</li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Crecer. All Rights Reserved.</p><div style="display: flex; gap: 1.5rem;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
