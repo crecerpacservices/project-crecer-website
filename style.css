@@ -127,3 +127,34 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
   .flex-between { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
+
+/* Client Logo Bar - Final Image Based */
+.clients-section { padding: 4rem 0; background: var(--clr-white); overflow: hidden; }
+.clients-marquee-box { border: 1px solid #e5e7eb; border-radius: 12px; padding: 2.5rem; background: #fdfdfd; overflow: hidden; position: relative; }
+.logo-track { display: flex !important; flex-direction: row !important; align-items: center; gap: 6rem; width: max-content; animation: slowScroll 35s linear infinite; }
+
+.client-box { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 250px; 
+  padding: 0; 
+  background: transparent; 
+  border: none; 
+  box-shadow: none;
+}
+.client-box img { 
+  height: 85px; 
+  width: auto; 
+  object-fit: contain; 
+}
+
+@keyframes slowScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .logo-track { gap: 3rem; }
+  .client-box { min-width: 220px; padding: 1rem 1.5rem; }
+}
