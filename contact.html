@@ -43,9 +43,41 @@
     
     .map-section { height: 550px; position: relative; }
     #ph-map { width: 100%; height: 100%; z-index: 1; }
-    .map-overlay-banner { position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(30, 64, 42, 0.92); backdrop-filter: blur(8px); color: white; padding: 0.75rem 2rem; border-radius: 8px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.25); pointer-events: none; }
-    .map-overlay-banner h3 { font-size: 1.1rem; margin: 0 0 0.15rem; color: #fbbf24; letter-spacing: 1px; text-transform: uppercase; }
-    .map-overlay-banner p { font-size: 0.85rem; margin: 0; color: rgba(255,255,255,0.85); }
+    .map-overlay-banner { 
+      position: absolute; 
+      top: 2rem; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      z-index: 1000; 
+      background: white; 
+      padding: 1.5rem 3rem; 
+      border-radius: 16px; 
+      text-align: center; 
+      box-shadow: 0 15px 45px rgba(0,0,0,0.1); 
+      border: 1px solid rgba(0,0,0,0.05);
+      min-width: 320px;
+    }
+    .map-overlay-banner p:first-child { 
+      font-size: 0.75rem; 
+      font-weight: 800; 
+      color: var(--clr-green); 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      margin: 0 0 0.5rem;
+    }
+    .map-overlay-banner h3 { 
+      font-size: 1.6rem; 
+      margin: 0 0 0.25rem; 
+      color: var(--clr-heading); 
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+    }
+    .map-overlay-banner p:last-child { 
+      font-size: 0.95rem; 
+      margin: 0; 
+      color: var(--clr-text); 
+      font-weight: 500;
+    }
     .leaflet-popup-content-wrapper { border-radius: 10px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important; }
     .leaflet-popup-content { margin: 0 !important; padding: 0 !important; }
     .popup-content { padding: 1rem 1.25rem; text-align: center; }
@@ -235,9 +267,9 @@
 
   <section class="map-section">
     <div class="map-overlay-banner">
-      <h3>🇵🇭 National Service Area</h3>
-      <p>Registered Address: Lallana Street, Barangay 93, Tondo, Manila, Philippines, 1012</p>
-      <p style="margin-top: 0.25rem; color: #fbbf24; font-weight: 600; font-size: 0.85rem;">★ Serving Clients Nationwide</p>
+      <p>Service Area: National (Philippines)</p>
+      <h3>Prefer: Metro Manila</h3>
+      <p>(Serving Clients Nationwide)</p>
     </div>
     <div id="ph-map"></div>
   </section>
