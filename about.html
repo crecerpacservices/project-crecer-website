@@ -31,11 +31,18 @@
     .journey-img img { width: 100%; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
     .journey-badge { position: absolute; bottom: -20px; left: -20px; background: var(--clr-green); color: white; padding: 2rem; border-radius: var(--radius); }
     
+    .leadership { padding: 6rem 0; text-align: center; }
+    .leader-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
+    .leader-card { text-align: center; }
+    .leader-img { width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.5rem; }
+    .leader-card h4 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .leader-card p { color: var(--clr-green); font-weight: 600; font-size: 0.9rem; }
+    
     .cta-banner { background: var(--clr-green); padding: 5rem 0; text-align: center; border-radius: var(--radius); margin: 4rem 2rem 8rem; color: white; }
     .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
     
     @media (max-width: 1024px) {
-      .values-grid, .journey-flex { grid-template-columns: 1fr; }
+      .values-grid, .journey-flex, .leader-grid { grid-template-columns: 1fr; }
       .values-grid { margin-top: 2rem; }
     }
   </style>
@@ -197,6 +204,7 @@
     </div>
   </section>
 
+  <!-- LEADERSHIP -->
   <section class="leadership container">
     <div class="section-title">
       <h2>Our Leadership</h2>
@@ -204,51 +212,51 @@
     </div>
     <div class="leader-grid">
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #cbd5e1; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Mark</h4>
         <p>Proprietor</p>
       </div>
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Paul</h4>
-        <p>Founding Team Member</p>
-        <small>Head of Plumbing & Fire Protection (Consultant/Partner)</small>
+        <p style="margin-bottom: 0;">Founding Team Member</p>
+        <small style="color: var(--clr-text); font-size: 0.75rem; font-weight: 500;">Head of Plumbing & Fire Protection (Consultant/Partner)</small>
       </div>
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Gilmar</h4>
         <p>Project Electrical Engineer</p>
       </div>
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Wel</h4>
         <p>Project Support Partner</p>
       </div>
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Jeric</h4>
         <p>Project Support Partner</p>
       </div>
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Jayson</h4>
         <p>Data</p>
       </div>
       <div class="leader-card">
-        <div class="leader-img">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
         <h4>Sir Ian</h4>
         <p>Business Consultant & Advisor</p>
