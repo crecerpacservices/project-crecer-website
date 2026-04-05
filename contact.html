@@ -52,12 +52,12 @@
       background: rgba(30, 64, 42, 0.92); 
       backdrop-filter: blur(8px); 
       color: white; 
-      padding: 1rem 2.5rem; 
+      padding: 1.25rem 2.5rem; 
       border-radius: 12px; 
       text-align: center; 
       box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
       pointer-events: none;
-      min-width: 320px;
+      min-width: 340px;
     }
     .map-overlay-banner p:first-child { 
       font-size: 0.7rem; 
@@ -65,20 +65,24 @@
       color: var(--clr-yellow); 
       text-transform: uppercase; 
       letter-spacing: 2px; 
-      margin: 0 0 0.25rem;
+      margin: 0 0 0.4rem;
     }
     .map-overlay-banner h3 { 
-      font-size: 1.4rem; 
-      margin: 0 0 0.15rem; 
+      font-size: 0.7rem; 
+      margin: 0 0 0.4rem; 
       color: white; 
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .map-overlay-banner p:last-child { 
-      font-size: 0.85rem; 
+      font-size: 0.7rem; 
       margin: 0; 
       color: rgba(255,255,255,0.7); 
-      font-weight: 500;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .leaflet-popup-content-wrapper { border-radius: 10px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important; }
     .leaflet-popup-content { margin: 0 !important; padding: 0 !important; }
@@ -271,7 +275,7 @@
     <div class="map-overlay-banner">
       <p>Service Area: National (Philippines)</p>
       <h3>Prefer: Metro Manila</h3>
-      <p>(Serving Clients Nationwide)</p>
+      <p>• Serving clients nationwide •</p>
     </div>
     <div id="ph-map"></div>
   </section>
