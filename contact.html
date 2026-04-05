@@ -45,37 +45,39 @@
     #ph-map { width: 100%; height: 100%; z-index: 1; }
     .map-overlay-banner { 
       position: absolute; 
-      top: 2rem; 
+      top: 1.5rem; 
       left: 50%; 
       transform: translateX(-50%); 
       z-index: 1000; 
-      background: white; 
-      padding: 1.5rem 3rem; 
-      border-radius: 16px; 
+      background: rgba(30, 64, 42, 0.92); 
+      backdrop-filter: blur(8px); 
+      color: white; 
+      padding: 1rem 2.5rem; 
+      border-radius: 12px; 
       text-align: center; 
-      box-shadow: 0 15px 45px rgba(0,0,0,0.1); 
-      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+      pointer-events: none;
       min-width: 320px;
     }
     .map-overlay-banner p:first-child { 
-      font-size: 0.75rem; 
+      font-size: 0.7rem; 
       font-weight: 800; 
-      color: var(--clr-green); 
+      color: var(--clr-yellow); 
       text-transform: uppercase; 
       letter-spacing: 2px; 
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.25rem;
     }
     .map-overlay-banner h3 { 
-      font-size: 1.6rem; 
-      margin: 0 0 0.25rem; 
-      color: var(--clr-heading); 
+      font-size: 1.4rem; 
+      margin: 0 0 0.15rem; 
+      color: white; 
       font-family: 'Outfit', sans-serif;
-      font-weight: 800;
+      font-weight: 700;
     }
     .map-overlay-banner p:last-child { 
-      font-size: 0.95rem; 
+      font-size: 0.85rem; 
       margin: 0; 
-      color: var(--clr-text); 
+      color: rgba(255,255,255,0.7); 
       font-weight: 500;
     }
     .leaflet-popup-content-wrapper { border-radius: 10px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important; }
