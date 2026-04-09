@@ -12,44 +12,25 @@
   <style>
     .contact-hero {
       background-color: var(--clr-dark-green);
-      padding: 8rem 0 12rem;
+      padding: 6rem 0 10rem;
       color: white;
       position: relative;
-    }
-
-    .contact-hero .label {
-      display: inline-block;
-      background: rgba(251, 191, 36, 0.1);
-      color: var(--clr-yellow);
-      padding: 0.3rem 1rem;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1.5rem;
+      overflow: hidden;
     }
 
     .contact-hero h1 {
       font-size: 4rem;
       color: white;
+      display: inline-block;
+      border-bottom: 4px solid var(--clr-yellow);
+      padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
-    }
-
-    .contact-hero h1 span {
-      color: var(--clr-yellow);
-    }
-
-    .contact-hero p {
-      font-size: 1.15rem;
-      max-width: 600px;
-      color: rgba(255, 255, 255, 0.8);
     }
 
     .contact-cards {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
       margin-top: -6rem;
       position: relative;
       z-index: 10;
@@ -57,96 +38,37 @@
     }
 
     .cc-card {
-      background: white;
-      border-radius: var(--radius);
+      background: var(--glass-dark);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      color: white;
     }
 
     .cc-header {
-      background: var(--clr-green);
+      background: rgba(251, 191, 36, 0.1);
       padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: white;
+      color: var(--clr-yellow);
       text-transform: uppercase;
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 1px;
     }
 
-    .cc-body {
-      padding: 2rem 1.5rem;
-    }
+    .cc-body { padding: 2.5rem 2rem; }
+    .cc-body p { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .cc-body h3 { font-size: 1.25rem; color: white; margin-bottom: 1rem; }
 
-    .cc-body p {
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .cc-body h3 {
-      font-size: 1.25rem;
-      color: var(--clr-heading);
-      margin-bottom: 1rem;
-    }
-
-    .cc-body small {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    .form-section {
-      background: var(--clr-light);
-      padding-bottom: 6rem;
-    }
-
-    .form-wrapper {
-      display: flex;
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .form-left {
-      background: var(--clr-green);
-      color: white;
-      padding: 4rem;
-      flex: 1;
-    }
-
-    .form-left h2 {
-      color: white;
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-left p {
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 3rem;
-      line-height: 1.8;
-    }
-
-    .form-left ul li {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-
-    .form-left i {
-      color: var(--clr-yellow);
-    }
-
-    .form-right {
-      background: white;
-      padding: 4rem;
-      flex: 1.5;
-    }
+    .form-section { background: var(--clr-dark-green); padding-bottom: 8rem; }
+    .form-wrapper { display: flex; border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; }
+    .form-left { background: rgba(31, 138, 76, 0.2); backdrop-filter: blur(5px); color: white; padding: 4rem; flex: 1; border-right: 1px solid var(--glass-border); }
+    .form-right { background: var(--glass-dark); backdrop-filter: blur(12px); padding: 4rem; flex: 1.5; }
+    .form-group label { color: rgba(255,255,255,0.6); }
+    .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
 
     .form-grid {
       display: grid;
