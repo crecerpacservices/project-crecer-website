@@ -442,7 +442,7 @@
     // Map Implementation
     (function() {
       const map = L.map('ph-map', {
-        center: [14.6185, 120.9705],
+        center: [14.6212, 120.9680],
         zoom: 17,
         scrollWheelZoom: false,
         zoomControl: false
@@ -474,12 +474,12 @@
         iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -7]
       });
 
-      const tondoCoords = [14.6185, 120.9705];
+      const tondoCoords = [14.6212, 120.9680];
       const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
       hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Registered HQ</h4><p>Lallana Street, Tondo, Manila</p></div>');
 
       const locations = {
-        'tondo': { coords: tondoCoords, marker: hqMarker, zoom: 15 },
+        'tondo': { coords: tondoCoords, marker: hqMarker, zoom: 17 },
         'subic': { coords: [14.8219, 120.2818], title: "Subic International Hotel", body: "Alpha & Bravo Buildings<br>(IBIS Style & Mercure Hotel)", zoom: 12 },
         'pulp': { coords: [14.6500, 121.0500], title: "PULP Office", body: "Quezon City Corporate Hub", zoom: 14 },
         'novateur': { coords: [14.5516, 121.0494], title: "Novateur & Nespresso", body: "One World Place, BGC", type: 'client', zoom: 16 },
