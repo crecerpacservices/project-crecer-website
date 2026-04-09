@@ -205,63 +205,317 @@
   </section>
 
   <!-- LEADERSHIP -->
+  <style>
+    .leadership { padding: 8rem 0; background: var(--clr-white); }
+    .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; margin-top: 5rem; }
+    .leader-card { 
+      background: #ffffff; 
+      padding: 3rem; 
+      border-radius: 24px; 
+      border: 1px solid #edf2f7;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+      text-align: left;
+    }
+    .leader-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08); border-color: var(--clr-green); }
+    
+    /* Highlighted Founder Card */
+    .leader-card.featured { 
+      grid-column: span 2; 
+      background: #fffdf5; /* Very subtle gold tint */
+      border: 2px solid #fbbf24;
+      position: relative;
+    }
+    .leader-card.featured::after {
+      content: 'PROPRIETOR';
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      background: #fbbf24;
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+    
+    .leader-top { display: flex; align-items: flex-start; gap: 2.5rem; margin-bottom: 2rem; }
+    .leader-photo-wrap { 
+      width: 140px; height: 140px; 
+      background: #f3f4f6; 
+      border-radius: 20px; 
+      display: flex; align-items: center; justify-content: center; 
+      flex-shrink: 0;
+      border: 2px dashed #d1d5db;
+      color: #9ca3af;
+      overflow: hidden;
+      position: relative;
+    }
+    .leader-photo-wrap .photo-label { 
+      position: absolute; 
+      bottom: 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    
+    .leader-info-main { flex: 1; padding-top: 0.5rem; text-align: left; }
+    .leader-info-main h4 { font-size: 2rem; color: #1a1a1a !important; font-weight: 800; margin: 0 0 0.15rem; letter-spacing: -0.5px; }
+    .leader-info-main .role { color: #1a1a1a !important; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.75rem; }
+    
+    .leader-meta { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 0.6rem; 
+      margin-bottom: 1rem;
+    }
+    .meta-tag { 
+      font-size: 0.65rem; 
+      font-weight: 800; 
+      color: #fbbf24 !important; /* Bright Yellow Text */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: rgba(251, 191, 36, 0.1); /* Very Light Yellow Background */
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      display: inline-block;
+      border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+
+    .leader-body { 
+      padding-top: 1.5rem;
+      border-top: 1px solid #f3f4f6;
+    }
+    .leader-desc { 
+      font-size: 1.05rem; 
+      line-height: 1.7; 
+      color: #718096 !important; /* Strictly Gray Bio */
+      font-weight: 400;
+    }
+    .leader-desc p { margin-bottom: 1.25rem; color: #718096 !important; }
+    .leader-desc p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 1100px) {
+      .leader-grid { grid-template-columns: 1fr; max-width: 800px; margin-left: auto; margin-right: auto; }
+      .leader-card.featured { grid-column: span 1; }
+    }
+    @media (max-width: 700px) {
+      .leader-top { flex-direction: column; align-items: flex-start; }
+      .leader-card { padding: 2rem; }
+    }
+  </style>
+
   <section class="leadership container">
     <div class="section-title">
-      <h2>Our Leadership</h2>
-      <p>The visionaries and experts driving innovation at Project Crecer.</p>
+      <span style="color: var(--clr-green); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">The Team Behind Crecer</span>
+      <h2 style="font-size: 3.5rem; margin-top: 0.75rem; color: var(--clr-heading);">Our Leadership</h2>
+      <div style="width: 80px; height: 4px; background: var(--clr-yellow); margin: 1.5rem auto;"></div>
     </div>
+
     <div class="leader-grid">
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #cbd5e1; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <!-- MARK -->
+      <div class="leader-card featured">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">MARK PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Mark</h4>
+            <span class="role">Founder & Operations Director</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Client Relations</span>
+              <span class="meta-tag">Contracts & Quotations</span>
+              <span class="meta-tag">Inspections</span>
+              <span class="meta-tag">Documentation</span>
+              <span class="meta-tag">Quality Control/ Assurance</span>
+              <span class="meta-tag">HIRAC</span>
+            </div>
+          </div>
         </div>
-        <h4>Mark</h4>
-        <p>Proprietor</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Leads the overall direction of the company, overseeing operations, project execution, and business management. Responsible for strategic planning, logistics, process improvement, and client relations while ensuring quality, efficiency, and consistency across all projects.</p>
+            <p>Support AutoCAD revisions, site markings, as-built plans, and ensures alignment between design and actual implementation. Also manages technical documentation, specifications, testing works, and compliance with codes and standard construction methodologies.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- ZANDRO -->
       <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">ZANDRO PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Zandro</h4>
+            <span class="role">Senior Project Manager</span>
+            <div class="leader-meta">
+              <span class="meta-tag">General Management and Support</span>
+              <span class="meta-tag">Inspections</span>
+              <span class="meta-tag">Facilities management</span>
+              <span class="meta-tag">Technical Drawings</span>
+              <span class="meta-tag">Admin</span>
+              <span class="meta-tag">Cosh 2</span>
+            </div>
+          </div>
         </div>
-        <h4>Paul</h4>
-        <p>Project Support Partner (Plumbing & Fire Protection)</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Manages end-to-end project planning and execution across plumbing, fire protection, and civil works. Ensures compliance with industry codes and standards while overseeing scheduling, BOQ preparation, manpower allocation, and project budgeting.</p>
+            <p>Produces accurate technical drawings using AutoCAD and SketchUp and handles technical documentation, specifications, testing, and standardized construction methodologies.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- GILMAR -->
       <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">GILMAR PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Gilmar</h4>
+            <span class="role">Senior Electrical Engineer</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Licensed EE</span>
+              <span class="meta-tag">Inspections</span>
+              <span class="meta-tag">Costing</span>
+              <span class="meta-tag">Management</span>
+              <span class="meta-tag">Codes and Standards</span>
+            </div>
+          </div>
         </div>
-        <h4>Gilmar</h4>
-        <p>Project Support Partner (Electrical Engineer)</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>A licensed electrical engineer responsible for electrical system design, implementation, testing, and compliance with applicable codes and standards. Supports project execution through technical oversight, manpower coordination, and strict adherence to safety and quality requirements.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- PAUL -->
       <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">PAUL PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Paul</h4>
+            <span class="role">Lead Site Supervisor</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Site Ops</span>
+              <span class="meta-tag">Plumbing and Firepro Specialist</span>
+            </div>
+          </div>
         </div>
-        <h4>Wel</h4>
-        <p>Project Support Partner</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Supervises daily site operations, manpower coordination, and on-site execution of plumbing and fire protection works. Experienced in project estimation, planning, and field supervision, ensuring all activities are completed efficiently and according to specifications.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- JERIC -->
       <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">JERIC PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Jeric</h4>
+            <span class="role">Site Coordinator & Tech Lead</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Ocular and Inspections</span>
+              <span class="meta-tag">Tech Lead</span>
+              <span class="meta-tag">Bill of Materials</span>
+              <span class="meta-tag">Labor Deployment</span>
+              <span class="meta-tag">Scheduling</span>
+            </div>
+          </div>
         </div>
-        <h4>Jeric</h4>
-        <p>Project Support Partner</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Leads on-site teams and coordinates project requirements including materials, scheduling, costing, and execution. Ensures smooth daily operations and efficient workflow across all project activities.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- RUEL -->
       <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">RUEL PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Ruel</h4>
+            <span class="role">Electrical Technician</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Multi-skilled</span>
+              <span class="meta-tag">Tech Lead & Support</span>
+            </div>
+          </div>
         </div>
-        <h4>Jayson</h4>
-        <p>Data Analyst</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>A multi-skilled technician specializing in electrical works with broad experience in general technical operations. Provides essential manpower support and contributes across multiple areas of project execution.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- JAYSON -->
       <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">JAYSON PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Jayson</h4>
+            <span class="role">Data & Systems Analyst</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Power BI</span>
+              <span class="meta-tag">AI / Systems</span>
+            </div>
+          </div>
         </div>
-        <h4>Sir Ian</h4>
-        <p>Business Consultant & Advisor</p>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Handles data analysis, reporting, and system development. Manages and maintains the company website while leveraging tools such as Power BI and AI solutions to enhance operational efficiency and support data-driven decision-making.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIR IAN -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">SIR IAN PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Sir Ian</h4>
+            <span class="role">Business Consultant</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Strategy</span>
+              <span class="meta-tag">Dev Advisor</span>
+            </div>
+          </div>
+        </div>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Provides expert guidance on business development, marketing strategies, and organizational growth. Supports the company through strategic planning, insights, and continuous operational improvement.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+
 
   <!-- CTA -->
   <section class="cta-banner">

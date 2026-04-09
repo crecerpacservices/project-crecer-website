@@ -40,6 +40,39 @@
       .pp-grid { grid-template-columns: 1fr; }
       .filters { font-size: 0.85rem; }
     }
+
+    /* Portfolio Gallery Template */
+    .pg-layout { display: grid; grid-template-columns: 280px 1fr; gap: 3.5rem; margin-bottom: 6rem; text-align: left; }
+    .pg-sidebar { padding-top: 0.5rem; }
+    .pg-filter-group { margin-bottom: 2.5rem; }
+    .pg-filter-title { display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--clr-heading); margin-bottom: 1.5rem; text-transform: uppercase; }
+    .pg-filter-title .line-green { display: inline-block; width: 24px; height: 3px; background-color: var(--clr-green); }
+    .pg-filter-title .line-yellow { display: inline-block; width: 24px; height: 3px; background-color: var(--clr-yellow); }
+    .pg-filter-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+    .pg-filter-list a { display: block; padding: 0.6rem 1rem; color: #4b5563; font-weight: 700; font-size: 1rem; border-radius: 6px; transition: 0.3s; }
+    .pg-filter-list a:hover { background-color: rgba(31, 138, 76, 0.05); color: var(--clr-green); }
+    .pg-filter-list a.active { background-color: var(--clr-green); color: white; }
+    
+    .checkbox-list li { padding: 0.4rem 1rem; }
+    .custom-checkbox { display: flex; align-items: center; gap: 0.85rem; cursor: pointer; font-size: 1rem; font-weight: 700; color: #4b5563; user-select: none; margin: 0; }
+    .custom-checkbox input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+    .checkmark { width: 22px; height: 22px; background: white; border: 2px solid #cbd5e1; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+    .checkmark i, .checkmark svg { display: none; color: white; width: 14px; height: 14px; stroke-width: 3; }
+    .custom-checkbox input:checked ~ .checkmark { background-color: var(--clr-green); border-color: var(--clr-green); }
+    .custom-checkbox input:checked ~ .checkmark i, .custom-checkbox input:checked ~ .checkmark svg { display: block; }
+    
+    .pg-gallery { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.5rem; }
+    .pg-col { display: flex; flex-direction: column; gap: 1.5rem; }
+    .pg-img-wrap { overflow: hidden; background: #e5e7eb; border-radius: 0; }
+    .pg-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .pg-img-wrap:hover img { transform: scale(1.03); }
+    
+    @media (max-width: 900px) {
+      .pg-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pg-sidebar { display: flex; flex-wrap: wrap; gap: 3rem; }
+      .pg-filter-group { margin-bottom: 0; flex: 1; min-width: 200px; }
+      .pg-gallery { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -87,7 +120,73 @@
     <div class="container">
       <span class="pp-label">Track Record</span>
       <h1>Proven Collective Expertise</h1>
-      <p style="margin-bottom: 5rem;">While Crecer is a newly founded firm, our core team brings decades of combined experience managing flagship developments. These projects showcase the standard of excellence we bring to every new engagement.</p>
+      <p style="margin-bottom: 4rem;">While Crecer is a newly founded firm, our core team brings decades of combined experience managing flagship developments. These projects showcase the standard of excellence we bring to every new engagement.</p>
+
+      <!-- PORTFOLIO TEMPLATE INJECTED VIA USER REQUEST -->
+      <div class="pg-layout">
+        <!-- Sidebar -->
+        <div class="pg-sidebar">
+          <!-- Categories -->
+          <div class="pg-filter-group">
+            <h4 class="pg-filter-title"><span class="line-green"></span>CATEGORIES</h4>
+            <ul class="pg-filter-list">
+              <li><a href="#" class="active">All Projects</a></li>
+              <li><a href="#">Plumbing</a></li>
+              <li><a href="#">Fire Protection</a></li>
+              <li><a href="#">Electrical</a></li>
+              <li><a href="#">Civil Works</a></li>
+            </ul>
+          </div>
+          <!-- Project Scale -->
+          <div class="pg-filter-group">
+            <h4 class="pg-filter-title"><span class="line-yellow"></span>PROJECT SCALE</h4>
+            <ul class="pg-filter-list checkbox-list">
+              <li>
+                <label class="custom-checkbox">
+                  <input type="checkbox">
+                  <span class="checkmark"><i data-lucide="check"></i></span>
+                  Small Scale
+                </label>
+              </li>
+              <li>
+                <label class="custom-checkbox">
+                  <input type="checkbox">
+                  <span class="checkmark"><i data-lucide="check"></i></span>
+                  Medium Scale
+                </label>
+              </li>
+              <li>
+                <label class="custom-checkbox">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"><i data-lucide="check"></i></span>
+                  Large Scale
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Gallery -->
+        <div class="pg-gallery">
+          <div class="pg-col" style="display: flex;">
+            <div class="pg-img-wrap" style="flex: 1; display: flex; min-height: 400px;">
+              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="Industrial Piping">
+            </div>
+          </div>
+          <div class="pg-col">
+            <div class="pg-img-wrap">
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356f27?auto=format&fit=crop&q=80&w=800" style="aspect-ratio: 4/3;" alt="Fire Protection Red Pipes">
+            </div>
+            <div class="pg-img-wrap">
+              <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800" style="aspect-ratio: 16/9;" alt="Electrical Substation">
+            </div>
+            <div class="pg-img-wrap">
+              <img src="https://images.unsplash.com/photo-1541888087525-071de60f8115?auto=format&fit=crop&q=80&w=800" style="aspect-ratio: 16/9;" alt="Civil Works Foundation">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END PORTFOLIO TEMPLATE -->
       
       <!-- PROJECT 1: SUBIC -->
       <div style="text-align: left; margin-bottom: 6rem; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
