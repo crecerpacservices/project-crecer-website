@@ -7,44 +7,50 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
   <style>
-    .about-hero { padding: 6rem 0; background-color: var(--clr-dark-green); background-image: linear-gradient(rgba(15, 28, 22, 0.6), rgba(15, 28, 22, 0.8)), url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; color: white; border-bottom: 5px solid var(--clr-yellow); }
-    .about-hero h1 { font-size: 3.5rem; color: white; display: inline-block; border-bottom: 4px solid var(--clr-yellow); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    /* ABOUT HERO - Dark Tech */
+    .about-hero { padding: 8rem 0 6rem; background-color: var(--clr-dark-green); background-image: linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.95)), url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; color: white; position: relative; overflow: hidden; }
+    .about-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-width='0.5' opacity='0.07'%3E%3Cpath d='M0 40L40 0M0 0h40v40H0z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .about-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; position: relative; }
     .about-hero h1 span { color: var(--clr-yellow); }
-    .about-hero p { font-size: 1.1rem; max-width: 600px; color: rgba(255,255,255,0.9); }
-    
-    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: -4rem; position: relative; z-index: 10; padding: 0 1rem; }
-    .value-card { background: var(--glass-dark); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); padding: 3rem 2rem; border-radius: 12px; color: white; }
-    .value-icon { width: 50px; height: 50px; background: rgba(251, 191, 36, 0.1); color: var(--clr-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
-    .value-card h3 { margin-bottom: 1rem; font-size: 1.25rem; }
-    .value-card p { font-size: 0.95rem; color: var(--clr-text); }
-    
-    .journey { padding: 8rem 0 4rem; background: var(--clr-light); }
+    .about-hero p { font-size: 1.1rem; max-width: 600px; color: rgba(255,255,255,0.85); position: relative; }
+    .about-hero-label { display: inline-block; background: rgba(251,191,36,0.1); color: var(--clr-yellow); padding: 0.3rem 1rem; border-radius: 4px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; border: 1px solid rgba(251,191,36,0.2); position: relative; }
+
+    /* VALUES - Glass Cards */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; position: relative; z-index: 10; padding: 0 0 4rem; }
+    .value-card.glass-card { border-bottom: 3px solid var(--clr-yellow); }
+    .value-icon { width: 50px; height: 50px; background: rgba(251,191,36,0.1); color: var(--clr-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .value-card h3 { margin-bottom: 1rem; font-size: 1.25rem; color: white; }
+    .value-card p { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+
+    /* FOUNDING VISION STRIP */
+    .founding-vision { background: var(--clr-dark-green); padding: 5rem 0; position: relative; overflow: hidden; }
+    .founding-vision::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(135deg, rgba(251,191,36,0.03) 0%, transparent 60%); }
+    .founding-vision .fv-inner { display: grid; grid-template-columns: 1fr 2px 1fr; gap: 4rem; align-items: center; position: relative; }
+    .founding-vision .fv-divider { background: rgba(255,255,255,0.1); height: 100%; min-height: 150px; }
+
+    /* JOURNEY */
+    .journey { padding: 8rem 0 4rem; background: var(--clr-dark-green); }
+    .journey h2 { font-size: 2.5rem; margin-bottom: 2rem; color: white; }
+    .journey p { margin-bottom: 1.5rem; font-size: 1.05rem; color: rgba(255,255,255,0.8); }
     .journey-flex { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
-    .journey h2 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--clr-heading); }
-    .journey p { margin-bottom: 1.5rem; font-size: 1.05rem; }
-    
     .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .check-item { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--clr-heading); }
-    .check-item i { color: var(--clr-green); }
-    
+    .check-item { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: white; }
+    .check-item i { color: var(--clr-yellow); }
     .journey-img { position: relative; }
-    .journey-img img { width: 100%; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-    .journey-badge { position: absolute; bottom: -20px; left: -20px; background: var(--clr-green); color: white; padding: 2rem; border-radius: var(--radius); }
-    
-    .leadership { padding: 6rem 0; text-align: center; }
-    .leader-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
-    .leader-card { text-align: center; }
-    .leader-img { width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.5rem; }
-    .leader-card h4 { font-size: 1.2rem; margin-bottom: 0.25rem; }
-    .leader-card p { color: var(--clr-green); font-weight: 600; font-size: 0.9rem; }
-    
-    .cta-banner { background: var(--clr-green); padding: 5rem 0; text-align: center; border-radius: var(--radius); margin: 4rem 2rem 8rem; color: white; }
+    .journey-img img { width: 100%; border-radius: 12px; filter: grayscale(0.3) contrast(1.1); }
+    .journey-badge { position: absolute; bottom: -20px; left: -20px; background: var(--clr-yellow); color: var(--clr-heading); padding: 2rem; border-radius: 8px; }
+
+    /* LEADERSHIP - Dark Glass */
+    .leadership { padding: 8rem 0; background: var(--clr-dark-green); text-align: center; }
+    .cta-banner { background: linear-gradient(135deg, var(--clr-green), var(--clr-dark-green)); padding: 5rem 0; text-align: center; border-radius: 16px; margin: 4rem 2rem 8rem; color: white; border: 1px solid rgba(255,255,255,0.1); }
     .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
-    
+
     @media (max-width: 1024px) {
       .about-hero h1 { font-size: 3rem; }
-      .values-grid { grid-template-columns: repeat(2, 1fr); margin-top: 2rem; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
       .journey-flex { grid-template-columns: 1fr; gap: 3rem; }
+      .founding-vision .fv-inner { grid-template-columns: 1fr; }
+      .founding-vision .fv-divider { display: none; }
     }
     @media (max-width: 768px) {
       .about-hero h1 { font-size: 2.25rem; }
@@ -84,45 +90,103 @@
 
   <!-- HERO -->
   <section class="about-hero">
-    <div class="container">
+    <div class="container" style="position: relative;">
+      <span class="about-hero-label">&#9655; Technical Operations Profile</span>
       <h1>About <span>Crecer</span></h1>
-      <p style="font-family: 'Outfit', sans-serif; letter-spacing: 2px; font-weight: 300; margin-bottom: 1rem;">𝗧𝗼 𝗴𝗿𝗼𝘄. 𝗧𝗼 𝘀𝗵𝗮𝗽𝗲. 𝗧𝗼 𝗲𝗻𝗱𝘂𝗿𝗲.</p>
-      <p>Building the foundations of tomorrow with intentional, resilient growth and unwavering excellence.</p>
+      <p style="font-family: 'Outfit', sans-serif; letter-spacing: 2px; font-weight: 600; margin-bottom: 1rem; color: var(--clr-yellow);">To grow. To shape. To endure.</p>
+      <p>Building the foundations of tomorrow with intentional, resilient growth and unwavering technical excellence.</p>
+      <div style="display: flex; gap: 2rem; margin-top: 3rem;">
+        <div style="text-align: left;">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--clr-yellow);">MEPF</div>
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px;">Core Discipline</div>
+        </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
+        <div style="text-align: left;">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--clr-yellow);">PHL</div>
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px;">Operational Zone</div>
+        </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
+        <div style="text-align: left;">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--clr-yellow);">100%</div>
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px;">Compliant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING VISION STRIP -->
+  <section class="founding-vision">
+    <div class="container">
+      <div class="fv-inner">
+        <div>
+          <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--clr-yellow); display: block; margin-bottom: 1rem;">Our Mandate</span>
+          <h2 style="font-size: 2rem; color: white; margin-bottom: 1rem; line-height: 1.3;">Built on real foundations. Trained by the best in the Philippine engineering industry.</h2>
+          <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8;">While the company is a fresh name in the industry, our expertise is anything but new. We were trained by licensed professionals, industry veterans, and the National President of PSMPE.</p>
+        </div>
+        <div class="fv-divider"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          <div class="glass-card" style="padding: 1.5rem;">
+            <i data-lucide="shield" style="color: var(--clr-yellow); margin-bottom: 0.75rem;"></i>
+            <p style="font-weight: 800; color: white; font-size: 0.9rem;">Quality Over Speed</p>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Every system is validated before handover.</p>
+          </div>
+          <div class="glass-card" style="padding: 1.5rem;">
+            <i data-lucide="book-open" style="color: var(--clr-yellow); margin-bottom: 0.75rem;"></i>
+            <p style="font-weight: 800; color: white; font-size: 0.9rem;">Technical Authority</p>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">IPMA-trained project management framework.</p>
+          </div>
+          <div class="glass-card" style="padding: 1.5rem;">
+            <i data-lucide="map" style="color: var(--clr-yellow); margin-bottom: 0.75rem;"></i>
+            <p style="font-weight: 800; color: white; font-size: 0.9rem;">National Reach</p>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Manila HQ. Active in Zambales & beyond.</p>
+          </div>
+          <div class="glass-card" style="padding: 1.5rem;">
+            <i data-lucide="cpu" style="color: var(--clr-yellow); margin-bottom: 0.75rem;"></i>
+            <p style="font-weight: 800; color: white; font-size: 0.9rem;">Data-Driven Ops</p>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Power BI & AI systems for reporting.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- IDENTITY -->
-  <section class="identity bg-dark reveal" style="padding: 10rem 0 6rem; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.05);">
-    <div style="position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.02; pointer-events: none; background-image: radial-gradient(white 1px, transparent 1px); background-size: 50px 50px;"></div>
-    
+  <section class="identity" style="padding: 6rem 0; background: var(--clr-dark-green);">  
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;">
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;">
         <div>
           <h2 style="font-size: 2.5rem; color: var(--clr-yellow); margin-bottom: 2rem;">Our Identity</h2>
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);">We chose the name <strong>"Crecer"</strong> as a Spanish word that means <em>"to grow"</em> (to construct/build) because it is what life demands. Not the easy kind, but the kind that breaks the shell, stretches the roots, and reaches toward the light—even in darkness.</p>
-          <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7);">The word carries history. For over 300 years, diverse layers of influence have shaped the Philippines. Out of this complex past, we draw strength: the ability to adapt, to organize, and to leave structures that outlast time.</p>
-          <div class="glass-card" style="padding: 2rem; border-left: 4px solid var(--clr-yellow);">
-            <p style="font-style: italic; font-weight: 600; color: white;">"We see growth not as a race, but as a rhythm. Something organic. Something earned. We build forward."</p>
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255,255,255,0.85);">We chose the name <strong style="color: white;">"Crecer"</strong> — a Spanish word meaning <em>"to grow"</em> — because it is what life demands. Not the easy kind, but the kind that breaks the shell, stretches the roots, and reaches toward the light.</p>
+          <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.7);">The word carries history. For over 300 years, diverse layers of influence have shaped the Philippines. Out of this complex past, we draw strength: the ability to adapt, organize, and build structures that outlast time.</p>
+          <div style="background: rgba(251,191,36,0.07); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--clr-yellow);">
+            <p style="font-style: italic; font-weight: 600; color: rgba(255,255,255,0.9);">&ldquo;We see growth not as a race, but as a rhythm. Something organic. Something earned. We build forward.&rdquo;</p>
           </div>
         </div>
-        <div class="glass-card" style="padding: 3rem; border-radius: 20px;">
+        <div class="glass-card">
           <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
             <img src="assets/logo-transparent.png" alt="Crecer Logo" width="60" height="60" style="object-fit: contain;">
             <h3 style="font-size: 1.5rem; color: white;">Logo Symbolism</h3>
           </div>
           <ul style="list-style: none; padding-left: 0;">
             <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
-              <div style="background: rgba(251, 191, 36, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="leaf" style="width: 16px; color: var(--clr-yellow);"></i></div>
+              <div style="background: rgba(34,197,94,0.15); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="leaf" style="width: 16px; color: #4ade80;"></i></div>
               <div>
                 <strong style="display: block; margin-bottom: 0.25rem; color: white;">Three Leaves</strong>
-                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Layered and progressive growth: <em>Beginning, becoming, and being.</em></p>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65);">Layered growth: <em>Beginning, becoming, and being.</em></p>
               </div>
             </li>
             <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
-              <div style="background: rgba(251, 191, 36, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="moon" style="width: 16px; color: var(--clr-yellow);"></i></div>
+              <div style="background: rgba(251,191,36,0.15); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="moon" style="width: 16px; color: var(--clr-yellow);"></i></div>
               <div>
                 <strong style="display: block; margin-bottom: 0.25rem; color: white;">The Crescent Moon</strong>
-                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Symbolizing quiet transformation. Growth that emerges from the dark. Light reflected from something larger.</p>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65);">Growth that emerges from the dark. The blueprint of real transformation.</p>
+              </div>
+            </li>
+            <li style="display: flex; gap: 1rem;">
+              <div style="background: rgba(148,163,184,0.15); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="anchor" style="width: 16px; color: rgba(255,255,255,0.5);"></i></div>
+              <div>
+                <strong style="display: block; margin-bottom: 0.25rem; color: white;">Unseen Roots</strong>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65);">The guide, vision, and plan that hold everything up — invisible, but essential.</p>
               </div>
             </li>
           </ul>
@@ -132,105 +196,343 @@
   </section>
 
   <!-- VALUES -->
-  <section class="values-section" style="padding: 6rem 0; background: var(--clr-dark-green);">
+  <section style="background: var(--clr-dark-green); padding: 3rem 0 6rem;">
     <div class="container">
       <div class="values-grid">
-        <div class="value-card reveal">
+        <div class="value-card glass-card reveal">
           <div class="value-icon"><i data-lucide="target"></i></div>
           <h3>Our Mission</h3>
-          <p style="color: rgba(255,255,255,0.7);">To deliver high-quality engineering solutions that empower communities and foster sustainable infrastructure development across the region.</p>
+          <p>To deliver high-quality engineering solutions that empower communities and foster sustainable infrastructure development across the region.</p>
         </div>
-        <div class="value-card reveal">
+        <div class="value-card glass-card reveal">
           <div class="value-icon"><i data-lucide="eye"></i></div>
           <h3>Our Vision</h3>
-          <p style="color: rgba(255,255,255,0.7);">To be the most trusted construction partner recognized for innovation, integrity, and building a better, greener tomorrow.</p>
+          <p>To be the most trusted construction partner recognized for innovation, integrity, and building a better, greener tomorrow.</p>
         </div>
-        <div class="value-card reveal">
+        <div class="value-card glass-card reveal">
           <div class="value-icon"><i data-lucide="shield-check"></i></div>
           <h3>Our Values</h3>
-          <p style="color: rgba(255,255,255,0.7);">Safety as a priority, excellence in execution, absolute integrity, and a focus on sustainable progress in every project.</p>
+          <p>Safety as a priority, excellence in execution, absolute integrity, and a focus on sustainable progress in every project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY & EXPERTISE -->
+  <section class="journey">
+    <div class="container journey-flex">
+      <div>
+        <h2>Our Journey & Foundations</h2>
+        <p style="font-weight: 600; color: var(--clr-green); margin-bottom: 1.5rem;">Crecer was built on real foundations.</p>
+        <p>While the company is a fresh name in the industry, our expertise is anything but new. We were trained by the best—licensed professionals, industry veterans, and mentors like the professor who serves as the <strong>National President of the Philippine Society of Master Plumbers and Plumbing Engineers (PSMPE)</strong>.</p>
+        
+        <p>We didn’t just learn how to install systems; we learned <em>why</em> plumbing matters. We studied its history as the backbone of civilization and its role as a living system that mirrors the human body:</p>
+        
+        <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="heart" style="color: #ef4444; width: 18px; margin-top: 3px;"></i> <span><strong>Pumps act as the heart</strong> – Sustaining vital flow and pressure.</span></li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="activity" style="color: var(--clr-green); width: 18px; margin-top: 3px;"></i> <span><strong>Pipes function as veins</strong> – Delivering life-sustaining resources.</span></li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="droplet" style="color: #3b82f6; width: 18px; margin-top: 3px;"></i> <span><strong>Controlled flow</strong> – Just like blood, sustaining the balance of the whole facility.</span></li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="recycle" style="color: var(--clr-green); width: 18px; margin-top: 3px;"></i> <span><strong>Sustainable cycling</strong> – Mastering waste excretion, recycling, and reuse.</span></li>
+        </ul>
+
+        <p>Before launching Crecer, our team spent years progressing from trainees to core project staff under the mentors who helped shape the Philippine plumbing industry. For us, this is more than a trade—it’s a calling and a cultural heritage passed down through generations.</p>
+        
+        <div class="check-list" style="margin-top: 2rem;">
+          <div class="check-item"><i data-lucide="users"></i> People First</div>
+          <div class="check-item"><i data-lucide="zap"></i> Performance First</div>
+          <div class="check-item"><i data-lucide="target"></i> Purpose First</div>
+          <div class="check-item"><i data-lucide="award"></i> Licensed Professionals</div>
+        </div>
+      </div>
+      <div class="journey-img">
+        <img src="https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80" alt="Plumbing Mastery">
+        <div class="journey-badge" style="background: var(--clr-yellow); color: var(--clr-heading);">
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem;">PROVEN</h3>
+          <p style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px;">CORE EXPERTISE</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- LEADERSHIP -->
-  <section class="leadership reveal" style="padding: 8rem 0; background: var(--clr-dark-green); border-top: 1px solid rgba(255,255,255,0.05);">
-    <div class="container">
-      <div class="section-title" style="text-align: center; margin-bottom: 5rem;">
-        <h2 style="color: white; font-size: 3.5rem;">Our Leadership</h2>
-        <p style="color: var(--clr-yellow); text-transform: uppercase; font-weight: 800; letter-spacing: 2px;">The Team Behind Crecer</p>
+  <style>
+    .leadership { padding: 8rem 0; background: var(--clr-dark-green); }
+    .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; }
+    .leader-card {
+      background: var(--glass-dark);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border-bottom: 3px solid rgba(251,191,36,0.3);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .leader-card:hover { transform: translateY(-6px); border-bottom-color: var(--clr-yellow); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .leader-card.featured {
+      grid-column: span 2;
+      border: 1px solid rgba(251,191,36,0.4);
+      border-bottom: 3px solid var(--clr-yellow);
+      background: linear-gradient(135deg, rgba(15,28,22,0.95), rgba(251,191,36,0.05));
+      position: relative;
+    }
+    .leader-card.featured::after {
+      content: 'PROPRIETOR';
+      position: absolute; top: 2rem; right: 2rem;
+      background: var(--clr-yellow); color: #000;
+      font-size: 0.65rem; font-weight: 800;
+      padding: 0.25rem 0.75rem; border-radius: 4px; letter-spacing: 1px;
+    }
+    .leader-top { display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; }
+    .leader-photo-wrap {
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border: 1px dashed rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.3);
+      overflow: hidden; position: relative;
+    }
+    .leader-photo-wrap .photo-label {
+      position: absolute; bottom: 6px;
+      font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.3);
+    }
+    .leader-info-main { flex: 1; padding-top: 0.25rem; }
+    .leader-info-main h4 { font-size: 1.75rem; color: var(--clr-yellow) !important; font-weight: 800; margin: 0 0 0.15rem; }
+    .leader-info-main .role { color: #4ade80 !important; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.75rem; }
+    .leader-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .meta-tag { font-size: 0.6rem; font-weight: 800; color: var(--clr-yellow) !important; text-transform: uppercase; letter-spacing: 1px; background: rgba(251,191,36,0.08); padding: 0.3rem 0.8rem; border-radius: 100px; border: 1px solid rgba(251,191,36,0.2); }
+    .leader-body { padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .leader-desc { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65) !important; }
+    .leader-desc p { margin-bottom: 1rem; color: rgba(255,255,255,0.65) !important; }
+    .leader-desc p:last-child { margin-bottom: 0; }
+    @media (max-width: 1100px) { .leader-grid { grid-template-columns: 1fr; } .leader-card.featured { grid-column: span 1; } }
+    @media (max-width: 700px) { .leader-top { flex-direction: column; } .leader-card { padding: 1.75rem; } }
+  </style>
+
+  <section class="leadership container reveal">
+    <div class="section-title">
+      <span style="color: var(--clr-yellow); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;">&#9655; Technical Operations Profile</span>
+      <h2 style="font-size: 3.5rem; margin-top: 0.75rem; color: white;">Our Leadership</h2>
+      <div style="width: 80px; height: 4px; background: var(--clr-yellow); margin: 1.5rem auto;"></div>
+    </div>
+
+    <div class="leader-grid">
+      <!-- MARK -->
+      <div class="leader-card featured">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">MARK PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Mark</h4>
+            <span class="role">Founder & Operations Director</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Client Relations</span>
+              <span class="meta-tag">Contracts & Quotations</span>
+              <span class="meta-tag">Inspections</span>
+              <span class="meta-tag">Documentation</span>
+              <span class="meta-tag">Quality Control/ Assurance</span>
+              <span class="meta-tag">HIRAC</span>
+            </div>
+          </div>
+        </div>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Leads the overall direction of the company, overseeing operations, project execution, and business management. Responsible for strategic planning, logistics, process improvement, and client relations while ensuring quality, efficiency, and consistency across all projects.</p>
+            <p>Support AutoCAD revisions, site markings, as-built plans, and ensures alignment between design and actual implementation. Also manages technical documentation, specifications, testing works, and compliance with codes and standard construction methodologies.</p>
+          </div>
+        </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
-        <!-- REORDERED: Mark, Paul, Gilmar, Wel, Jeric, Jayson, Sir Ian -->
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 2px solid var(--clr-yellow); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="user" style="color: var(--clr-yellow); width: 50px;"></i>
+      <!-- ZANDRO -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">ZANDRO PHOTO</span>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Mark Kenneth</h4>
-          <p style="color: var(--clr-yellow); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Operations Lead</p>
+          <div class="leader-info-main">
+            <h4>Zandro</h4>
+            <span class="role">Senior Project Manager</span>
+            <div class="leader-meta">
+              <span class="meta-tag">General Management and Support</span>
+              <span class="meta-tag">Inspections</span>
+              <span class="meta-tag">Facilities management</span>
+              <span class="meta-tag">Technical Drawings</span>
+              <span class="meta-tag">Admin</span>
+              <span class="meta-tag">Cosh 2</span>
+            </div>
+          </div>
         </div>
-
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="user" style="color: rgba(255,255,255,0.5); width: 50px;"></i>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Manages end-to-end project planning and execution across plumbing, fire protection, and civil works. Ensures compliance with industry codes and standards while overseeing scheduling, BOQ preparation, manpower allocation, and project budgeting.</p>
+            <p>Produces accurate technical drawings using AutoCAD and SketchUp and handles technical documentation, specifications, testing, and standardized construction methodologies.</p>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Paul</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Lead Site Supervisor</p>
         </div>
+      </div>
 
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="user" style="color: rgba(255,255,255,0.5); width: 50px;"></i>
+      <!-- GILMAR -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">GILMAR PHOTO</span>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Gilmar</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Senior Electrical Engineer</p>
+          <div class="leader-info-main">
+            <h4>Gilmar</h4>
+            <span class="role">Senior Electrical Engineer</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Licensed EE</span>
+              <span class="meta-tag">Inspections</span>
+              <span class="meta-tag">Costing</span>
+              <span class="meta-tag">Management</span>
+              <span class="meta-tag">Codes and Standards</span>
+            </div>
+          </div>
         </div>
-
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="user" style="color: rgba(255,255,255,0.5); width: 50px;"></i>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>A licensed electrical engineer responsible for electrical system design, implementation, testing, and compliance with applicable codes and standards. Supports project execution through technical oversight, manpower coordination, and strict adherence to safety and quality requirements.</p>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Wel (Ruel)</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Technical Operations</p>
         </div>
+      </div>
 
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="user" style="color: rgba(255,255,255,0.5); width: 50px;"></i>
+      <!-- PAUL -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">PAUL PHOTO</span>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Jeric</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Site Coordinator</p>
+          <div class="leader-info-main">
+            <h4>Paul</h4>
+            <span class="role">Lead Site Supervisor</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Site Ops</span>
+              <span class="meta-tag">Plumbing and Firepro Specialist</span>
+            </div>
+          </div>
         </div>
-
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="user" style="color: rgba(255,255,255,0.5); width: 50px;"></i>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Supervises daily site operations, manpower coordination, and on-site execution of plumbing and fire protection works. Experienced in project estimation, planning, and field supervision, ensuring all activities are completed efficiently and according to specifications.</p>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Jayson</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Data & Systems Analyst</p>
         </div>
+      </div>
 
-        <div class="glass-card" style="padding: 2.5rem; text-align: center;">
-          <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <i data-lucide="award" style="color: var(--clr-yellow); width: 50px;"></i>
+      <!-- JERIC -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">JERIC PHOTO</span>
           </div>
-          <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Sir Ian</h4>
-          <p style="color: var(--clr-yellow); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Strategic Advisor</p>
+          <div class="leader-info-main">
+            <h4>Jeric</h4>
+            <span class="role">Site Coordinator & Tech Lead</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Ocular and Inspections</span>
+              <span class="meta-tag">Tech Lead</span>
+              <span class="meta-tag">Bill of Materials</span>
+              <span class="meta-tag">Labor Deployment</span>
+              <span class="meta-tag">Scheduling</span>
+            </div>
+          </div>
+        </div>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Leads on-site teams and coordinates project requirements including materials, scheduling, costing, and execution. Ensures smooth daily operations and efficient workflow across all project activities.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RUEL -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">RUEL PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Ruel</h4>
+            <span class="role">Electrical Technician</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Multi-skilled</span>
+              <span class="meta-tag">Tech Lead & Support</span>
+            </div>
+          </div>
+        </div>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>A multi-skilled technician specializing in electrical works with broad experience in general technical operations. Provides essential manpower support and contributes across multiple areas of project execution.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- JAYSON -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">JAYSON PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Jayson</h4>
+            <span class="role">Data & Systems Analyst</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Power BI</span>
+              <span class="meta-tag">AI / Systems</span>
+            </div>
+          </div>
+        </div>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Handles data analysis, reporting, and system development. Manages and maintains the company website while leveraging tools such as Power BI and AI solutions to enhance operational efficiency and support data-driven decision-making.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIR IAN -->
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-photo-wrap">
+            <i data-lucide="camera" size="32"></i>
+            <span class="photo-label">SIR IAN PHOTO</span>
+          </div>
+          <div class="leader-info-main">
+            <h4>Sir Ian</h4>
+            <span class="role">Business Consultant</span>
+            <div class="leader-meta">
+              <span class="meta-tag">Strategy</span>
+              <span class="meta-tag">Dev Advisor</span>
+            </div>
+          </div>
+        </div>
+        <div class="leader-body">
+          <div class="leader-desc">
+            <p>Provides expert guidance on business development, marketing strategies, and organizational growth. Supports the company through strategic planning, insights, and continuous operational improvement.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+
+
   <!-- CTA -->
-  <section class="cta-banner reveal" style="background: var(--clr-dark-green); border-top: 1px solid rgba(255,255,255,0.05); padding: 8rem 0; text-align: center; margin: 0;">
+  <section class="cta-banner">
     <div class="container">
-      <h2 style="color: white; font-size: 3rem; margin-bottom: 1.5rem;">Engineering Growth.</h2>
-      <p style="margin-bottom: 3rem; color: rgba(255,255,255,0.7); font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Join dozens of satisfied partners and let's build something exceptional together. Our team is ready to provide the expertise you need.</p>
-      <div style="display: flex; gap: 1.5rem; justify-content: center;">
-        <a href="contact.html" class="btn btn-yellow">Inquire Now</a>
-        <a href="projects.html" class="btn btn-outline" style="border-color: white; color: white;">View Portfolio</a>
+      <h2>Ready to Start Your Journey With Us?</h2>
+      <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Join dozens of satisfied partners and let's build something exceptional together. Our team is ready to provide the expertise you need.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="#" class="btn btn-outline" style="background-color: white; color: var(--clr-green); border: none;">Work With Us</a>
+        <a href="projects.html" class="btn btn-outline">Download Portfolio</a>
       </div>
     </div>
   </section>
@@ -251,68 +553,68 @@
             <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
+            <a href="#" class="social-icon" title="Instagram - Coming Soon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-icon" title="YouTube - Coming Soon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.42 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.42-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+            </a>
           </div>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="credentials.html">Credentials</a></li>
+            <li><a href="about.html">About Our Mission</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="projects.html">Latest Projects</a></li>
+            <li><a href="#">Sustainability Reports</a></li>
           </ul>
         </div>
-        <div class="footer-col">
+                <div class="footer-col">
           <h4>Expertise</h4>
           <ul>
             <li>Construction/ Renovation</li>
-            <li>Master Plumbing & Sanitary</li>
-            <li>Fire Protection System/ AFSS</li>
-            <li>Electrical Engineering</li>
-            <li>Shop Drawings & Coordination</li>
+            <li>Complete Plumbing and Sanitary System</li>
+            <li>Complete Fire Protection System/ AFSS</li>
+            <li>Complete Electrical System</li>
+            <li>Shop Drawings and As-built Plan</li>
+            <li>Project Management</li>
+            <li>Hazard Identification, Risk Assessment, and Control (HIRAC)</li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact Us</h4>
           <ul style="gap: 1.5rem;">
-            <li style="display: flex; gap: 1rem; align-items: flex-start;"><i data-lucide="map-pin" style="margin-top: 3px;"></i> <div>Lallana Street, Tondo, Manila</div></li>
-            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a></li>
+            <li style="display: flex; gap: 1rem; align-items: flex-start;"><i data-lucide="map-pin" style="margin-top: 3px;"></i> <div>Lallana Street, Barangay 93, Tondo, Manila, Philippines, 1012</div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <div><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a> <small style="display: block; font-size: 0.75rem; color: #4ade80;">Available on Viber</small></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="mail"></i> <div><a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="color: inherit; text-decoration: none;">crecerpacservices@gmail.com</a></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="clock"></i> <div>Mon - Fri: 8:00 AM - 6:00 PM</div></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Crecer. All Rights Reserved.</p>
+        <div style="display: flex; gap: 2rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  
   <script>
     lucide.createIcons();
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        });
-      });
+      menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
+      navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { menuToggle.classList.remove('active'); navLinks.classList.remove('active'); }); });
     }
-
-    // Scroll Reveal Logic
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
