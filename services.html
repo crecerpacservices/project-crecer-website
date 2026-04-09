@@ -13,7 +13,8 @@
     
     .services-grid-page { padding: 6rem 0; background: var(--clr-light); }
     .sg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-    .sg-card { background: white; padding: 3rem; border-radius: var(--radius); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .sg-card { padding: 3rem; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: var(--transition); background: white; }
+    .sg-card.glass-card { background: var(--glass-dark); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); }
     .sg-icon { width: 40px; height: 40px; color: var(--clr-green-dark); margin-bottom: 1.5rem; }
     .sg-card h3 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--clr-heading); }
     .sg-card p { font-size: 0.95rem; color: var(--clr-text); margin-bottom: 2rem; }
@@ -78,36 +79,45 @@
   <!-- SERVICES GRID -->
   <section class="services-grid-page">
     <div class="container sg-grid">
-      <div class="sg-card">
-        <i data-lucide="wrench" class="sg-icon"></i>
-        <h3>Plumbing</h3>
-        <p>Comprehensive plumbing and sanitary solutions for commercial and industrial systems.</p>
-        <div class="sg-features">
-          <div class="sg-item"><i data-lucide="check"></i> Hot & cold water supply systems</div>
-          <div class="sg-item"><i data-lucide="check"></i> Wastewater & sanitary systems</div>
-          <div class="sg-item"><i data-lucide="check"></i> Storm drainage & reinforced concrete piping</div>
-          <div class="sg-item"><i data-lucide="check"></i> Pumps & tanks installation</div>
-          <div class="sg-item"><i data-lucide="check"></i> FCU & condensate drainage</div>
-          <div class="sg-item"><i data-lucide="check"></i> Installation, repair & maintenance</div>
-          <div class="sg-item"><i data-lucide="check"></i> Testing, inspection & estimates</div>
-          <div class="sg-item"><i data-lucide="check"></i> Plans, schematics & control panel works</div>
+      <div class="sg-card glass-card reveal">
+        <i data-lucide="wrench" class="sg-icon" style="color: var(--clr-yellow);"></i>
+        <h3 style="color: white;">Plumbing</h3>
+        <p style="color: rgba(255,255,255,0.7);">Full-precision plumbing and sanitary infrastructure for mission-critical industrial assets.</p>
+        
+        <!-- SYSTEM DEPTH LOGIC (Abstracted) -->
+        <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--clr-yellow);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+             <span style="font-size: 0.65rem; font-weight: 800; color: var(--clr-yellow); text-transform: uppercase;">Technical Lifecycle</span>
+             <i data-lucide="layers" style="width: 14px; color: var(--clr-yellow);"></i>
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <div style="flex: 1; height: 4px; background: var(--clr-yellow); border-radius: 2px;"></div>
+            <div style="flex: 1; height: 4px; background: var(--clr-yellow); border-radius: 2px;"></div>
+            <div style="flex: 1; height: 4px; background: rgba(251, 191, 36, 0.2); border-radius: 2px;"></div>
+          </div>
+          <p style="font-size: 0.7rem; color: rgba(255,255,255,0.6); line-height: 1.4;">Our methodology integrates rapid procurement and high-accuracy shop-drawing workflows to ensure zero-delay site deployment.</p>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Learn More &rarr;</a>
+
+        <div class="sg-features">
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Hot & cold water supply systems</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Wastewater & sanitary systems</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Storm drainage & RC pipes</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Pumps & tanks installation</div>
+        </div>
+        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
       </div>
-      <div class="sg-card">
-        <i data-lucide="flame" class="sg-icon"></i>
-        <h3>Fire Protection</h3>
-        <p>Reliable fire safety systems designed to protect people, assets, and infrastructure.</p>
+
+      <div class="sg-card glass-card reveal">
+        <i data-lucide="flame" class="sg-icon" style="color: var(--clr-yellow);"></i>
+        <h3 style="color: white;">Fire Protection</h3>
+        <p style="color: rgba(255,255,255,0.7);">Industrial-grade life safety systems engineered for zero-failure performance under stress.</p>
         <div class="sg-features">
-          <div class="sg-item"><i data-lucide="check"></i> Automatic fire sprinkler systems</div>
-          <div class="sg-item"><i data-lucide="check"></i> Installation, repair & maintenance</div>
-          <div class="sg-item"><i data-lucide="check"></i> Testing & inspection services</div>
-          <div class="sg-item"><i data-lucide="check"></i> Fire evacuation planning</div>
-          <div class="sg-item"><i data-lucide="check"></i> Control panels & system tagging</div>
-          <div class="sg-item"><i data-lucide="check"></i> Plans, schematics & estimates</div>
-          <div class="sg-item"><i data-lucide="check"></i> Complete fire protection solutions</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Automatic fire sprinkler systems</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Testing & inspection (Standard)</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Fire evacuation schematics</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Complete technical fire audits</div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Learn More &rarr;</a>
+        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
       </div>
       <div class="sg-card glass-card reveal">
         <i data-lucide="zap" class="sg-icon" style="color: var(--clr-yellow);"></i>
