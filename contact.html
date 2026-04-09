@@ -442,7 +442,7 @@
     // Map Implementation
     (function() {
       const map = L.map('ph-map', {
-        center: [14.6212, 120.9680],
+        center: [14.6215, 120.9665],
         zoom: 17,
         scrollWheelZoom: false,
         zoomControl: false
@@ -474,7 +474,7 @@
         iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -7]
       });
 
-      const tondoCoords = [14.6212, 120.9680];
+      const tondoCoords = [14.6215, 120.9665];
       const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
       hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Registered HQ</h4><p>Lallana Street, Tondo, Manila</p></div>');
 
