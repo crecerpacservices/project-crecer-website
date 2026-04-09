@@ -253,6 +253,36 @@
         </div>
       </div>
       
+      <!-- SPECIALIZED LOGISTICS & SUPPLY CHAIN VISUAL -->
+      <div style="margin-top: 6rem; background: var(--clr-dark-green); border-radius: 24px; padding: 4rem; color: white; position: relative; overflow: hidden;" class="reveal">
+        <div style="position: absolute; top: 0; right: 0; padding: 2rem; opacity: 0.1;"><i data-lucide="truck" style="width: 200px; height: 200px;"></i></div>
+        <div style="position: relative; z-index: 10;">
+          <h2 style="color: white; font-size: 2.2rem; margin-bottom: 3rem;">Strategic Project Logistics</h2>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+            <div>
+              <div style="color: var(--clr-yellow); margin-bottom: 1rem;"><i data-lucide="box"></i></div>
+              <h4 style="color: white; margin-bottom: 0.5rem;">Supply Mastery</h4>
+              <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Proprietary procurement workflows ensuring material availability for zero-latency starts.</p>
+            </div>
+            <div>
+              <div style="color: var(--clr-yellow); margin-bottom: 1rem;"><i data-lucide="container"></i></div>
+              <h4 style="color: white; margin-bottom: 0.5rem;">Site Mobility</h4>
+              <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Decentralized hauling and site-storage coordination tailored for high-density urban environments.</p>
+            </div>
+            <div>
+              <div style="color: var(--clr-yellow); margin-bottom: 1rem;"><i data-lucide="layout"></i></div>
+              <h4 style="color: white; margin-bottom: 0.5rem;">Structural Org</h4>
+              <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Zoned demolition and wall-partition sequencing to maintain site integrity and rapid turnover.</p>
+            </div>
+            <div>
+              <div style="color: var(--clr-yellow); margin-bottom: 1rem;"><i data-lucide="clipboard-check"></i></div>
+              <h4 style="color: white; margin-bottom: 0.5rem;">Quality Handover</h4>
+              <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Documentation-heavy as-built and shop drawing validation for institutional asset compliance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- INQUIRE BOX -->
       <div class="pp-cta">
         <div class="pp-cta-icon"><i data-lucide="mail"></i></div>
@@ -336,18 +366,13 @@
   
   <script>
     lucide.createIcons();
-    
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    
     if (menuToggle && navLinks) {
       menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
       });
-      
-      // Close menu when clicking a link
       navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           menuToggle.classList.remove('active');
@@ -355,6 +380,17 @@
         });
       });
     }
+
+    // Scroll Reveal Logic
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

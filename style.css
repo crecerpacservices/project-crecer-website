@@ -16,7 +16,33 @@
   --max-width: 1440px;
   --radius: 8px;
   --transition: 0.3s ease;
+  
+  /* Glassmorphism Variants */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-dark: rgba(15, 28, 22, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.glass-card {
+  background: var(--glass-dark);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  color: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: var(--transition);
+}
+
+/* Dashboard Styles */
+.dash-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: -4rem; position: relative; z-index: 100; }
+.dash-widget { background: var(--glass-dark); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 16px; border-bottom: 4px solid var(--clr-yellow); }
+.dash-label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; display: block; }
+.dash-value { font-size: 2.2rem; font-weight: 800; color: var(--clr-yellow); font-family: var(--font-heading); margin-bottom: 0.25rem; }
+.dash-subtext { font-size: 0.7rem; color: #4ade80; font-weight: 700; display: flex; align-items: center; gap: 0.4rem; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: var(--font-body); color: var(--clr-text); line-height: 1.6; background-color: var(--clr-white); -webkit-font-smoothing: antialiased; }

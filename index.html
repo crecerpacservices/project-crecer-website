@@ -50,6 +50,34 @@
       </div>
     </div>
   </section>
+
+  <!-- OPERATIONS DASHBOARD -->
+  <section class="section-padding bg-dark" style="position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="dash-container reveal">
+        <div class="dash-widget">
+          <span class="dash-label">Active Projects</span>
+          <div class="dash-value">12</div>
+          <div class="dash-subtext"><i data-lucide="trending-up"></i> +2 National Scale</div>
+        </div>
+        <div class="dash-widget">
+          <span class="dash-label">Assets Secured</span>
+          <div class="dash-value">P580M+</div>
+          <div class="dash-subtext"><i data-lucide="shield"></i> Technical Protection</div>
+        </div>
+        <div class="dash-widget">
+          <span class="dash-label">System Uptime</span>
+          <div class="dash-value">99.9%</div>
+          <div class="dash-subtext"><i data-lucide="zap"></i> Zero Critical Failure</div>
+        </div>
+        <div class="dash-widget">
+          <span class="dash-label">Operational Zone</span>
+          <div class="dash-value">PHL</div>
+          <div class="dash-subtext"><i data-lucide="globe"></i> National Coverage</div>
+        </div>
+      </div>
+    </div>
+  </section>
   
   <!-- CLIENT LOGO BAR -->
   <section class="clients-section">
@@ -82,7 +110,7 @@
   </section>
 
   <!-- INTRO SECTION -->
-  <section class="intro section-padding bg-light">
+  <section class="intro section-padding bg-light reveal">
     <div class="container">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
         <div>
@@ -151,7 +179,7 @@
   </section>
 
   <!-- SERVICES PREVIEW -->
-  <section class="services-preview section-padding bg-light">
+  <section class="services-preview section-padding bg-light reveal">
     <div class="container">
       <div class="flex-between" style="margin-bottom: 3rem;">
         <div>
@@ -191,7 +219,7 @@
   </section>
 
   <!-- PORTFOLIO -->
-  <section class="portfolio-preview section-padding">
+  <section class="portfolio-preview section-padding reveal">
     <div class="container">
       <div class="section-title">
         <h2>Proven Track Record</h2>
@@ -227,7 +255,7 @@
   </section>
 
   <!-- WHY CHOOSE US -->
-  <section class="why-us section-padding bg-green-dark">
+  <section class="why-us section-padding bg-green-dark reveal">
     <div class="container">
       <div class="section-title">
         <h2 style="color: var(--clr-white);">Why Choose Us</h2>
@@ -340,18 +368,13 @@
   
   <script>
     lucide.createIcons();
-    
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    
     if (menuToggle && navLinks) {
       menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
       });
-      
-      // Close menu when clicking a link
       navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           menuToggle.classList.remove('active');
@@ -359,6 +382,17 @@
         });
       });
     }
+
+    // Scroll Reveal Logic
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

@@ -109,38 +109,30 @@
         </div>
         <a href="contact.html" class="btn btn-yellow">Learn More &rarr;</a>
       </div>
-      <div class="sg-card">
-        <i data-lucide="zap" class="sg-icon"></i>
-        <h3>Electrical</h3>
-        <p>End-to-end electrical, lighting, and auxiliary system services.</p>
+      <div class="sg-card glass-card reveal">
+        <i data-lucide="zap" class="sg-icon" style="color: var(--clr-yellow);"></i>
+        <h3 style="color: white;">Electrical</h3>
+        <p style="color: rgba(255,255,255,0.7);">Advanced electrical and auxiliary system architecture for robust commercial power distribution.</p>
         <div class="sg-features">
-          <div class="sg-item"><i data-lucide="check"></i> Load scheduling & system design</div>
-          <div class="sg-item"><i data-lucide="check"></i> Panel boards & circuit breakers</div>
-          <div class="sg-item"><i data-lucide="check"></i> Installation, repair & maintenance</div>
-          <div class="sg-item"><i data-lucide="check"></i> Testing & system commissioning</div>
-          <div class="sg-item"><i data-lucide="check"></i> Tagging & labeling</div>
-          <div class="sg-item"><i data-lucide="check"></i> Plans, schematics & estimates</div>
-          <div class="sg-item"><i data-lucide="check"></i> Auxiliary and lighting systems</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Load scheduling & system design</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Panel boards & circuit installation</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> System commissioning & testing</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Lighting & auxiliary infrastructures</div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Learn More &rarr;</a>
+        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
       </div>
-      <div class="sg-card">
-        <i data-lucide="hard-hat" class="sg-icon"></i>
-        <h3>Civil Works and More Related Services</h3>
-        <p>Full-service construction and support works for commercial projects.</p>
+
+      <div class="sg-card glass-card reveal">
+        <i data-lucide="hard-hat" class="sg-icon" style="color: var(--clr-yellow);"></i>
+        <h3 style="color: white;">Civil Works & Support</h3>
+        <p style="color: rgba(255,255,255,0.7);">Full-scale technical site support, structural modification, and project management oversight.</p>
         <div class="sg-features">
-          <div class="sg-item"><i data-lucide="check"></i> Demolition & renovation</div>
-          <div class="sg-item"><i data-lucide="check"></i> Masonry, fencing & roofing</div>
-          <div class="sg-item"><i data-lucide="check"></i> Painting, ceiling & partitions</div>
-          <div class="sg-item"><i data-lucide="check"></i> Carpentry, cabinets & laminates</div>
-          <div class="sg-item"><i data-lucide="check"></i> Welding & metal works</div>
-          <div class="sg-item"><i data-lucide="check"></i> Tile setting & installations</div>
-          <div class="sg-item"><i data-lucide="check"></i> Signages & building IDs</div>
-          <div class="sg-item"><i data-lucide="check"></i> Project management & QA/QC</div>
-          <div class="sg-item"><i data-lucide="check"></i> Safety assessments (HIRAC)</div>
-          <div class="sg-item"><i data-lucide="check"></i> Website development</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Structural demolition & hauling</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Architectural masonry & partitions</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Project management & QA/QC</div>
+          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Hazard Identification (HIRAC)</div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Learn More &rarr;</a>
+        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
       </div>
     </div>
 
@@ -247,6 +239,20 @@
         });
       });
     }
+  </script>
+  
+  <script>
+    // Scroll Reveal Logic
+    const observerOptions = { threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
