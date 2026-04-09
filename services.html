@@ -28,6 +28,15 @@
     .ready-content { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; }
     .ready-content h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
     .ready-content p { color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; font-size: 1.1rem; }
+    @media (max-width: 1024px) {
+      .services-hero h1 { font-size: 3rem; }
+      .sg-grid { grid-template-columns: 1fr; }
+      .sg-card { padding: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .services-hero h1 { font-size: 2.5rem; }
+      .ready-content h2 { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -50,6 +59,11 @@
         <a href="contact.html">Contact</a>
       </nav>
       <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+      <div class="menu-toggle" id="mobile-menu" style="display: none;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
@@ -211,6 +225,28 @@
     </div>
   </footer>
 
-  <script>lucide.createIcons();</script>
+  
+  <script>
+    lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+      // Close menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>

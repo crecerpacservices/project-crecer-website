@@ -54,11 +54,20 @@
     .initiate-box h2 { font-size: 3rem; text-transform: uppercase; color: white; }
     
     @media (max-width: 1024px) {
-      .split-hero { flex-direction: column; }
-      .split-hero h1 { font-size: 4rem; }
+      .split-hero { flex-direction: column; min-height: auto; }
+      .split-left { padding: 4rem 5%; text-align: center; align-items: center; }
+      .split-right { height: 400px; order: -1; }
+      .split-hero h1 { font-size: 3.5rem; }
       .sys-grid { grid-template-columns: repeat(2, 1fr); }
-      .method-split { grid-template-columns: 1fr; }
+      .method-split { grid-template-columns: 1fr; gap: 3rem; }
       .method-img { height: 400px; }
+    }
+    @media (max-width: 768px) {
+      .split-hero h1 { font-size: 2.75rem; }
+      .sys-grid { grid-template-columns: 1fr; }
+      .strip-flex { flex-wrap: wrap; justify-content: center; gap: 2rem; }
+      .method-left h2 { font-size: 2.25rem; }
+      .initiate-box h2 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -82,6 +91,11 @@
         <a href="contact.html">Contact</a>
       </nav>
       <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+      <div class="menu-toggle" id="mobile-menu" style="display: none;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
@@ -287,8 +301,28 @@
     </div>
   </footer>
 
+  
   <script>
     lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+      // Close menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
   </script>
 </body>
 </html>

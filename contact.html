@@ -57,8 +57,25 @@
       text-align: center; 
       box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
       pointer-events: none;
-      min-width: 340px;
+      min-width: 320px;
+      margin-top: 1rem;
     }
+    
+    @media (max-width: 1024px) {
+      .contact-hero h1 { font-size: 3.5rem; }
+      .contact-cards { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .form-wrapper { flex-direction: column; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+    }
+    @media (max-width: 768px) {
+      .contact-hero h1 { font-size: 2.5rem; }
+      .contact-cards { grid-template-columns: 1fr; }
+      .form-left, .form-right { padding: 3rem 1.5rem; }
+      .map-section { height: 400px; }
+      .map-overlay-banner { min-width: 100%; position: static; transform: none; border-radius: 0; }
+    }
+    
     .map-overlay-banner p:first-child { 
       font-size: 0.7rem; 
       font-weight: 800; 
@@ -122,6 +139,11 @@
         <a href="contact.html" class="active">Contact</a>
       </nav>
       <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+      <div class="menu-toggle" id="mobile-menu" style="display: none;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 

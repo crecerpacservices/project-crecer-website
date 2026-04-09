@@ -42,8 +42,15 @@
     .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
     
     @media (max-width: 1024px) {
-      .values-grid, .journey-flex, .leader-grid { grid-template-columns: 1fr; }
-      .values-grid { margin-top: 2rem; }
+      .about-hero h1 { font-size: 3rem; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); margin-top: 2rem; }
+      .journey-flex { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .about-hero h1 { font-size: 2.25rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .check-list { grid-template-columns: 1fr; }
+      .leadership { padding: 4rem 0; }
     }
   </style>
 </head>
@@ -67,6 +74,11 @@
         <a href="contact.html">Contact</a>
       </nav>
       <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+      <div class="menu-toggle" id="mobile-menu" style="display: none;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
@@ -573,6 +585,28 @@
     </div>
   </footer>
 
-  <script>lucide.createIcons();</script>
+  
+  <script>
+    lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+      // Close menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
