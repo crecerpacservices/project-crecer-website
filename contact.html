@@ -51,6 +51,59 @@
       z-index: 1000; 
       background: rgba(30, 64, 42, 0.92); 
       backdrop-filter: blur(8px); 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crecer - Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .contact-hero { background-color: var(--clr-dark-green); padding: 8rem 0 12rem; color: white; position: relative; }
+    .contact-hero .label { display: inline-block; background: rgba(251, 191, 36, 0.1); color: var(--clr-yellow); padding: 0.3rem 1rem; border-radius: 4px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+    .contact-hero h1 { font-size: 4rem; color: white; margin-bottom: 1.5rem; }
+    .contact-hero h1 span { color: var(--clr-yellow); }
+    .contact-hero p { font-size: 1.15rem; max-width: 600px; color: rgba(255,255,255,0.8); }
+    
+    .contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: -6rem; position: relative; z-index: 10; margin-bottom: 4rem; }
+    .cc-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .cc-header { background: var(--clr-green); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; color: white; text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+    .cc-body { padding: 2rem 1.5rem; }
+    .cc-body p { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.25rem; font-weight: 600; text-transform: uppercase; }
+    .cc-body h3 { font-size: 1.25rem; color: var(--clr-heading); margin-bottom: 1rem; }
+    .cc-body small { font-size: 0.8rem; color: #9ca3af; }
+    
+    .form-section { background: var(--clr-light); padding-bottom: 6rem; }
+    .form-wrapper { display: flex; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-radius: var(--radius); overflow: hidden; }
+    .form-left { background: var(--clr-green); color: white; padding: 4rem; flex: 1; }
+    .form-left h2 { color: white; font-size: 2.2rem; margin-bottom: 1.5rem; }
+    .form-left p { color: rgba(255,255,255,0.9); margin-bottom: 3rem; line-height: 1.8; }
+    .form-left ul li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; font-weight: 500; }
+    .form-left i { color: var(--clr-yellow); }
+    
+    .form-right { background: white; padding: 4rem; flex: 1.5; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-size: 0.75rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .form-group input, .form-group select { padding: 1rem; border: 1px solid var(--clr-gray-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--clr-green); }
+    .form-group textarea { padding: 1rem; border: 1px solid var(--clr-gray-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; outline: none; resize: vertical; min-height: 150px; }
+    .form-group.full { grid-column: span 2; }
+    .form-right .btn { width: 100%; margin-top: 1.5rem; padding: 1.25rem; font-size: 1rem; }
+    
+    .map-section { height: 550px; position: relative; }
+    #ph-map { width: 100%; height: 100%; z-index: 1; }
+    .map-overlay-banner { 
+      position: absolute; 
+      top: 1.5rem; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      z-index: 1000; 
+      background: rgba(30, 64, 42, 0.92); 
+      backdrop-filter: blur(8px); 
       color: white; 
       padding: 1.25rem 2.5rem; 
       border-radius: 12px; 
@@ -59,6 +112,31 @@
       pointer-events: none;
       min-width: 320px;
       margin-top: 1rem;
+    }
+    
+    .map-legend {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      padding: 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
+      min-width: 240px;
+    }
+    .legend-title { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; margin-bottom: 0.75rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.65rem; font-size: 0.8rem; font-weight: 700; color: var(--clr-heading); }
+    .legend-item:last-child { margin-bottom: 0; }
+    .legend-marker { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; flex-shrink: 0; }
+    .legend-marker.hq { background: #fbbf24; box-shadow: 0 0 5px rgba(251, 191, 36, 0.5); }
+    .legend-marker.client { background: #3b82f6; box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+    .legend-marker.project { background: #1f8a4c; box-shadow: 0 0 5px rgba(31, 138, 76, 0.5); }
+    
+    @media (max-width: 768px) {
+      .map-legend { position: static; transform: none; border-radius: 0; width: 100%; border: none; border-top: 1px solid #e2e8f0; padding: 1.5rem; }
     }
     
     @media (max-width: 1024px) {
@@ -282,6 +360,12 @@
       <h3>National Coverage (PH)</h3>
       <p style="opacity: 0.8;">• Serving major cities nationwide •</p>
     </div>
+    <div class="map-legend">
+      <div class="legend-title">Map Overview</div>
+      <div class="legend-item"><div class="legend-marker hq"></div> <span>Registered Mailing Address</span></div>
+      <div class="legend-item"><div class="legend-marker client"></div> <span>Client Headquarters</span></div>
+      <div class="legend-item"><div class="legend-marker project"></div> <span>Proven Project Locations</span></div>
+    </div>
     <div id="ph-map"></div>
   </section>
 
@@ -422,7 +506,7 @@
           L.rectangle([[4.5, 116.5], [21.2, 127.0]], phStyle).addTo(map);
         });
 
-      // SECONDARY MARKERS: Key Project Points / Client HQs
+      // Project Location Marker Style (Green)
       const projectIcon = L.divIcon({
         className: 'project-marker',
         html: `<div style="
@@ -437,36 +521,44 @@
         popupAnchor: [0, -7]
       });
 
+      // CLIENT HQ Marker Style (Blue)
+      const clientIcon = L.divIcon({
+        className: 'client-marker',
+        html: `<div style="
+          width: 14px; height: 14px;
+          background: #3b82f6;
+          border: 2.5px solid #fff;
+          border-radius: 50%;
+          box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        "></div>`,
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+        popupAnchor: [0, -7]
+      });
+
       // Subic International Hotel Point
       const subicCoords = [14.8219, 120.2818];
       L.marker(subicCoords, { icon: projectIcon }).addTo(map)
-        .bindPopup('<b>Client HQ / Key Project:</b><br>Subic International Hotel Complex');
+        .bindPopup('<b>Project Location:</b><br>Subic International Hotel Complex');
 
       // PULP Office / QC Point
       const qcCoords = [14.6500, 121.0500]; // Approximated QC area
       L.marker(qcCoords, { icon: projectIcon }).addTo(map)
-        .bindPopup('<b>Client HQ / Office Renovation:</b><br>PULP Office (Quezon City)');
+        .bindPopup('<b>Project Location:</b><br>PULP Office (Quezon City)');
 
       // One World Place / Novateur Point
       const owpCoords = [14.5516, 121.0494];
-      L.marker(owpCoords, { icon: projectIcon }).addTo(map)
-        .bindPopup('<b>Client HQ:</b><br>16th Floor One World Place<br>(Novateur Coffee Concepts)');
+      L.marker(owpCoords, { icon: clientIcon }).addTo(map)
+        .bindPopup('<b>CLIENT HEADQUARTERS:</b><br>16th Floor One World Place<br>(Novateur Coffee Concepts)');
 
       // Mitsukoshi BGC Point
       const mitsukoshiCoords = [14.5583, 121.0543];
       L.marker(mitsukoshiCoords, { icon: projectIcon }).addTo(map)
-        .bindPopup('<b>Key Strategic Point:</b><br>Mitsukoshi BGC');
+        .bindPopup('<b>Project Location:</b><br>Mitsukoshi BGC');
 
       // Bonifacio High Street Point
       const bhsCoords = [14.5505, 121.0478];
       L.marker(bhsCoords, { icon: projectIcon }).addTo(map)
-        .bindPopup('<b>Main Service Area:</b><br>Bonifacio High Street');
-
-      // PRIMARY SHADING: Metro Manila Expansion Zone
-      // We will use multiple layered circles to create a "shaded" active zone effect
-      L.circle(tondoCoords, {
-        radius: 35000,
-        color: '#fbbf24',
         weight: 0,
         fillColor: '#fbbf24',
         fillOpacity: 0.25
