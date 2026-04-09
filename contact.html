@@ -41,59 +41,6 @@
     .form-group.full { grid-column: span 2; }
     .form-right .btn { width: 100%; margin-top: 1.5rem; padding: 1.25rem; font-size: 1rem; }
     
-    .map-section { height: 550px; position: relative; }
-    #ph-map { width: 100%; height: 100%; z-index: 1; }
-    .map-overlay-banner { 
-      position: absolute; 
-      top: 1.5rem; 
-      left: 50%; 
-      transform: translateX(-50%); 
-      z-index: 1000; 
-      background: rgba(30, 64, 42, 0.92); 
-      backdrop-filter: blur(8px); 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crecer - Contact Us</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
-  <style>
-    .contact-hero { background-color: var(--clr-dark-green); padding: 8rem 0 12rem; color: white; position: relative; }
-    .contact-hero .label { display: inline-block; background: rgba(251, 191, 36, 0.1); color: var(--clr-yellow); padding: 0.3rem 1rem; border-radius: 4px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
-    .contact-hero h1 { font-size: 4rem; color: white; margin-bottom: 1.5rem; }
-    .contact-hero h1 span { color: var(--clr-yellow); }
-    .contact-hero p { font-size: 1.15rem; max-width: 600px; color: rgba(255,255,255,0.8); }
-    
-    .contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: -6rem; position: relative; z-index: 10; margin-bottom: 4rem; }
-    .cc-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-    .cc-header { background: var(--clr-green); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; color: white; text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
-    .cc-body { padding: 2rem 1.5rem; }
-    .cc-body p { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.25rem; font-weight: 600; text-transform: uppercase; }
-    .cc-body h3 { font-size: 1.25rem; color: var(--clr-heading); margin-bottom: 1rem; }
-    .cc-body small { font-size: 0.8rem; color: #9ca3af; }
-    
-    .form-section { background: var(--clr-light); padding-bottom: 6rem; }
-    .form-wrapper { display: flex; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-radius: var(--radius); overflow: hidden; }
-    .form-left { background: var(--clr-green); color: white; padding: 4rem; flex: 1; }
-    .form-left h2 { color: white; font-size: 2.2rem; margin-bottom: 1.5rem; }
-    .form-left p { color: rgba(255,255,255,0.9); margin-bottom: 3rem; line-height: 1.8; }
-    .form-left ul li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; font-weight: 500; }
-    .form-left i { color: var(--clr-yellow); }
-    
-    .form-right { background: white; padding: 4rem; flex: 1.5; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-    .form-group { display: flex; flex-direction: column; }
-    .form-group label { font-size: 0.75rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-    .form-group input, .form-group select { padding: 1rem; border: 1px solid var(--clr-gray-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s; }
-    .form-group input:focus, .form-group select:focus { border-color: var(--clr-green); }
-    .form-group textarea { padding: 1rem; border: 1px solid var(--clr-gray-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; outline: none; resize: vertical; min-height: 150px; }
-    .form-group.full { grid-column: span 2; }
-    .form-right .btn { width: 100%; margin-top: 1.5rem; padding: 1.25rem; font-size: 1rem; }
-    
     .map-section { height: 650px; position: relative; background: #eaedef; overflow: hidden; border-top: 1px solid var(--clr-gray-border); border-bottom: 1px solid var(--clr-gray-border); }
     #ph-map { width: 100%; height: 100%; z-index: 1; }
     
@@ -161,10 +108,15 @@
       .map-dashboard { display: none; }
       .map-section { height: 500px; }
       .map-overlay-banner { right: 50%; transform: translateX(50%); top: 1rem; text-align: center; width: 90%; position: absolute; border-left: none; border-bottom: 4px solid var(--clr-yellow); }
+      .contact-cards { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .form-wrapper { flex-direction: column; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
     }
     @media (max-width: 768px) {
       .contact-hero h1 { font-size: 2.8rem; }
       .form-left, .form-right { padding: 2.5rem 1.5rem; }
+      .contact-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -175,9 +127,9 @@
     <div class="container nav-container">
       <a href="index.html" class="logo" style="text-decoration:none;">
         <div class="logo-wrapper" style="display: flex; align-items: center;">
-  <img src="assets/logo-transparent.png" alt="Crecer Logo" width="45" height="45" style="object-fit: contain;">
-  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
-</div>
+          <img src="assets/logo-transparent.png" alt="Crecer Logo" width="45" height="45" style="object-fit: contain;">
+          <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
+        </div>
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
@@ -316,10 +268,6 @@
             </div>
             <button type="submit" class="btn btn-yellow">SUBMIT INQUIRY</button>
           </form>
-
-          <script>
-            // Form handling now managed by Formspree
-          </script>
         </div>
       </div>
     </div>
@@ -414,9 +362,9 @@
         <div class="footer-col" style="padding-right: 2rem;">
           <a href="index.html" style="display:inline-block; margin-bottom: 1.5rem;">
             <div style="display: flex; align-items: center;">
-  <img src="assets/logo-transparent.png" alt="Crecer Logo" width="45" height="45" style="object-fit: contain;">
-  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
-</div>
+              <img src="assets/logo-transparent.png" alt="Crecer Logo" width="45" height="45" style="object-fit: contain;">
+              <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
+            </div>
           </a>
           <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
           <div class="footer-socials">
@@ -441,7 +389,7 @@
             <li><a href="#">Sustainability Reports</a></li>
           </ul>
         </div>
-                <div class="footer-col">
+        <div class="footer-col">
           <h4>Expertise</h4>
           <ul>
             <li>Construction/ Renovation</li>
@@ -477,74 +425,43 @@
   <script>
     lucide.createIcons();
 
-    // Initialize Philippines Map
+    // Map Implementation
     (function() {
       const map = L.map('ph-map', {
-        center: [12.5, 122.0],
-        zoom: 6,
+        center: [14.6, 121.0],
+        zoom: 10,
         scrollWheelZoom: false,
         zoomControl: true
       });
 
-      // Clean, elegant tile layer
       L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        attribution: '&copy; OSM &copy; CARTO',
         subdomains: 'abcd',
         maxZoom: 19
       }).addTo(map);
 
-      // Custom HQ marker icon
       const hqIcon = L.divIcon({
         className: 'custom-hq-marker',
-        html: `<div style="
-          width: 44px; height: 44px;
-          background: linear-gradient(135deg, #fbbf24, #f59e0b);
-          border: 3px solid #fff;
-          border-radius: 50% 50% 50% 0;
-          transform: rotate(-45deg);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-          display: flex; align-items: center; justify-content: center;
-        "><svg style="transform:rotate(45deg);" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e402a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>`,
-        iconSize: [44, 44],
-        iconAnchor: [22, 44],
-        popupAnchor: [0, -44]
+        html: `<div style="width: 44px; height: 44px; background: linear-gradient(135deg, #fbbf24, #f59e0b); border: 3px solid #fff; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><svg style="transform:rotate(45deg);" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e402a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>`,
+        iconSize: [44, 44], iconAnchor: [22, 44], popupAnchor: [0, -44]
       });
 
-      // Tondo, Manila marker
-      const tondoCoords = [14.6130, 120.9670];
-      const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
-      hqMarker.bindPopup(`
-        <div class="popup-content">
-          <span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span>
-          <h4>Registered HQ</h4>
-          <p>Lallana Street, Barangay 93, Tondo, Manila</p>
-        </div>
-      `, { offset: [0, 0] });
-      hqMarker.openPopup();
-
-      const phStyle = { color: '#1f8a4c', weight: 1, opacity: 0.4, fillColor: '#1f8a4c', fillOpacity: 0.05, dashArray: '4, 4' };
-
-      const phGeoJSON = fetch('ph-boundary.json')
-        .then(r => r.json())
-        .then(data => {
-          return L.geoJSON(data, { style: phStyle }).addTo(map);
-        });
-
-      // Project Location Marker Style (Green)
       const projectIcon = L.divIcon({
         className: 'project-marker',
-        html: `<div style="width: 14px; height: 14px; background: #1f8a4c; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 0 10px rgba(31, 138, 76, 0.6);"></div>`,
+        html: `<div style="width: 14px; height: 14px; background: #1f8a4c; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 0 12px rgba(31, 138, 76, 0.6);"></div>`,
         iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -7]
       });
 
-      // CLIENT HQ Marker Style (Blue)
       const clientIcon = L.divIcon({
         className: 'client-marker',
-        html: `<div style="width: 14px; height: 14px; background: #3b82f6; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);"></div>`,
+        html: `<div style="width: 14px; height: 14px; background: #3b82f6; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);"></div>`,
         iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -7]
       });
 
-      // Location Dictionary
+      const tondoCoords = [14.6130, 120.9670];
+      const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
+      hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Registered HQ</h4><p>Lallana Street, Tondo, Manila</p></div>');
+
       const locations = {
         'tondo': { coords: tondoCoords, marker: hqMarker, zoom: 15 },
         'subic': { coords: [14.8219, 120.2818], title: "Subic International Hotel", body: "Alpha & Bravo Buildings<br>(IBIS Style & Mercure Hotel)", zoom: 12 },
@@ -556,27 +473,17 @@
         'national': { coords: [12.5, 122.0], zoom: 6 }
       };
 
-      // Create and Store markers
       for (const key in locations) {
         const loc = locations[key];
         if (key !== 'tondo' && key !== 'manila_zone' && key !== 'national') {
-          const m = L.marker(loc.coords, { icon: loc.type === 'client' ? clientIcon : projectIcon }).addTo(map);
-          m.bindPopup(`
-            <div class="popup-content">
-              <span class="popup-badge" style="background:${loc.type === 'client' ? '#3b82f6' : '#1f8a4c'}; color:white;">${loc.type === 'client' ? 'Client HQ' : 'Project Site'}</span>
-              <h4>${loc.title}</h4>
-              <p>${loc.body}</p>
-            </div>
-          `);
+          const m = L.marker(loc.coords, { icon: loc.type === 'client' ? clientIcon : projectIcon }).addTo(map)
+            .bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:${loc.type === 'client' ? '#3b82f6' : '#1f8a4c'}; color:white;">${loc.type === 'client' ? 'Client HQ' : 'Project Site'}</span><h4>${loc.title}</h4><p>${loc.body}</p></div>`);
           loc.marker = m;
         }
       }
 
-      const manilaCircle = L.circle(tondoCoords, {
-        radius: 35000, color: '#fbbf24', weight: 0, fillColor: '#fbbf24', fillOpacity: 0.25
-      }).addTo(map);
+      L.circle(tondoCoords, { radius: 35000, color: '#fbbf24', weight: 0, fillColor: '#fbbf24', fillOpacity: 0.2 }).addTo(map);
 
-      // Global navigation function
       window.focusMap = function(key) {
         const loc = locations[key];
         if (loc) {
@@ -584,15 +491,7 @@
           if (loc.marker) loc.marker.openPopup();
         }
       };
-
-      // Enable scroll zoom on click
-      map.on('click', () => { 
-        if (map.scrollWheelZoom.enabled()) map.scrollWheelZoom.disable(); 
-        else map.scrollWheelZoom.enable(); 
-      });
     })();
-
-    lucide.createIcons();
   </script>
 </body>
 </html>
