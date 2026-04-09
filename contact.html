@@ -278,9 +278,9 @@
 
   <section class="map-section">
     <div class="map-overlay-banner">
-      <p>Service Area: National (Philippines)</p>
-      <h3>Prefer: Metro Manila</h3>
-      <p>• Serving clients nationwide •</p>
+      <p style="color: var(--clr-yellow); font-weight: 800; letter-spacing: 2px;">PRIMARY FOCUS: METRO MANILA</p>
+      <h3>National Coverage (PH)</h3>
+      <p style="opacity: 0.8;">• Serving major cities nationwide •</p>
     </div>
     <div id="ph-map"></div>
   </section>
@@ -398,14 +398,13 @@
         </div>
       `, { offset: [0, 0] }).openPopup();
 
-      // Load actual Philippines GeoJSON boundary (covers ALL islands)
       const phStyle = {
-        color: '#1e402a',
-        weight: 2,
-        opacity: 0.8,
-        fillColor: '#22c55e',
-        fillOpacity: 0.15,
-        dashArray: '6, 4'
+        color: '#1f8a4c',
+        weight: 1,
+        opacity: 0.4,
+        fillColor: '#1f8a4c',
+        fillOpacity: 0.05,
+        dashArray: '4, 4'
       };
 
       fetch('ph-boundary.json')
@@ -413,25 +412,35 @@
         .then(data => {
           L.geoJSON(data, {
             style: phStyle
-          }).addTo(map).bindTooltip('National Service Coverage', {
+          }).addTo(map).bindTooltip('National Service Area', {
             permanent: false,
             direction: 'center',
             className: 'service-tooltip'
           });
         })
         .catch(() => {
-          // Fallback: use approximate bounding rectangle if fetch fails
           L.rectangle([[4.5, 116.5], [21.2, 127.0]], phStyle).addTo(map);
         });
 
-      // Add pulsing circle around Tondo
+      // PRIMARY HIGHLIGHT: Metro Manila
+      // Large soft pulse for the metro area
       L.circle(tondoCoords, {
-        radius: 15000,
+        radius: 45000,
         color: '#fbbf24',
-        weight: 2,
-        opacity: 0.6,
+        weight: 1,
+        opacity: 0.3,
         fillColor: '#fbbf24',
-        fillOpacity: 0.1
+        fillOpacity: 0.15
+      }).addTo(map).bindTooltip('<b>Primary Hub:</b> Metro Manila', { permanent: false });
+
+      // Secondary highlight: Pulse circle around HQ
+      L.circle(tondoCoords, {
+        radius: 12000,
+        color: '#fbbf24',
+        weight: 4,
+        opacity: 0.8,
+        fillColor: '#fbbf24',
+        fillOpacity: 0.4
       }).addTo(map);
 
       // Enable scroll zoom on click
