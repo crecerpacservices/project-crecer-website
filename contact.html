@@ -422,18 +422,42 @@
           L.rectangle([[4.5, 116.5], [21.2, 127.0]], phStyle).addTo(map);
         });
 
-      // PRIMARY HIGHLIGHT: Metro Manila
-      // Large soft pulse for the metro area
-      L.circle(tondoCoords, {
-        radius: 45000,
-        color: '#fbbf24',
-        weight: 1,
-        opacity: 0.3,
-        fillColor: '#fbbf24',
-        fillOpacity: 0.15
-      }).addTo(map).bindTooltip('<b>Primary Hub:</b> Metro Manila', { permanent: false });
+      // SECONDARY MARKERS: Key Project Points / Client HQs
+      const projectIcon = L.divIcon({
+        className: 'project-marker',
+        html: `<div style="
+          width: 14px; height: 14px;
+          background: #1f8a4c;
+          border: 2.5px solid #fff;
+          border-radius: 50%;
+          box-shadow: 0 0 10px rgba(31, 138, 76, 0.6);
+        "></div>`,
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+        popupAnchor: [0, -7]
+      });
 
-      // Secondary highlight: Pulse circle around HQ
+      // Subic International Hotel Point
+      const subicCoords = [14.8219, 120.2818];
+      L.marker(subicCoords, { icon: projectIcon }).addTo(map)
+        .bindPopup('<b>Client HQ / Key Project:</b><br>Subic International Hotel Complex');
+
+      // PULP Office / QC Point
+      const qcCoords = [14.6500, 121.0500]; // Approximated QC area
+      L.marker(qcCoords, { icon: projectIcon }).addTo(map)
+        .bindPopup('<b>Client HQ / Office Renovation:</b><br>PULP Office (Quezon City)');
+
+      // PRIMARY SHADING: Metro Manila Expansion Zone
+      // We will use multiple layered circles to create a "shaded" active zone effect
+      L.circle(tondoCoords, {
+        radius: 35000,
+        color: '#fbbf24',
+        weight: 0,
+        fillColor: '#fbbf24',
+        fillOpacity: 0.25
+      }).addTo(map).bindTooltip('<b>ACTIVE HUB:</b> METRO MANILA', { permanent: false });
+
+      // Secondary expansion highlight: Pulse circle around HQ
       L.circle(tondoCoords, {
         radius: 12000,
         color: '#fbbf24',
@@ -444,8 +468,13 @@
       }).addTo(map);
 
       // Enable scroll zoom on click
-      map.on('click', function() { map.scrollWheelZoom.enable(); });
-      map.on('mouseout', function() { map.scrollWheelZoom.disable(); });
+      map.on('click', () => {
+        if (map.scrollWheelZoom.enabled()) {
+          map.scrollWheelZoom.disable();
+        } else {
+          map.scrollWheelZoom.enable();
+        }
+      });
     })();
     lucide.createIcons();
   </script>
