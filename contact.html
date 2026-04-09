@@ -447,6 +447,21 @@
       L.marker(qcCoords, { icon: projectIcon }).addTo(map)
         .bindPopup('<b>Client HQ / Office Renovation:</b><br>PULP Office (Quezon City)');
 
+      // One World Place / Novateur Point
+      const owpCoords = [14.5516, 121.0494];
+      L.marker(owpCoords, { icon: projectIcon }).addTo(map)
+        .bindPopup('<b>Client HQ:</b><br>16th Floor One World Place<br>(Novateur Coffee Concepts)');
+
+      // Mitsukoshi BGC Point
+      const mitsukoshiCoords = [14.5583, 121.0543];
+      L.marker(mitsukoshiCoords, { icon: projectIcon }).addTo(map)
+        .bindPopup('<b>Key Strategic Point:</b><br>Mitsukoshi BGC');
+
+      // Bonifacio High Street Point
+      const bhsCoords = [14.5505, 121.0478];
+      L.marker(bhsCoords, { icon: projectIcon }).addTo(map)
+        .bindPopup('<b>Main Service Area:</b><br>Bonifacio High Street');
+
       // PRIMARY SHADING: Metro Manila Expansion Zone
       // We will use multiple layered circles to create a "shaded" active zone effect
       L.circle(tondoCoords, {
