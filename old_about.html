@@ -1,366 +1,366 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
-  <title>Crecer - About Us Variant 1</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
-  <style>
-    .about-hero { padding: 8rem 0; background-color: var(--clr-green-dark); background-image: linear-gradient(rgba(18, 84, 45, 0.8), rgba(18, 84, 45, 0.9)), url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; color: white; }
-    .about-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
-    .about-hero h1 span { color: var(--clr-yellow); }
-    .about-hero p { font-size: 1.1rem; max-width: 600px; color: rgba(255,255,255,0.9); }
-    
-    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: -4rem; position: relative; z-index: 10; }
-    .value-card { background: var(--clr-white); padding: 3rem 2rem; border-radius: var(--radius); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-    .value-icon { width: 50px; height: 50px; background: rgba(31, 138, 76, 0.1); color: var(--clr-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
-    .value-card h3 { margin-bottom: 1rem; font-size: 1.25rem; }
-    .value-card p { font-size: 0.95rem; color: var(--clr-text); }
-    
-    .journey { padding: 8rem 0 4rem; background: var(--clr-light); }
-    .journey-flex { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
-    .journey h2 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--clr-heading); }
-    .journey p { margin-bottom: 1.5rem; font-size: 1.05rem; }
-    
-    .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .check-item { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--clr-heading); }
-    .check-item i { color: var(--clr-green); }
-    
-    .journey-img { position: relative; }
-    .journey-img img { width: 100%; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-    .journey-badge { position: absolute; bottom: -20px; left: -20px; background: var(--clr-green); color: white; padding: 2rem; border-radius: var(--radius); }
-    
-    .leadership { padding: 6rem 0; text-align: center; }
-    .leader-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
-    .leader-card { text-align: center; }
-    .leader-img { width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.5rem; }
-    .leader-card h4 { font-size: 1.2rem; margin-bottom: 0.25rem; }
-    .leader-card p { color: var(--clr-green); font-weight: 600; font-size: 0.9rem; }
-    
-    .cta-banner { background: var(--clr-green); padding: 5rem 0; text-align: center; border-radius: var(--radius); margin: 4rem 2rem 8rem; color: white; }
-    .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
-    
-    @media (max-width: 1024px) {
-      .values-grid, .journey-flex, .leader-grid { grid-template-columns: 1fr; }
-      .values-grid { margin-top: 2rem; }
-    }
-  </style>
-</head>
-<body>
-
-    <!-- HEADER -->
-  <header>
-    <div class="container nav-container">
-      <a href="index.html" class="logo">
-        <div style="display: flex; align-items: center;">
-  <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Crescent Moon -->
-    <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="url(#moonGrad)"/>
-    <!-- Leaf Stalk -->
-    <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
-    <!-- Left Leaf -->
-    <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
-    <!-- Top Leaf -->
-    <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
-    <!-- Right Leaf -->
-    <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
-    <defs>
-      <linearGradient id="moonGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#fde047"/>
-        <stop offset="100%" stop-color="#eab308"/>
-      </linearGradient>
-    </defs>
-  </svg>
-  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
-</div>
-      </a>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="credentials.html">Credentials</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="about-hero">
-    <div class="container">
-      <h1>About <span>Crecer</span></h1>
-      <p style="font-family: 'Outfit', sans-serif; letter-spacing: 2px; font-weight: 300; margin-bottom: 1rem;">=¥ùº=¥ù+ =¥ù¦=¥ù+=¥ù+=¥ÿä. =¥ùº=¥ù+ =¥ÿÇ=¥ù¦=¥ù«=¥ù+=¥ù¦. =¥ùº=¥ù+ =¥ù¦=¥ù+=¥ù¦=¥ÿé=¥ù+=¥ù¦.</p>
-      <p>Building the foundations of tomorrow with intentional, resilient growth and unwavering excellence.</p>
-    </div>
-  </section>
-
-  <!-- IDENTITY -->
-  <section class="identity bg-light" style="padding: 6rem 0; border-top: 1px solid var(--clr-gray-border);">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;">
-        <div>
-          <h2 style="font-size: 2.5rem; color: var(--clr-green); margin-bottom: 2rem;">Our Identity</h2>
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">We chose the name <strong>"Crecer"</strong> as a Spanish word that means <em>"to grow"</em> (to construct/build) because it is what life demands. Not the easy kind, but the kind that breaks the shell, stretches the roots, and reaches toward the lightGÇöeven in darkness.</p>
-          <p style="margin-bottom: 1.5rem;">The word carries history. For over 300 years, diverse layers of influence have shaped the Philippines. Out of this complex past, we draw strength: the ability to adapt, to organize, and to leave structures that outlast time.</p>
-          <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 4px solid var(--clr-yellow);">
-            <p style="font-style: italic; font-weight: 600;">"We see growth not as a race, but as a rhythm. Something organic. Something earned. We build forward."</p>
-          </div>
-        </div>
-        <div style="background: white; padding: 3rem; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);">
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="#fde047"/>
-              <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
-              <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
-              <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
-              <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
-            </svg>
-            <h3 style="font-size: 1.5rem;">Logo Symbolism</h3>
-          </div>
-          <ul style="list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
-              <div style="background: rgba(34, 197, 94, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="leaf" style="width: 16px; color: var(--clr-green);"></i></div>
-              <div>
-                <strong style="display: block; margin-bottom: 0.25rem;">Three Leaves</strong>
-                <p style="font-size: 0.9rem;">Layered and progressive growth: <em>Beginning, becoming, and being.</em></p>
-              </div>
-            </li>
-            <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
-              <div style="background: rgba(251, 191, 36, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="moon" style="width: 16px; color: var(--clr-yellow);"></i></div>
-              <div>
-                <strong style="display: block; margin-bottom: 0.25rem;">The Crescent Moon</strong>
-                <p style="font-size: 0.9rem;">Symbolizing quiet transformation. Growth that emerges from the dark. Light reflected from something largerGÇöthe blueprint of real transformation.</p>
-              </div>
-            </li>
-            <li style="display: flex; gap: 1rem;">
-              <div style="background: rgba(148, 163, 184, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="anchor" style="width: 16px; color: #64748b;"></i></div>
-              <div>
-                <strong style="display: block; margin-bottom: 0.25rem;">Unseen Roots</strong>
-                <p style="font-size: 0.9rem;">Just because roots are invisible doesn't mean they aren't holding everything up. They are the guide, vision, and plan that support life above the surface.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUES -->
-  <div class="container">
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-icon"><i data-lucide="target"></i></div>
-        <h3>Our Mission</h3>
-        <p>To deliver high-quality engineering solutions that empower communities and foster sustainable infrastructure development across the region.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><i data-lucide="eye"></i></div>
-        <h3>Our Vision</h3>
-        <p>To be the most trusted construction partner recognized for innovation, integrity, and building a better, greener tomorrow.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><i data-lucide="shield-check"></i></div>
-        <h3>Our Values</h3>
-        <p>Safety as a priority, excellence in execution, absolute integrity, and a focus on sustainable progress in every project.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- JOURNEY & EXPERTISE -->
-  <section class="journey">
-    <div class="container journey-flex">
-      <div>
-        <h2>Our Journey & Foundations</h2>
-        <p style="font-weight: 600; color: var(--clr-green); margin-bottom: 1.5rem;">Crecer was built on real foundations.</p>
-        <p>While the company is a fresh name in the industry, our expertise is anything but new. We were trained by the bestGÇölicensed professionals, industry veterans, and mentors like the professor who serves as the <strong>National President of the Philippine Society of Master Plumbers and Plumbing Engineers (PSMPE)</strong>.</p>
-        
-        <p>We didnGÇÖt just learn how to install systems; we learned <em>why</em> plumbing matters. We studied its history as the backbone of civilization and its role as a living system that mirrors the human body:</p>
-        
-        <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
-          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="heart" style="color: #ef4444; width: 18px; margin-top: 3px;"></i> <span><strong>Pumps act as the heart</strong> GÇô Sustaining vital flow and pressure.</span></li>
-          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="activity" style="color: var(--clr-green); width: 18px; margin-top: 3px;"></i> <span><strong>Pipes function as veins</strong> GÇô Delivering life-sustaining resources.</span></li>
-          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="droplet" style="color: #3b82f6; width: 18px; margin-top: 3px;"></i> <span><strong>Controlled flow</strong> GÇô Just like blood, sustaining the balance of the whole facility.</span></li>
-          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="recycle" style="color: var(--clr-green); width: 18px; margin-top: 3px;"></i> <span><strong>Sustainable cycling</strong> GÇô Mastering waste excretion, recycling, and reuse.</span></li>
-        </ul>
-
-        <p>Before launching Crecer, our team spent years progressing from trainees to core project staff under the mentors who helped shape the Philippine plumbing industry. For us, this is more than a tradeGÇöitGÇÖs a calling and a cultural heritage passed down through generations.</p>
-        
-        <div class="check-list" style="margin-top: 2rem;">
-          <div class="check-item"><i data-lucide="users"></i> People First</div>
-          <div class="check-item"><i data-lucide="zap"></i> Performance First</div>
-          <div class="check-item"><i data-lucide="target"></i> Purpose First</div>
-          <div class="check-item"><i data-lucide="award"></i> Licensed Professionals</div>
-        </div>
-      </div>
-      <div class="journey-img">
-        <img src="https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80" alt="Plumbing Mastery">
-        <div class="journey-badge" style="background: var(--clr-yellow); color: var(--clr-heading);">
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem;">PROVEN</h3>
-          <p style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px;">CORE EXPERTISE</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP -->
-  <section class="leadership container">
-    <div class="section-title">
-      <h2>Our Leadership</h2>
-      <p>The visionaries and experts driving innovation at Project Crecer.</p>
-    </div>
-    <div class="leader-grid">
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #cbd5e1; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Mark</h4>
-        <p>Proprietor</p>
-      </div>
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Paul</h4>
-        <p style="margin-bottom: 0;">Founding Team Member</p>
-        <small style="color: var(--clr-text); font-size: 0.75rem; font-weight: 500;">Head of Plumbing & Fire Protection (Consultant/Partner)</small>
-      </div>
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Jeric</h4>
-        <p>Project Support Partner</p>
-      </div>
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Wel</h4>
-        <p>Project Support Partner</p>
-      </div>
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Jayson</h4>
-        <p>Data</p>
-      </div>
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Sir Ian</h4>
-        <p>Business Consultant & Advisor</p>
-      </div>
-      <div class="leader-card">
-        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
-          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <h4>Gilmar</h4>
-        <p>Project Electrical Engineer</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Ready to Start Your Journey With Us?</h2>
-      <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Join dozens of satisfied partners and let's build something exceptional together. Our team is ready to provide the expertise you need.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center;">
-        <a href="#" class="btn btn-outline" style="background-color: white; color: var(--clr-green); border: none;">Work With Us</a>
-        <a href="projects.html" class="btn btn-outline">Download Portfolio</a>
-      </div>
-    </div>
-  </section>
-
-    <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col" style="padding-right: 2rem;">
-          <a href="index.html" style="display:inline-block; margin-bottom: 1.5rem;">
-            <div style="display: flex; align-items: center;">
-  <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Crescent Moon -->
-    <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="url(#moonGrad)"/>
-    <!-- Leaf Stalk -->
-    <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
-    <!-- Left Leaf -->
-    <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
-    <!-- Top Leaf -->
-    <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
-    <!-- Right Leaf -->
-    <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
-    <defs>
-      <linearGradient id="moonGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#fde047"/>
-        <stop offset="100%" stop-color="#eab308"/>
-      </linearGradient>
-    </defs>
-  </svg>
-  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
-</div>
-          </a>
-          <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
-          <div class="footer-socials">
-            <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
-            <a href="#" class="social-icon" title="Instagram - Coming Soon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="#" class="social-icon" title="YouTube - Coming Soon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.42 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.42-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
-            </a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Our Mission</a></li>
-            <li><a href="services.html">Our Services</a></li>
-            <li><a href="projects.html">Latest Projects</a></li>
-            <li><a href="credentials.html">Credentials</a></li>
-          </ul>
-        </div>
-                <div class="footer-col">
-          <h4>Expertise</h4>
-          <ul>
-            <li>Construction/ Renovation</li>
-            <li>Complete Plumbing and Sanitary System</li>
-            <li>Complete Fire Protection System/ AFSS</li>
-            <li>Complete Electrical System</li>
-            <li>Shop Drawings and As-built Plan</li>
-            <li>Project Management</li>
-            <li>Hazard Identification, Risk Assessment, and Control (HIRAC)</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact Us</h4>
-          <ul style="gap: 1.5rem;">
-            <li style="display: flex; gap: 1rem; align-items: flex-start;"><i data-lucide="map-pin" style="margin-top: 3px;"></i> <div>Lallana Street, Barangay 93, Tondo, Manila, Philippines, 1012</div></li>
-            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <div><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a> <small style="display: block; font-size: 0.75rem; color: #4ade80;">Available on Viber</small></div></li>
-            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="mail"></i> <div><a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="color: inherit; text-decoration: none;">crecerpacservices@gmail.com</a></div></li>
-            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="clock"></i> <div>Mon - Fri: 8:00 AM - 6:00 PM</div></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Crecer. All Rights Reserved.</p>
-        <div style="display: flex; gap: 2rem;">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>lucide.createIcons();</script>
-</body>
-</html>
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+  <title>Crecer - About Us Variant 1</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .about-hero { padding: 8rem 0; background-color: var(--clr-green-dark); background-image: linear-gradient(rgba(18, 84, 45, 0.8), rgba(18, 84, 45, 0.9)), url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; color: white; }
+    .about-hero h1 { font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .about-hero h1 span { color: var(--clr-yellow); }
+    .about-hero p { font-size: 1.1rem; max-width: 600px; color: rgba(255,255,255,0.9); }
+    
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: -4rem; position: relative; z-index: 10; }
+    .value-card { background: var(--clr-white); padding: 3rem 2rem; border-radius: var(--radius); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .value-icon { width: 50px; height: 50px; background: rgba(31, 138, 76, 0.1); color: var(--clr-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .value-card h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+    .value-card p { font-size: 0.95rem; color: var(--clr-text); }
+    
+    .journey { padding: 8rem 0 4rem; background: var(--clr-light); }
+    .journey-flex { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+    .journey h2 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--clr-heading); }
+    .journey p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+    
+    .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .check-item { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--clr-heading); }
+    .check-item i { color: var(--clr-green); }
+    
+    .journey-img { position: relative; }
+    .journey-img img { width: 100%; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .journey-badge { position: absolute; bottom: -20px; left: -20px; background: var(--clr-green); color: white; padding: 2rem; border-radius: var(--radius); }
+    
+    .leadership { padding: 6rem 0; text-align: center; }
+    .leader-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
+    .leader-card { text-align: center; }
+    .leader-img { width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.5rem; }
+    .leader-card h4 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .leader-card p { color: var(--clr-green); font-weight: 600; font-size: 0.9rem; }
+    
+    .cta-banner { background: var(--clr-green); padding: 5rem 0; text-align: center; border-radius: var(--radius); margin: 4rem 2rem 8rem; color: white; }
+    .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
+    
+    @media (max-width: 1024px) {
+      .values-grid, .journey-flex, .leader-grid { grid-template-columns: 1fr; }
+      .values-grid { margin-top: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <div style="display: flex; align-items: center;">
+  <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Crescent Moon -->
+    <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="url(#moonGrad)"/>
+    <!-- Leaf Stalk -->
+    <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
+    <!-- Left Leaf -->
+    <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
+    <!-- Top Leaf -->
+    <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
+    <!-- Right Leaf -->
+    <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
+    <defs>
+      <linearGradient id="moonGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#fde047"/>
+        <stop offset="100%" stop-color="#eab308"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
+</div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <h1>About <span>Crecer</span></h1>
+      <p style="font-family: 'Outfit', sans-serif; letter-spacing: 2px; font-weight: 300; margin-bottom: 1rem;">=Â¥Ã¹Âº=Â¥Ã¹+ =Â¥Ã¹Â¦=Â¥Ã¹+=Â¥Ã¹+=Â¥Ã¿Ã¤. =Â¥Ã¹Âº=Â¥Ã¹+ =Â¥Ã¿Ã‡=Â¥Ã¹Â¦=Â¥Ã¹Â«=Â¥Ã¹+=Â¥Ã¹Â¦. =Â¥Ã¹Âº=Â¥Ã¹+ =Â¥Ã¹Â¦=Â¥Ã¹+=Â¥Ã¹Â¦=Â¥Ã¿Ã©=Â¥Ã¹+=Â¥Ã¹Â¦.</p>
+      <p>Building the foundations of tomorrow with intentional, resilient growth and unwavering excellence.</p>
+    </div>
+  </section>
+
+  <!-- IDENTITY -->
+  <section class="identity bg-light" style="padding: 6rem 0; border-top: 1px solid var(--clr-gray-border);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;">
+        <div>
+          <h2 style="font-size: 2.5rem; color: var(--clr-green); margin-bottom: 2rem;">Our Identity</h2>
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">We chose the name <strong>"Crecer"</strong> as a Spanish word that means <em>"to grow"</em> (to construct/build) because it is what life demands. Not the easy kind, but the kind that breaks the shell, stretches the roots, and reaches toward the lightGÃ‡Ã¶even in darkness.</p>
+          <p style="margin-bottom: 1.5rem;">The word carries history. For over 300 years, diverse layers of influence have shaped the Philippines. Out of this complex past, we draw strength: the ability to adapt, to organize, and to leave structures that outlast time.</p>
+          <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 4px solid var(--clr-yellow);">
+            <p style="font-style: italic; font-weight: 600;">"We see growth not as a race, but as a rhythm. Something organic. Something earned. We build forward."</p>
+          </div>
+        </div>
+        <div style="background: white; padding: 3rem; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="#fde047"/>
+              <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
+              <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
+              <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
+              <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
+            </svg>
+            <h3 style="font-size: 1.5rem;">Logo Symbolism</h3>
+          </div>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+              <div style="background: rgba(34, 197, 94, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="leaf" style="width: 16px; color: var(--clr-green);"></i></div>
+              <div>
+                <strong style="display: block; margin-bottom: 0.25rem;">Three Leaves</strong>
+                <p style="font-size: 0.9rem;">Layered and progressive growth: <em>Beginning, becoming, and being.</em></p>
+              </div>
+            </li>
+            <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+              <div style="background: rgba(251, 191, 36, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="moon" style="width: 16px; color: var(--clr-yellow);"></i></div>
+              <div>
+                <strong style="display: block; margin-bottom: 0.25rem;">The Crescent Moon</strong>
+                <p style="font-size: 0.9rem;">Symbolizing quiet transformation. Growth that emerges from the dark. Light reflected from something largerGÃ‡Ã¶the blueprint of real transformation.</p>
+              </div>
+            </li>
+            <li style="display: flex; gap: 1rem;">
+              <div style="background: rgba(148, 163, 184, 0.1); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i data-lucide="anchor" style="width: 16px; color: #64748b;"></i></div>
+              <div>
+                <strong style="display: block; margin-bottom: 0.25rem;">Unseen Roots</strong>
+                <p style="font-size: 0.9rem;">Just because roots are invisible doesn't mean they aren't holding everything up. They are the guide, vision, and plan that support life above the surface.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <div class="container">
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon"><i data-lucide="target"></i></div>
+        <h3>Our Mission</h3>
+        <p>To deliver high-quality engineering solutions that empower communities and foster sustainable infrastructure development across the region.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i data-lucide="eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To be the most trusted construction partner recognized for innovation, integrity, and building a better, greener tomorrow.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i data-lucide="shield-check"></i></div>
+        <h3>Our Values</h3>
+        <p>Safety as a priority, excellence in execution, absolute integrity, and a focus on sustainable progress in every project.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNEY & EXPERTISE -->
+  <section class="journey">
+    <div class="container journey-flex">
+      <div>
+        <h2>Our Journey & Foundations</h2>
+        <p style="font-weight: 600; color: var(--clr-green); margin-bottom: 1.5rem;">Crecer was built on real foundations.</p>
+        <p>While the company is a fresh name in the industry, our expertise is anything but new. We were trained by the bestGÃ‡Ã¶licensed professionals, industry veterans, and mentors like the professor who serves as the <strong>National President of the Philippine Society of Master Plumbers and Plumbing Engineers (PSMPE)</strong>.</p>
+        
+        <p>We didnGÃ‡Ã–t just learn how to install systems; we learned <em>why</em> plumbing matters. We studied its history as the backbone of civilization and its role as a living system that mirrors the human body:</p>
+        
+        <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="heart" style="color: #ef4444; width: 18px; margin-top: 3px;"></i> <span><strong>Pumps act as the heart</strong> GÃ‡Ã´ Sustaining vital flow and pressure.</span></li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="activity" style="color: var(--clr-green); width: 18px; margin-top: 3px;"></i> <span><strong>Pipes function as veins</strong> GÃ‡Ã´ Delivering life-sustaining resources.</span></li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="droplet" style="color: #3b82f6; width: 18px; margin-top: 3px;"></i> <span><strong>Controlled flow</strong> GÃ‡Ã´ Just like blood, sustaining the balance of the whole facility.</span></li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><i data-lucide="recycle" style="color: var(--clr-green); width: 18px; margin-top: 3px;"></i> <span><strong>Sustainable cycling</strong> GÃ‡Ã´ Mastering waste excretion, recycling, and reuse.</span></li>
+        </ul>
+
+        <p>Before launching Crecer, our team spent years progressing from trainees to core project staff under the mentors who helped shape the Philippine plumbing industry. For us, this is more than a tradeGÃ‡Ã¶itGÃ‡Ã–s a calling and a cultural heritage passed down through generations.</p>
+        
+        <div class="check-list" style="margin-top: 2rem;">
+          <div class="check-item"><i data-lucide="users"></i> People First</div>
+          <div class="check-item"><i data-lucide="zap"></i> Performance First</div>
+          <div class="check-item"><i data-lucide="target"></i> Purpose First</div>
+          <div class="check-item"><i data-lucide="award"></i> Licensed Professionals</div>
+        </div>
+      </div>
+      <div class="journey-img">
+        <img src="https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80" alt="Plumbing Mastery">
+        <div class="journey-badge" style="background: var(--clr-yellow); color: var(--clr-heading);">
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem;">PROVEN</h3>
+          <p style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px;">CORE EXPERTISE</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="leadership container">
+    <div class="section-title">
+      <h2>Our Leadership</h2>
+      <p>The visionaries and experts driving innovation at Project Crecer.</p>
+    </div>
+    <div class="leader-grid">
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #cbd5e1; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Mark</h4>
+        <p>Proprietor</p>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Paul</h4>
+        <p style="margin-bottom: 0;">Founding Team Member</p>
+        <small style="color: var(--clr-text); font-size: 0.75rem; font-weight: 500;">Head of Plumbing & Fire Protection (Consultant/Partner)</small>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Jeric</h4>
+        <p>Project Support Partner</p>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Wel</h4>
+        <p>Project Support Partner</p>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Jayson</h4>
+        <p>Data</p>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Sir Ian</h4>
+        <p>Business Consultant & Advisor</p>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img" style="background-color: #f1f5f9; display:flex; align-items:center; justify-content:center;">
+          <svg style="width: 50%; height: 50%; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h4>Gilmar</h4>
+        <p>Project Electrical Engineer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to Start Your Journey With Us?</h2>
+      <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Join dozens of satisfied partners and let's build something exceptional together. Our team is ready to provide the expertise you need.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="#" class="btn btn-outline" style="background-color: white; color: var(--clr-green); border: none;">Work With Us</a>
+        <a href="projects.html" class="btn btn-outline">Download Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col" style="padding-right: 2rem;">
+          <a href="index.html" style="display:inline-block; margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center;">
+  <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Crescent Moon -->
+    <path d="M 50 5 A 45 45 0 1 0 85 85 A 50 50 0 1 1 50 5 Z" fill="url(#moonGrad)"/>
+    <!-- Leaf Stalk -->
+    <path d="M 45 90 Q 42 65 45 40" stroke="#4ade80" stroke-width="2.5" fill="none"/>
+    <!-- Left Leaf -->
+    <path d="M 43 70 Q 20 65 25 45 Q 35 45 43 70" fill="#4ade80"/>
+    <!-- Top Leaf -->
+    <path d="M 45 45 Q 35 20 50 15 Q 60 25 45 45" fill="#4ade80"/>
+    <!-- Right Leaf -->
+    <path d="M 44 60 Q 65 55 70 40 Q 55 40 44 60" fill="#4ade80"/>
+    <defs>
+      <linearGradient id="moonGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#fde047"/>
+        <stop offset="100%" stop-color="#eab308"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
+</div>
+          </a>
+          <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">Leading the way in sustainable engineering and modern construction practices. Dedicated to growth and environmental responsibility.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-icon" title="Instagram - Coming Soon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-icon" title="YouTube - Coming Soon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.42 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.42-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Our Mission</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="projects.html">Latest Projects</a></li>
+            <li><a href="credentials.html">Credentials</a></li>
+          </ul>
+        </div>
+                <div class="footer-col">
+          <h4>Expertise</h4>
+          <ul>
+            <li>Construction/ Renovation</li>
+            <li>Complete Plumbing and Sanitary System</li>
+            <li>Complete Fire Protection System/ AFSS</li>
+            <li>Complete Electrical System</li>
+            <li>Shop Drawings and As-built Plan</li>
+            <li>Project Management</li>
+            <li>Hazard Identification, Risk Assessment, and Control (HIRAC)</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul style="gap: 1.5rem;">
+            <li style="display: flex; gap: 1rem; align-items: flex-start;"><i data-lucide="map-pin" style="margin-top: 3px;"></i> <div>Lallana Street, Barangay 93, Tondo, Manila, Philippines, 1012</div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <div><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a> <small style="display: block; font-size: 0.75rem; color: #4ade80;">Available on Viber</small></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="mail"></i> <div><a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="color: inherit; text-decoration: none;">crecerpacservices@gmail.com</a></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="clock"></i> <div>Mon - Fri: 8:00 AM - 6:00 PM</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Crecer. All Rights Reserved.</p>
+        <div style="display: flex; gap: 2rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
