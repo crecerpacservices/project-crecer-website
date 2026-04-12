@@ -45,6 +45,31 @@
       .services-hero h1 { font-size: 2.5rem; }
       .ready-content h2 { font-size: 2rem; }
     }
+
+    /* Technical Lifecycle Workflow */
+    .technical-lifecycle { background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 3rem; margin-top: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .tl-header { margin-bottom: 3rem; text-align: left; }
+    .tl-header h2 { font-size: 1.5rem; color: var(--clr-yellow); text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .tl-header p { font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.85); max-width: 800px; }
+    .tl-stepper { display: flex; align-items: flex-start; justify-content: space-between; position: relative; }
+    .tl-step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 2; transition: transform 0.3s ease; }
+    .tl-step:hover { transform: translateY(-5px); }
+    .tl-step-icon { width: 60px; height: 60px; background: rgba(31, 138, 76, 0.2); border: 2px solid var(--clr-green); color: var(--clr-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(31, 138, 76, 0.4); }
+    .tl-step:hover .tl-step-icon { background: var(--clr-green); color: white; box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); border-color: var(--clr-yellow); }
+    .tl-step-content { position: relative; width: 100%; }
+    .tl-step-num { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: -30px; left: 50%; transform: translateX(-50%); z-index: -1; }
+    .tl-step h4 { font-size: 0.95rem; color: white; font-weight: 700; line-height: 1.4; margin: 0 auto; max-width: 140px; }
+    .tl-connector { flex: 1; height: 2px; background: linear-gradient(90deg, var(--clr-green) 0%, rgba(251, 191, 36, 0.5) 100%); margin-top: 30px; opacity: 0.6; }
+
+    @media (max-width: 1024px) {
+      .tl-stepper { flex-direction: column; align-items: flex-start; gap: 2.5rem; position: relative; }
+      .tl-step { flex-direction: row; text-align: left; align-items: center; gap: 1.5rem; width: 100%; }
+      .tl-step-icon { margin-bottom: 0; flex-shrink: 0; }
+      .tl-step h4 { max-width: none; margin: 0; }
+      .tl-step-num { left: auto; right: 0; top: 50%; transform: translateY(-50%); font-size: 3rem; }
+      .tl-connector { display: none; }
+      .tl-stepper::before { content: ''; position: absolute; top: 30px; bottom: 30px; left: 30px; width: 2px; background: var(--clr-green); z-index: 1; opacity: 0.3; }
+    }
   </style>
 </head>
 <body>
@@ -81,18 +106,62 @@
       <h1>Our Services</h1>
       <p style="margin-bottom: 2.5rem;">Specialized engineering and construction solutions delivered with precision and industrial excellence.</p>
       
-      <!-- SYSTEM DEPTH LOGIC (Abstracted) -->
-      <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1.5rem; max-width: 600px; border-left: 3px solid var(--clr-yellow);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-           <span style="font-size: 0.75rem; font-weight: 800; color: var(--clr-yellow); text-transform: uppercase; letter-spacing: 0.5px;">Technical Lifecycle</span>
-           <i data-lucide="layers" style="width: 16px; color: var(--clr-yellow);"></i>
+      <!-- TECHNICAL LIFECYCLE SECTION -->
+      <div class="technical-lifecycle reveal">
+        <div class="tl-header">
+          <h2><i data-lucide="layers" class="tl-icon-main"></i> Technical Lifecycle</h2>
+          <p>Our lifecycle integrates rapid procurement, high-accuracy shop drawings, and disciplined site execution — delivering fast-track deployment with zero rework and full system reliability.</p>
         </div>
-        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
-          <div style="flex: 1; height: 4px; background: var(--clr-yellow); border-radius: 2px;"></div>
-          <div style="flex: 1; height: 4px; background: var(--clr-yellow); border-radius: 2px;"></div>
-          <div style="flex: 1; height: 4px; background: rgba(251, 191, 36, 0.2); border-radius: 2px;"></div>
+        
+        <div class="tl-stepper">
+          <div class="tl-step">
+            <div class="tl-step-icon"><i data-lucide="compass"></i></div>
+            <div class="tl-step-content">
+              <span class="tl-step-num">01</span>
+              <h4>Planning & Design Coordination</h4>
+            </div>
+          </div>
+          
+          <div class="tl-connector"></div>
+          
+          <div class="tl-step">
+            <div class="tl-step-icon"><i data-lucide="pen-tool"></i></div>
+            <div class="tl-step-content">
+              <span class="tl-step-num">02</span>
+              <h4>Shop Drawings & Tech Doc</h4>
+            </div>
+          </div>
+          
+          <div class="tl-connector"></div>
+          
+          <div class="tl-step">
+            <div class="tl-step-icon"><i data-lucide="package-check"></i></div>
+            <div class="tl-step-content">
+              <span class="tl-step-num">03</span>
+              <h4>Procurement & Material Control</h4>
+            </div>
+          </div>
+          
+          <div class="tl-connector"></div>
+          
+          <div class="tl-step">
+            <div class="tl-step-icon"><i data-lucide="hard-hat"></i></div>
+            <div class="tl-step-content">
+              <span class="tl-step-num">04</span>
+              <h4>Installation & Site Execution</h4>
+            </div>
+          </div>
+          
+          <div class="tl-connector"></div>
+          
+          <div class="tl-step">
+            <div class="tl-step-icon"><i data-lucide="check-square"></i></div>
+            <div class="tl-step-content">
+              <span class="tl-step-num">05</span>
+              <h4>Testing, Commissioning & Handover</h4>
+            </div>
+          </div>
         </div>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.5; margin-bottom: 0;">Our methodology integrates rapid procurement and high-accuracy shop-drawing workflows to ensure zero-delay site deployment.</p>
       </div>
 
     </div>
