@@ -18,32 +18,59 @@
     .services-hero h1 { font-size: 3.5rem; color: white; display: inline-block; border-bottom: 4px solid var(--clr-yellow); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
     .services-hero p { font-size: 1.1rem; max-width: 600px; color: rgba(255,255,255,0.9); }
     
-    .services-grid-page { padding: 6rem 0; background: var(--clr-light); }
-    .sg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-    .sg-card { padding: 3rem; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: var(--transition); background: white; }
-    .sg-card.glass-card { background: var(--glass-dark); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); }
-    .sg-icon { width: 40px; height: 40px; color: var(--clr-green-dark); margin-bottom: 1.5rem; }
-    .sg-card h3 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--clr-heading); }
-    .sg-card p { font-size: 0.95rem; color: var(--clr-text); margin-bottom: 2rem; }
-    .sg-features { margin-bottom: 2.5rem; flex-grow: 1; }
-    .sg-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.85rem; color: var(--clr-heading); }
-    .sg-item i { color: var(--clr-yellow); width: 18px; flex-shrink: 0; }
-    .sg-card .btn { width: 100%; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    /* Premium Service Detail Blocks */
+    .services-main { padding: 4rem 0 6rem; background: var(--clr-light); }
+    .service-block { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.04); margin-bottom: 4rem; border: 1px solid var(--clr-gray-border); display: flex; flex-direction: column; transition: transform 0.4s ease; }
+    .service-block:hover { box-shadow: 0 25px 50px rgba(0,0,0,0.08); border-color: rgba(31, 138, 76, 0.4); }
+    .service-block-header { padding: 3rem; background: var(--clr-dark-green); color: white; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; border-bottom: 4px solid var(--clr-yellow); }
+    .sbh-left { display: flex; align-items: center; gap: 1.5rem; }
+    .sb-icon-box { width: 70px; height: 70px; background: rgba(255,255,255,0.05); border: 2px solid var(--clr-yellow); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--clr-yellow); flex-shrink: 0; }
+    .sbh-left h3 { font-size: 2.2rem; color: white; margin-bottom: 0.25rem; }
+    .sb-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.85); font-weight: 400; max-width: 600px; line-height: 1.5; margin: 0; }
+    .sbh-right .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: white; padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; transition: 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+    .sbh-right .btn-outline:hover { border-color: var(--clr-yellow); color: var(--clr-dark-green); background: var(--clr-yellow); }
     
-    .ready-banner { background: var(--clr-dark-green); padding: 6rem 0; color: white; text-align: center; position: relative; overflow: hidden; }
-    .ready-circle-1 { position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--clr-yellow); border-radius: 50%; opacity: 0.9; }
-    .ready-circle-2 { position: absolute; bottom: -50px; left: -50px; width: 150px; height: 150px; background: var(--clr-yellow); border-radius: 50%; opacity: 0.9; }
-    .ready-content { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; }
-    .ready-content h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
-    .ready-content p { color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; font-size: 1.1rem; }
+    .service-block-body { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 3rem; padding: 4rem 3rem; }
+    .sbb-col h4 { font-size: 0.95rem; color: var(--clr-heading); border-bottom: 1px solid var(--clr-gray-border); padding-bottom: 0.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+    .sbb-col h4 i { color: var(--clr-green); width: 18px; }
+    .sbb-list { list-style: none; padding: 0; margin: 0; }
+    .sbb-list li { position: relative; padding-left: 1.5rem; margin-bottom: 1rem; color: var(--clr-text); font-size: 0.95rem; line-height: 1.5; }
+    .sbb-list li::before { content: ''; position: absolute; left: 0; top: 0.45rem; width: 6px; height: 6px; background: var(--clr-green); border-radius: 50%; opacity: 0.7; }
+    
+    .sbb-value-box { background: rgba(31, 138, 76, 0.04); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(31, 138, 76, 0.1); height: 100%; display: flex; flex-direction: column; }
+    .sbb-value-box h4 i { color: var(--clr-yellow); }
+    .sbb-value-text { font-size: 0.95rem; color: var(--clr-text); line-height: 1.6; margin-bottom: 1rem; }
+    .sbb-value-highlight { font-weight: 700; color: var(--clr-dark-green); margin-top: auto; display: inline-block; background: white; padding: 0.5rem 1rem; border-left: 3px solid var(--clr-yellow); font-size: 0.85rem; border-radius: 0 4px 4px 0; }
+    
+    /* Why Choose Us Section */
+    .why-us { padding: 6rem 0; background: var(--clr-dark-green); color: white; text-align: center; }
+    .why-header h2 { font-size: 2.5rem; margin-bottom: 1rem; color: white; }
+    .why-header p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; }
+    .why-us-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
+    .wu-card { background: rgba(255,255,255,0.03); padding: 2.5rem 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; text-align: center; }
+    .wu-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-5px); border-color: var(--clr-yellow); }
+    .wu-icon { width: 50px; height: 50px; color: var(--clr-yellow); margin: 0 auto 1.5rem; }
+    .wu-card h4 { font-size: 1rem; color: white; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; display: inline-block; }
+    .wu-card p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 0; }
+
+    /* Ready CTA Polish */
+    .ready-banner { background: var(--clr-light); padding: 6rem 0; text-align: center; }
+    .ready-cta-box { max-width: 900px; margin: 0 auto; background: var(--clr-green-dark); padding: 5rem 3rem; border-radius: 16px; color: white; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
+    .ready-cta-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--clr-yellow); }
+    .ready-cta-box h2 { font-size: 2.5rem; color: white; margin-bottom: 1.5rem; line-height: 1.2; }
+    .ready-cta-box p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; max-width: 600px; margin-inline: auto; line-height: 1.6; }
+
     @media (max-width: 1024px) {
       .services-hero h1 { font-size: 3rem; }
-      .sg-grid { grid-template-columns: 1fr; }
-      .sg-card { padding: 2rem; }
+      .service-block-body { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem; }
+      .why-us-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .services-hero h1 { font-size: 2.5rem; }
-      .ready-content h2 { font-size: 2rem; }
+      .sbh-left { flex-direction: column; align-items: flex-start; text-align: left; }
+      .why-us-grid { grid-template-columns: 1fr; }
+      .ready-cta-box { padding: 3rem 1.5rem; }
+      .ready-cta-box h2 { font-size: 2rem; }
     }
 
     /* Technical Lifecycle Workflow */
@@ -167,74 +194,221 @@
     </div>
   </section>
 
-  <!-- SERVICES GRID -->
-  <section class="services-grid-page">
-    <div class="container sg-grid">
-      <div class="sg-card glass-card reveal">
-        <i data-lucide="wrench" class="sg-icon" style="color: var(--clr-yellow);"></i>
-        <h3 style="color: white;">Plumbing</h3>
-        <p style="color: rgba(255,255,255,0.7);">Full-precision plumbing and sanitary infrastructure for mission-critical industrial assets.</p>
-        
-
-        <div class="sg-features">
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Hot & cold water supply systems</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Wastewater & sanitary systems</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Storm drainage & RC pipes</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Pumps & tanks installation</div>
+  <!-- PRIMARY SERVICES DETAIL SECTION -->
+  <section class="services-main">
+    <div class="container">
+      
+      <!-- SERVICE 1: PLUMBING -->
+      <div class="service-block reveal">
+        <div class="service-block-header">
+          <div class="sbh-left">
+            <div class="sb-icon-box"><i data-lucide="wrench" style="width: 32px; height: 32px;"></i></div>
+            <div>
+              <h3>Plumbing & Sanitary Systems</h3>
+              <p class="sb-subtitle">Full-precision fluid conveyance and absolute municipal compliance for mission-critical industrial assets.</p>
+            </div>
+          </div>
+          <div class="sbh-right">
+            <a href="contact.html" class="btn-outline">Consult Engineers <i data-lucide="arrow-right" style="width:16px;"></i></a>
+          </div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
+        <div class="service-block-body">
+          <div class="sbb-col">
+            <h4><i data-lucide="list"></i> Execution Scope</h4>
+            <ul class="sbb-list">
+              <li>Complete Hot & Cold Water Supply systems architecture.</li>
+              <li>Heavy-capacity sanitary networks and zero-leak wastewater management.</li>
+              <li>High-volume storm drainage and reinforced concrete (RC) pipe installations.</li>
+              <li>Precision sizing and deployment of industrial pumps, cisterns, and elevated tanks.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <h4><i data-lucide="cpu"></i> Technical Capability</h4>
+            <ul class="sbb-list">
+              <li>Advanced flow-rate calibration and hydro-testing protocols.</li>
+              <li>Full 3D/BIM-ready Shop Drawing execution to prevent structural clash.</li>
+              <li>Strict adherence to the National Plumbing Code of the Philippines.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <div class="sbb-value-box">
+              <h4><i data-lucide="trending-up"></i> Client ROI & Result</h4>
+              <p class="sbb-value-text">Prevent compounding structural damage by deploying systems engineered to handle maximum peak-load stresses natively. We eliminate downstream repair costs by ensuring absolute compliance upon preliminary inspection.</p>
+              <span class="sbb-value-highlight">Zero-Defect Turnover Standard</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="sg-card glass-card reveal">
-        <i data-lucide="flame" class="sg-icon" style="color: var(--clr-yellow);"></i>
-        <h3 style="color: white;">Fire Protection</h3>
-        <p style="color: rgba(255,255,255,0.7);">Industrial-grade life safety systems engineered for zero-failure performance under stress.</p>
-        <div class="sg-features">
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Automatic fire sprinkler systems</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Testing & inspection (Standard)</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Fire evacuation plans & schematics</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Pumps & tanks installation</div>
+      <!-- SERVICE 2: FIRE PROTECTION -->
+      <div class="service-block reveal">
+        <div class="service-block-header" style="background: #1e293b; border-bottom-color: #ef4444;">
+          <div class="sbh-left">
+            <div class="sb-icon-box" style="border-color: #ef4444; color: #ef4444;"><i data-lucide="flame" style="width: 32px; height: 32px;"></i></div>
+            <div>
+              <h3>Fire Protection (AFSS)</h3>
+              <p class="sb-subtitle">Industrial-grade life safety systems engineered for zero-failure performance under catastrophic physical stress.</p>
+            </div>
+          </div>
+          <div class="sbh-right">
+            <a href="contact.html" class="btn-outline">Secure Your Facility <i data-lucide="arrow-right" style="width:16px;"></i></a>
+          </div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
-      </div>
-      <div class="sg-card glass-card reveal">
-        <i data-lucide="zap" class="sg-icon" style="color: var(--clr-yellow);"></i>
-        <h3 style="color: white;">Electrical</h3>
-        <p style="color: rgba(255,255,255,0.7);">Advanced electrical and auxiliary system architecture for robust commercial power distribution.</p>
-        <div class="sg-features">
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Load scheduling & system design</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Panel boards & circuit installation</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> System commissioning & testing</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Lighting & auxiliary infrastructures</div>
+        <div class="service-block-body">
+          <div class="sbb-col">
+            <h4 style="border-bottom-color: #ef4444;"> <i data-lucide="list" style="color:#ef4444;"></i> Execution Scope</h4>
+            <ul class="sbb-list">
+              <li>End-to-end design and installation of Automatic Fire Sprinkler Systems (AFSS).</li>
+              <li>Rigorous pressure testing and municipal code inspection assistance.</li>
+              <li>Development of certified evacuation plans, hydrants, and localized schematics.</li>
+              <li>Dedicated fire pump calibration and suppression-tank commissioning.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <h4 style="border-bottom-color: #ef4444;"> <i data-lucide="cpu" style="color:#ef4444;"></i> Technical Capability</h4>
+            <ul class="sbb-list">
+              <li>BFP-compliant calculations mapped directly onto verified structural framing.</li>
+              <li>High-gauge structural welding and corrosion-resistant coupling systems.</li>
+              <li>Seamless alignment with auxiliary fire alarms and electrical trips.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <div class="sbb-value-box" style="background: rgba(239, 68, 68, 0.04); border-color: rgba(239, 68, 68, 0.1);">
+              <h4><i data-lucide="trending-up" style="color:#ef4444;"></i> Client ROI & Result</h4>
+              <p class="sbb-value-text">Protect your multimillion-dollar physical assets and human capital with a system guaranteed to trigger on baseline. Smoothly conquer stringent government occupancy permitting via immediately green-lit inspections.</p>
+              <span class="sbb-value-highlight" style="border-left-color: #ef4444; color: #b91c1c;">100% Life-Safety Compliance Guarantee</span>
+            </div>
+          </div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
       </div>
 
-      <div class="sg-card glass-card reveal">
-        <i data-lucide="hard-hat" class="sg-icon" style="color: var(--clr-yellow);"></i>
-        <h3 style="color: white;">Civil Works & More Related Services</h3>
-        <p style="color: rgba(255,255,255,0.7);">Full-scale technical site support, modifications, installation, repairs, and project management oversight.</p>
-        <div class="sg-features">
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Demolition & hauling</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Commercial improvements</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Project management & QA/QC</div>
-          <div class="sg-item" style="color: rgba(255,255,255,0.9);"><i data-lucide="check-circle" style="color: var(--clr-yellow);"></i> Hazard Identification (HIRAC)</div>
+      <!-- SERVICE 3: ELECTRICAL -->
+      <div class="service-block reveal">
+        <div class="service-block-header">
+          <div class="sbh-left">
+            <div class="sb-icon-box"><i data-lucide="zap" style="width: 32px; height: 32px;"></i></div>
+            <div>
+              <h3>Advanced Electrical</h3>
+              <p class="sb-subtitle">Robust commercial power distribution designed around strict load schedules and total energy continuity.</p>
+            </div>
+          </div>
+          <div class="sbh-right">
+            <a href="contact.html" class="btn-outline">Power Your Project <i data-lucide="arrow-right" style="width:16px;"></i></a>
+          </div>
         </div>
-        <a href="contact.html" class="btn btn-yellow">Inquire Discipline</a>
+        <div class="service-block-body">
+          <div class="sbb-col">
+            <h4><i data-lucide="list"></i> Execution Scope</h4>
+            <ul class="sbb-list">
+              <li>Smarter load scheduling and scalable primary distribution designs.</li>
+              <li>Heavy-duty panel boards, breakers, and high-voltage circuit channeling.</li>
+              <li>Complete structural roughing-ins, layout wiring, and continuity testing.</li>
+              <li>Integration of architectural lighting and essential auxiliary lines.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <h4><i data-lucide="cpu"></i> Technical Capability</h4>
+            <ul class="sbb-list">
+              <li>PEC-certified structural wiring methodologies and conduit protections.</li>
+              <li>Precise load-balancing to halt short-circuit and overheating risks natively.</li>
+              <li>As-built mapping for future-proof maintenance ease.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <div class="sbb-value-box">
+              <h4><i data-lucide="trending-up"></i> Client ROI & Result</h4>
+              <p class="sbb-value-text">Prevent catastrophic downtime and expensive operational delays by relying on heavy-duty, meticulously balanced power routing. Enhance long-term utility efficiency and completely nullify fire-ignition hazards linked to compromised wiring.</p>
+              <span class="sbb-value-highlight">Optimized Heavy-Load Delivery</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- SERVICE 4: CIVIL & SUPPORT -->
+      <div class="service-block reveal">
+        <div class="service-block-header">
+          <div class="sbh-left">
+            <div class="sb-icon-box"><i data-lucide="hard-hat" style="width: 32px; height: 32px;"></i></div>
+            <div>
+              <h3>Civil Works & General Support</h3>
+              <p class="sb-subtitle">Full-spectrum technical site intervention, rapid modification operations, and expert overarching QHSE management.</p>
+            </div>
+          </div>
+          <div class="sbh-right">
+            <a href="contact.html" class="btn-outline">Deploy Operations <i data-lucide="arrow-right" style="width:16px;"></i></a>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <div class="sbb-col">
+            <h4><i data-lucide="list"></i> Execution Scope</h4>
+            <ul class="sbb-list">
+              <li>Controlled operational demolition, large-scale hauling, and excavation.</li>
+              <li>Commercial architectural improvements, drywall execution, and repaints.</li>
+              <li>Dedicated Project Management execution and strict QA/QC surveillance.</li>
+              <li>Proactive Hazard Identification and Risk Assessments (HIRAC).</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <h4><i data-lucide="cpu"></i> Technical Capability</h4>
+            <ul class="sbb-list">
+              <li>Heavy-machinery management and municipal debris-clearance protocols.</li>
+              <li>Integration of certified safety officers overseeing daily high-risk work.</li>
+              <li>Seamless multi-discipline coordination avoiding cross-contractor bottlenecks.</li>
+            </ul>
+          </div>
+          <div class="sbb-col">
+            <div class="sbb-value-box">
+              <h4><i data-lucide="trending-up"></i> Client ROI & Result</h4>
+              <p class="sbb-value-text">Accelerate the baseline phase of building by leaving structural stripping to experts. By leveraging our PM frameworks, you eradicate deadly site delays, ensuring the actual physical build runs parallel to the predicted aggressive timeline.</p>
+              <span class="sbb-value-highlight">Zero-Incident Site Safety Standard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- End of Services -->
   </section>
 
-  <!-- READY BANNER -->
-  <section class="ready-banner">
-    <div class="ready-circle-1"></div>
-    <div class="ready-circle-2"></div>
-    <div class="container ready-content">
-      <h2>Ready to start your next project?</h2>
-      <p>Consult with our expert engineering team for specialized technical analysis and project implementation.</p>
-      <a href="contact.html" class="btn btn-yellow">Speak With An Expert</a>
+  <!-- WHY CHOOSE US -->
+  <section class="why-us">
+    <div class="container">
+      <div class="why-header reveal">
+        <h2>The Crecer Differential</h2>
+        <p>Why flagship clients select us to oversee their most mathematically demanding infrastructural timelines.</p>
+      </div>
+      <div class="why-us-grid reveal">
+        <div class="wu-card">
+          <i data-lucide="shield-check" class="wu-icon"></i>
+          <h4>Code-Defiant Reliability</h4>
+          <p>We do not guess. Every system is installed against rigorous national engineering code, ensuring 100% regulatory compliance prior to municipal handover.</p>
+        </div>
+        <div class="wu-card">
+          <i data-lucide="target" class="wu-icon"></i>
+          <h4>Precision Documentation</h4>
+          <p>Expect hyper-accurate shop drawings and final as-built plans. We eliminate on-site ambiguity, allowing structural integration to move safely at speed.</p>
+        </div>
+        <div class="wu-card">
+          <i data-lucide="clock-4" class="wu-icon"></i>
+          <h4>Timeline Domination</h4>
+          <p>We anticipate supply chain and manpower bottlenecks before they happen. Our methodologies are built to deliver and activate systems ahead of the redline.</p>
+        </div>
+        <div class="wu-card">
+          <i data-lucide="users" class="wu-icon"></i>
+          <h4>Tested Collective Core</h4>
+          <p>Our squad isn't loosely assembled. Our leadership and deployment teams have successfully engineered commercial infrastructure together for decades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READY BANNER (REFINED CTA) -->
+  <section class="ready-banner reveal">
+    <div class="container">
+      <div class="ready-cta-box">
+        <h2>Secure Your Infrastructure Right Now</h2>
+        <p>Stop settling for disorganized contracting that bleeds budgets through prolonged corrections. Partner with an engineering force calibrated strictly for precision and impact.</p>
+        <a href="contact.html" class="btn btn-yellow" style="font-size: 1.1rem; padding: 1rem 2.5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 800;">Consult Engineering Leadership</a>
+      </div>
     </div>
   </section>
 
