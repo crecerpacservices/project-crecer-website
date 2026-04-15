@@ -115,6 +115,18 @@
     </div>
   </section>
 
+  <!-- FILTERS -->
+  <section style="padding: 4rem 0 0; background: var(--clr-light);">
+    <div class="container">
+      <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="mepf">MEPF Systems</button>
+        <button class="filter-btn" data-filter="renovation">Renovation</button>
+        <button class="filter-btn" data-filter="commercial-improvements">Commercial Improvements</button>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURED PROJECTS -->
   <section class="featured-section">
     <div class="container">
@@ -124,7 +136,7 @@
       </div>
 
       <!-- Project 1: Subic Hotel -->
-      <div class="featured-card reveal">
+      <div class="featured-card reveal filter-item mepf commercial-improvements">
         <div class="fc-image-grid">
           <div class="fc-main-img">
             <div style="text-align: center;"><i data-lucide="image" style="width: 40px; margin-bottom: 0.5rem; display: inline-block;"></i><br>Primary Site Progress Photo</div>
@@ -164,7 +176,7 @@
       </div>
 
       <!-- Project 2: PULP Office -->
-      <div class="featured-card reveal" style="direction: rtl;">
+      <div class="featured-card reveal filter-item mepf renovation">
         <div class="fc-image-grid" style="padding: 2rem 2rem 2rem 0;">
           <div class="fc-main-img">
             <div style="text-align: center;"><i data-lucide="image" style="width: 40px; margin-bottom: 0.5rem; display: inline-block;"></i><br>Main Corporate HQ Photo</div>
@@ -215,7 +227,7 @@
       </div>
       
       <div class="ap-grid reveal">
-        <div class="ap-card">
+        <div class="ap-card filter-item mepf">
           <div class="ap-img"><i data-lucide="image" style="width: 30px;"></i></div>
           <div class="ap-content">
             <span class="ap-tag">Manufacturing Facility</span>
@@ -223,7 +235,7 @@
             <p>Executed high-efficiency climate and exhaust mechanisms for a large-scale industrial plant ensuring stringent occupational air quality standards.</p>
           </div>
         </div>
-        <div class="ap-card">
+        <div class="ap-card filter-item mepf">
           <div class="ap-img"><i data-lucide="image" style="width: 30px;"></i></div>
           <div class="ap-content">
             <span class="ap-tag">Commercial Retail</span>
@@ -231,7 +243,7 @@
             <p>Designed and installed code-compliant automatic fire sprinkler systems (AFSS) for a retail expansion, passing immediate regulatory inspection.</p>
           </div>
         </div>
-        <div class="ap-card">
+        <div class="ap-card filter-item renovation commercial-improvements">
           <div class="ap-img"><i data-lucide="image" style="width: 30px;"></i></div>
           <div class="ap-content">
             <span class="ap-tag">Civil Engineering</span>
@@ -348,6 +360,29 @@
       });
     }, observerOptions);
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Filter Logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterItems = document.querySelectorAll('.filter-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        filterItems.forEach(item => {
+          if (filterValue === 'all' || item.classList.contains(filterValue)) {
+            item.style.display = item.classList.contains('fc-image-grid') || item.classList.contains('featured-card') ? 'grid' : 'block';
+            setTimeout(() => item.style.opacity = '1', 10);
+          } else {
+            item.style.display = 'none';
+            item.style.opacity = '0';
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
