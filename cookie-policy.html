@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png">
+  <title>Cookie Policy | Crecer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .legal-hero { padding: 8rem 0 4rem; background: var(--clr-dark-green); color: white; border-bottom: 4px solid var(--clr-yellow); }
+    .legal-content { padding: 6rem 0; background: var(--clr-light); }
+    .legal-box { max-width: 800px; margin: 0 auto; background: white; padding: 4rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .legal-box h2 { color: var(--clr-green); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem; }
+    .legal-box p { color: var(--clr-text); margin-bottom: 1.5rem; line-height: 1.8; }
+    .legal-box ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .legal-box li { color: var(--clr-text); margin-bottom: 0.5rem; list-style: disc; }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <div style="display: flex; align-items: center;">
+          <img src="assets/logo-transparent.png" alt="Crecer Logo" width="45" height="45" style="object-fit: contain;">
+          <span style="font-family: 'Outfit', sans-serif; font-weight: 800; color: #fbbf24; font-size: 1.8rem; margin-left: 0.5rem; letter-spacing: 0.5px;">Crecer</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="credentials.html">Credentials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn-yellow">Request a Quote</a>
+    </div>
+  </header>
+
+  <section class="legal-hero">
+    <div class="container">
+      <span style="display: inline-block; background: rgba(251,191,36,0.1); color: var(--clr-yellow); padding: 0.3rem 1rem; border-radius: 4px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">Protocol: 03-C</span>
+      <h1>Cookie Policy</h1>
+      <p style="color: rgba(255,255,255,0.7);">Website Performance & Analytics Cookies</p>
+    </div>
+  </section>
+
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-box reveal">
+        <p>This policy explains how we use cookies to provide a smooth, high-performance experience on the Crecer website.</p>
+
+        <h2>1. What are Cookies?</h2>
+        <p>Cookies are small text files stored on your browser that help our website recognize your device and remember specific preferences for future visits.</p>
+
+        <h2>2. Essential Cookies</h2>
+        <p>We use functional cookies to ensure critical site features work correctly, including:</p>
+        <ul>
+          <li><strong>Navigation:</strong> Maintaining your path across our multi-page portfolio.</li>
+          <li><strong>Security:</strong> Protecting our contact form from automated spam and bot activity.</li>
+          <li><strong>Performance:</strong> Ensuring that styles and fonts load at the speed required for a premium experience.</li>
+        </ul>
+
+        <h2>3. Local Storage</h2>
+        <p>We may use browser local storage to save temporary site preferences, ensuring you don't have to re-read introductory information on every visit.</p>
+
+        <h2>4. Managing Your Preferences</h2>
+        <p>Users can adjust their browser settings to block or delete cookies. However, please note that disabling essential cookies may impact the technical functionality of our inquiry forms.</p>
+
+        <p style="margin-top: 3rem; font-size: 0.85rem; color: #9ca3af; border-top: 1px solid #f1f5f9; padding-top: 2rem;">Last Updated: April 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Crecer. All Rights Reserved.</p>
+        <div style="display: flex; gap: 2rem;">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
