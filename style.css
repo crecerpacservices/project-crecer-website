@@ -148,7 +148,7 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
 .cred-icon { width: 50px; height: 50px; background: rgba(31, 138, 76, 0.1); color: var(--clr-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
 .cred-card p { font-weight: 600; font-size: 0.85rem; color: var(--clr-heading); }
 
-.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
 .service-card { background: var(--clr-white); padding: 2.5rem 1.5rem; border-radius: var(--radius); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: var(--transition); }
 .service-card:hover { box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1); transform: translateY(-5px); }
 .service-icon { width: 60px; height: 60px; background: rgba(31, 138, 76, 0.1); color: var(--clr-green); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
