@@ -284,3 +284,12 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
 .vault-icon { width: 45px; height: 45px; background: rgba(251, 191, 36, 0.1); color: var(--clr-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
 .vault-card h3 { color: white; margin-bottom: 1rem; font-size: 1.15rem; }
 .vault-card p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0; }
+
+@media (max-width: 1024px) {
+  .vault-grid { grid-template-columns: repeat(2, 1fr); }
+  .lean-compare { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .vault-grid { grid-template-columns: 1fr; }
+}

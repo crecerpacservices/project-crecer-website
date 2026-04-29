@@ -47,18 +47,24 @@
     .leadership { padding: 8rem 0; background: var(--clr-dark-green); text-align: center; }
     .cta-banner { background: linear-gradient(135deg, var(--clr-green), var(--clr-dark-green)); padding: 5rem 0; text-align: center; border-radius: 16px; margin: 4rem 2rem 8rem; color: white; border: 1px solid rgba(255,255,255,0.1); }
     .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
+    .fv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .exec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .identity-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
     @media (max-width: 1024px) {
       .about-hero h1 { font-size: 3rem; }
       .values-grid { grid-template-columns: repeat(2, 1fr); }
       .journey-flex { grid-template-columns: 1fr; gap: 3rem; }
       .founding-vision .fv-inner { grid-template-columns: 1fr; }
       .founding-vision .fv-divider { display: none; }
+      .identity-grid { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 768px) {
       .about-hero h1 { font-size: 2.25rem; }
       .values-grid { grid-template-columns: 1fr; }
       .check-list { grid-template-columns: 1fr; }
       .leadership { padding: 4rem 0; }
+      .fv-cards { grid-template-columns: 1fr; }
+      .exec-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -123,7 +129,7 @@
           <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8;">While the company is a fresh name in the industry, our expertise is anything but new. We were trained by licensed professionals, industry veterans, and the National President of PSMPE.</p>
         </div>
         <div class="fv-divider"></div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="fv-cards">
           <div class="glass-card" style="padding: 1.5rem;">
             <i data-lucide="shield" style="color: var(--clr-yellow); margin-bottom: 0.75rem;"></i>
             <p style="font-weight: 800; color: white; font-size: 0.9rem;">Quality Over Speed</p>
@@ -155,7 +161,7 @@
         <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--clr-yellow); display: block; margin-bottom: 1rem;">The Crecer Advantage</span>
         <h2 style="font-size: 2.5rem; color: white;">Execution Without Layers</h2>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+      <div class="exec-grid">
         <div class="glass-card" style="padding: 2.5rem; border-left: 4px solid var(--clr-yellow);">
           <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
             <div style="color: var(--clr-yellow);"><i data-lucide="zap" style="width: 32px; height: 32px;"></i></div>
@@ -246,7 +252,7 @@
   <!-- IDENTITY -->
   <section class="identity" style="padding: 6rem 0; background: var(--clr-dark-green);">  
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start;">
+      <div class="identity-grid">
         <div>
           <h2 style="font-size: 2.5rem; color: var(--clr-yellow); margin-bottom: 2rem;">Our Identity</h2>
           <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255,255,255,0.85);">We chose the name <strong style="color: white;">"Crecer"</strong> — a Spanish word meaning <em>"to grow"</em> — because it is what life demands. Not the easy kind, but the kind that breaks the shell, stretches the roots, and reaches toward the light.</p>
@@ -618,7 +624,7 @@
       <h2>Ready to Start Your Journey With Us?</h2>
       <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Join dozens of satisfied partners and let's build something exceptional together. Our team is ready to provide the expertise you need.</p>
       <div style="display: flex; gap: 1rem; justify-content: center;">
-        <a href="#" class="btn btn-outline" style="background-color: white; color: var(--clr-green); border: none;">Work With Us</a>
+        <a href="contact.html" class="btn btn-outline" style="background-color: white; color: var(--clr-green); border: none;">Work With Us</a>
         <a href="projects.html" class="btn btn-outline">Download Portfolio</a>
       </div>
     </div>
