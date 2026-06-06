@@ -97,6 +97,22 @@
       .tl-connector { display: none; }
       .tl-stepper::before { content: ''; position: absolute; top: 30px; bottom: 30px; left: 30px; width: 2px; background: var(--clr-green); z-index: 1; opacity: 0.3; }
     }
+
+    /* Core Packages & Scales Styling */
+    .packages-section { padding: 6rem 0 4rem; background: var(--clr-light); border-bottom: 1px solid var(--clr-gray-border); }
+    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    .package-card { background: white; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.01); }
+    .package-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: rgba(31, 138, 76, 0.3); }
+    .package-card-icon { width: 50px; height: 50px; background: rgba(31, 138, 76, 0.06); color: var(--clr-green); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .package-card h3 { font-size: 1.25rem; color: var(--clr-heading); margin-bottom: 0.75rem; font-weight: 700; }
+    .package-card p { font-size: 0.95rem; color: var(--clr-text); line-height: 1.6; margin: 0; }
+    
+    @media (max-width: 1024px) {
+      .packages-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .packages-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -190,7 +206,40 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- CORE SERVICES & PACKAGES -->
+  <section class="packages-section reveal">
+    <div class="container">
+      <div class="section-title" style="margin-bottom: 3rem; text-align: center;">
+        <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--clr-green); display: block; margin-bottom: 1rem;">Service Delivery</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Core Services & Packages</h2>
+        <p style="color: var(--clr-text); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">Strategic, end-to-end solutions tailored to meet demanding residential, commercial, and industrial requirements.</p>
+      </div>
+      
+      <div class="packages-grid">
+        <div class="package-card">
+          <div class="package-card-icon"><i data-lucide="package"></i></div>
+          <h3>Labor & Materials</h3>
+          <p>Complete end-to-end supply and execution. We source high-grade materials and manage the entire installation with skilled workmanship.</p>
+        </div>
+        <div class="package-card">
+          <div class="package-card-icon"><i data-lucide="pen-tool"></i></div>
+          <h3>Design & Build</h3>
+          <p>Comprehensive CAD and SketchUp drafting. We generate detailed floor plans, engineering schematics, and accurate as-built drawings.</p>
+        </div>
+        <div class="package-card">
+          <div class="package-card-icon"><i data-lucide="users"></i></div>
+          <h3>Project Management</h3>
+          <p>Full-service third-party coordination. We handle site facilities, logistics, manpower scheduling, and inventory control for seamless execution.</p>
+        </div>
+        <div class="package-card">
+          <div class="package-card-icon"><i data-lucide="maximize"></i></div>
+          <h3>Project Scales</h3>
+          <p>Versatile deployment. Our teams are fully equipped and certified to execute projects across Residential, Commercial, and Industrial scales.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -198,14 +247,14 @@
   <section class="services-main">
     <div class="container">
       
-      <!-- SERVICE 1: PLUMBING -->
+      <!-- SERVICE 1: PLUMBING & SANITARY -->
       <div class="service-block reveal">
         <div class="service-block-header">
           <div class="sbh-left">
             <div class="sb-icon-box"><i data-lucide="wrench" style="width: 32px; height: 32px;"></i></div>
             <div>
-              <h3>Plumbing & Sanitary Systems</h3>
-              <p class="sb-subtitle">Full-precision fluid conveyance and absolute municipal compliance for mission-critical industrial assets.</p>
+              <h3>Complete Plumbing & Sanitary Systems</h3>
+              <p class="sb-subtitle">Full-cycle fluid conveyance and absolute municipal compliance for mission-critical residential, commercial, and industrial assets.</p>
             </div>
           </div>
           <div class="sbh-right">
@@ -216,24 +265,25 @@
           <div class="sbb-col">
             <h4><i data-lucide="list"></i> Execution Scope</h4>
             <ul class="sbb-list">
-              <li>Complete Hot & Cold Water Supply systems architecture.</li>
-              <li>Heavy-capacity sanitary networks and zero-leak wastewater management.</li>
-              <li>High-volume storm drainage and reinforced concrete (RC) pipe installations.</li>
-              <li>Precision sizing and deployment of industrial pumps, cisterns, and elevated tanks.</li>
+              <li><strong>Water Systems:</strong> Hot/cold water supply, pumps, and tanks.</li>
+              <li><strong>Sanitary & Drainage:</strong> Wastewater disposal, storm drainage, and reinforced concrete piping.</li>
+              <li><strong>Specialty Piping:</strong> FCU (condensate) drains.</li>
+              <li><strong>System Controls:</strong> Control panels, tagging, and schematic mapping.</li>
             </ul>
           </div>
           <div class="sbb-col">
             <h4><i data-lucide="cpu"></i> Technical Capability</h4>
             <ul class="sbb-list">
-              <li>Advanced flow-rate calibration and hydro-testing protocols.</li>
-              <li>Full 3D/BIM-ready Shop Drawing execution to prevent structural clash.</li>
-              <li>Strict adherence to the National Plumbing Code of the Philippines.</li>
+              <li><strong>Full-Cycle Care:</strong> Site assessment, fabrication, installation, troubleshooting, repair, and maintenance.</li>
+              <li>Flow-rate calibration, hydro-testing, and pressure calibration.</li>
+              <li>Detailed 3D/BIM shop drawings to eliminate structural clash.</li>
             </ul>
             <div class="service-badges">
-              <span class="badge">Shop Drawings</span>
-              <span class="badge">As-Built Plans</span>
-              <span class="badge">Hydro-Testing</span>
-              <span class="badge">Commissioning</span>
+              <span class="badge">Water Supply</span>
+              <span class="badge">Sanitary Drainage</span>
+              <span class="badge">FCU Drains</span>
+              <span class="badge">System Controls</span>
+              <span class="badge">Troubleshooting</span>
             </div>
           </div>
           <div class="sbb-col">
@@ -246,14 +296,14 @@
         </div>
       </div>
 
-      <!-- SERVICE 2: FIRE PROTECTION -->
+      <!-- SERVICE 2: FIRE PROTECTION & SUPPRESSION -->
       <div class="service-block reveal">
         <div class="service-block-header" style="background: #1e293b; border-bottom-color: #ef4444;">
           <div class="sbh-left">
             <div class="sb-icon-box" style="border-color: #ef4444; color: #ef4444;"><i data-lucide="flame" style="width: 32px; height: 32px;"></i></div>
             <div>
-              <h3>Fire Protection (AFSS)</h3>
-              <p class="sb-subtitle">Industrial-grade life safety systems engineered for zero-failure performance under catastrophic physical stress.</p>
+              <h3>Complete Fire Protection & Suppression Systems</h3>
+              <p class="sb-subtitle">Industrial-grade life safety and suppression systems engineered for zero-failure performance under catastrophic physical stress.</p>
             </div>
           </div>
           <div class="sbh-right">
@@ -264,26 +314,25 @@
           <div class="sbb-col">
             <h4 style="border-bottom-color: #ef4444;"> <i data-lucide="list" style="color:#ef4444;"></i> Execution Scope</h4>
             <ul class="sbb-list">
-              <li>End-to-end design and installation of Automatic Fire Sprinkler Systems (AFSS).</li>
-              <li>Rigorous pressure testing and municipal code inspection assistance.</li>
-              <li>Development of certified evacuation plans, hydrants, and localized schematics.</li>
-              <li>Dedicated fire pump calibration and suppression-tank commissioning.</li>
+              <li><strong>Suppression:</strong> End-to-end design and installation of Automatic Fire Sprinkler Systems.</li>
+              <li><strong>Safety Layouts:</strong> Fire evacuation planning and route mapping.</li>
+              <li><strong>System Controls:</strong> Control panels, tagging, and schematic mapping.</li>
             </ul>
           </div>
           <div class="sbb-col">
             <h4 style="border-bottom-color: #ef4444;"> <i data-lucide="cpu" style="color:#ef4444;"></i> Technical Capability</h4>
             <ul class="sbb-list">
-              <li>BFP-compliant calculations mapped directly onto verified structural framing.</li>
+              <li><strong>Full-Cycle Care:</strong> Site assessment, fabrication, installation, troubleshooting, repair, and maintenance.</li>
+              <li>Bureau of Fire Protection (BFP) compliance and code-certified pressure testing.</li>
               <li>High-gauge structural welding and corrosion-resistant coupling systems.</li>
-              <li>Seamless alignment with auxiliary fire alarms and electrical trips.</li>
             </ul>
             <div class="service-badges">
               <span class="badge">AFSS Installation</span>
               <span class="badge">BFP Compliance</span>
+              <span class="badge">Evacuation Mapping</span>
               <span class="badge">Pressure Testing</span>
-              <span class="badge">Safety Handover</span>
+              <span class="badge">System Tagging</span>
             </div>
-          </div>
           </div>
           <div class="sbb-col">
             <div class="sbb-value-box" style="background: rgba(239, 68, 68, 0.04); border-color: rgba(239, 68, 68, 0.1);">
@@ -295,14 +344,14 @@
         </div>
       </div>
 
-      <!-- SERVICE 3: ELECTRICAL -->
+      <!-- SERVICE 3: ELECTRICAL, LIGHTING & AUXILIARY -->
       <div class="service-block reveal">
         <div class="service-block-header">
           <div class="sbh-left">
             <div class="sb-icon-box"><i data-lucide="zap" style="width: 32px; height: 32px;"></i></div>
             <div>
-              <h3>Advanced Electrical</h3>
-              <p class="sb-subtitle">Robust commercial power distribution designed around strict load schedules and total energy continuity.</p>
+              <h3>Electrical, Lighting & Auxiliary Systems</h3>
+              <p class="sb-subtitle">Robust commercial and industrial power distribution designed around strict load schedules and total energy continuity.</p>
             </div>
           </div>
           <div class="sbh-right">
@@ -313,26 +362,25 @@
           <div class="sbb-col">
             <h4><i data-lucide="list"></i> Execution Scope</h4>
             <ul class="sbb-list">
-              <li>Smarter load scheduling and scalable primary distribution designs.</li>
-              <li>Heavy-duty panel boards, breakers, and high-voltage circuit channeling.</li>
-              <li>Complete structural roughing-ins, layout wiring, and continuity testing.</li>
-              <li>Integration of architectural lighting and essential auxiliary lines.</li>
+              <li><strong>Power Distribution:</strong> Panel boards, circuit breakers, and load schedules.</li>
+              <li><strong>System Controls:</strong> Tagging, labeling, and schematic mapping.</li>
+              <li>Architectural and industrial lighting layout wiring and connection.</li>
             </ul>
           </div>
           <div class="sbb-col">
             <h4><i data-lucide="cpu"></i> Technical Capability</h4>
             <ul class="sbb-list">
+              <li><strong>Full-Cycle Care:</strong> Site assessment, fabrication, installation, troubleshooting, repair, and maintenance.</li>
               <li>PEC-certified structural wiring methodologies and conduit protections.</li>
               <li>Precise load-balancing to halt short-circuit and overheating risks natively.</li>
-              <li>As-built mapping for future-proof maintenance ease.</li>
             </ul>
             <div class="service-badges">
-              <span class="badge">Power Distribution</span>
-              <span class="badge">Load Balancing</span>
-              <span class="badge">As-Built Wiring</span>
-              <span class="badge">Tech Support</span>
+              <span class="badge">Power Boards</span>
+              <span class="badge">Load Schedules</span>
+              <span class="badge">PEC Certified</span>
+              <span class="badge">Labeling & Mapping</span>
+              <span class="badge">Auxiliary Lines</span>
             </div>
-          </div>
           </div>
           <div class="sbb-col">
             <div class="sbb-value-box">
@@ -344,61 +392,14 @@
         </div>
       </div>
 
-      <!-- SERVICE 4: SIGNAGES -->
+      <!-- SERVICE 4: CIVIL WORKS, FIT-OUTS & CONSTRUCTION -->
       <div class="service-block reveal">
-        <div class="service-block-header">
+        <div class="service-block-header" style="background: #123e25; border-bottom-color: var(--clr-yellow);">
           <div class="sbh-left">
-            <div class="sb-icon-box" style="border-color: #fbbf24; color: #fbbf24;"><i data-lucide="layout" style="width: 32px; height: 32px;"></i></div>
+            <div class="sb-icon-box" style="border-color: var(--clr-yellow); color: var(--clr-yellow);"><i data-lucide="hammer" style="width: 32px; height: 32px;"></i></div>
             <div>
-              <h3>Signages & Building IDs</h3>
-              <p class="sb-subtitle">Professional visual identification systems, logos, and custom signage solutions for commercial and industrial facilities.</p>
-            </div>
-          </div>
-          <div class="sbh-right">
-            <a href="contact.html" class="btn-outline">Order Signages <i data-lucide="arrow-right" style="width:16px;"></i></a>
-          </div>
-        </div>
-        <div class="service-block-body">
-          <div class="sbb-col">
-            <h4><i data-lucide="list"></i> Execution Scope</h4>
-            <ul class="sbb-list">
-              <li>High-quality Signages and Logos.</li>
-              <li>Building IDs and Navigational Markers.</li>
-              <li>Sintra, Acrylic, and custom material prints.</li>
-              <li>Custom branding and facility identification elements.</li>
-            </ul>
-          </div>
-          <div class="sbb-col">
-            <h4><i data-lucide="cpu"></i> Technical Capability</h4>
-            <ul class="sbb-list">
-              <li>Precision layout and mounting protocols for industrial durability.</li>
-              <li>Material selection optimized for environmental exposure.</li>
-              <li>Aesthetic integration with existing facility architecture.</li>
-            </ul>
-            <div class="service-badges">
-              <span class="badge">Sintra & Acrylic</span>
-              <span class="badge">Building IDs</span>
-              <span class="badge">Visual Branding</span>
-            </div>
-          </div>
-          <div class="sbb-col">
-            <div class="sbb-value-box">
-              <h4><i data-lucide="trending-up"></i> Client ROI & Result</h4>
-              <p class="sbb-value-text">Improve facility navigation and professional branding with high-durability signages that withstand industrial wear. Ensure immediate site recognition and professional compliance for building identification.</p>
-              <span class="sbb-value-highlight">Premium Visual Standards</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SERVICE 5: RENOVATION & IMPROVEMENTS -->
-      <div class="service-block reveal">
-        <div class="service-block-header" style="background: #123e25;">
-          <div class="sbh-left">
-            <div class="sb-icon-box"><i data-lucide="hammer" style="width: 32px; height: 32px;"></i></div>
-            <div>
-              <h3>Renovation & Commercial Improvements</h3>
-              <p class="sb-subtitle">Full-spectrum physical installations, repairs, and maintenance services for optimized commercial environments.</p>
+              <h3>Civil Works, Fit-Outs & General Construction</h3>
+              <p class="sb-subtitle">Full-spectrum structural masonry, professional commercial fit-outs, custom cabinetry, and specialty installations.</p>
             </div>
           </div>
           <div class="sbh-right">
@@ -409,33 +410,32 @@
           <div class="sbb-col">
             <h4><i data-lucide="list"></i> Execution Scope</h4>
             <ul class="sbb-list">
-              <li>Controlled Demolition and Strategic Renovation.</li>
-              <li>Masonry, Fencing, and Wall Partitions (Drywall/Ceilings).</li>
-              <li>Professional Painting, Welding, and Metal Works.</li>
-              <li>Tile Setting, Carpentry, Laminates, and Custom Cabinets.</li>
-              <li>Roofing, Support Installations, and Signages.</li>
-              <li>All commercial physical installations and repair services.</li>
+              <li><strong>Structural & Masonry:</strong> Demolition, masonry, wall partitions, ceilings, and roofing.</li>
+              <li><strong>Interior & Exterior:</strong> Complete commercial fit-outs, renovations, tile setting, and painting.</li>
+              <li><strong>Metal & Woodwork:</strong> Welding, fabrication, carpentry, custom cabinetry, and furniture.</li>
+              <li><strong>Specialty Installations:</strong> Signages, building IDs, support installations, and customized flight cases.</li>
             </ul>
           </div>
           <div class="sbb-col">
             <h4><i data-lucide="cpu"></i> Technical Capability</h4>
             <ul class="sbb-list">
-              <li>High-durability structural finishes and precise layout execution.</li>
-              <li>Multi-discipline coordination for rapid project turnover.</li>
-              <li>Adherence to architectural standards and safety protocols.</li>
+              <li>Precision layout and mounting protocols for high industrial durability.</li>
+              <li>Multi-discipline coordination for rapid project turnover and minimal site downtime.</li>
+              <li>Adherence to structural building codes, architectural specs, and safety protocols.</li>
             </ul>
             <div class="service-badges">
-              <span class="badge">Masonry & Tiling</span>
-              <span class="badge">Drywall & Ceilings</span>
-              <span class="badge">Metal Works</span>
-              <span class="badge">Roofing</span>
+              <span class="badge">Fit-Outs & Masonry</span>
+              <span class="badge">Metal & Woodwork</span>
+              <span class="badge">Signages & IDs</span>
+              <span class="badge">Ceilings & Roofing</span>
+              <span class="badge">Custom Cabinetry</span>
             </div>
           </div>
           <div class="sbb-col">
             <div class="sbb-value-box">
               <h4><i data-lucide="trending-up"></i> Client ROI & Result</h4>
-              <p class="sbb-value-text">Extend the lifecycle of your facility with expert maintenance and high-quality structural improvements. Minimize operational disruption through organized and disciplined site execution.</p>
-              <span class="sbb-value-highlight">Full-Spectrum Site Maintenance</span>
+              <p class="sbb-value-text">Extend the operational lifecycle of your facility with expert structural work. Create clean, highly functional commercial environments and ensure professional compliance for all building identifiers.</p>
+              <span class="sbb-value-highlight">Premium Architectural Standards</span>
             </div>
           </div>
         </div>
@@ -552,14 +552,13 @@
                 <div class="footer-col">
           <h4>Expertise</h4>
           <ul>
-            <li>Construction / Renovation</li>
-            <li>Complete Plumbing & Sanitary</li>
-            <li>Complete Fire Protection / AFSS</li>
-            <li>Complete Electrical System</li>
-            <li>Signages & Building IDs</li>
-            <li>Shop Drawings & As-built Plan</li>
+            <li>Labor & Materials Package</li>
+            <li>Design & Build (CAD/SketchUp)</li>
             <li>Project Management</li>
-            <li>HIRAC</li>
+            <li>Plumbing & Sanitary Systems</li>
+            <li>Fire Protection & Suppression</li>
+            <li>Electrical, Lighting & Aux</li>
+            <li>Civil Works & Construction</li>
           </ul>
         </div>
         <div class="footer-col">
