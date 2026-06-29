@@ -700,47 +700,6 @@
             </div>
           </div>
         </div>
-        <div class="dash-category">
-          <span class="category-label">Client Headquarters</span>
-          <div class="dash-item client" onclick="focusMap('novateur')">
-            <div class="dot"></div>
-            <div class="dash-item-info">
-              <h5>Novateur & Nespresso</h5>
-              <p>One World Place, BGC</p>
-            </div>
-          </div>
-        </div>
-        <div class="dash-category">
-          <span class="category-label">Proven Project Locations</span>
-          <div class="dash-item project" onclick="focusMap('subic')">
-            <div class="dot"></div>
-            <div class="dash-item-info">
-              <h5>Subic Int'l Hotel Complex</h5>
-              <p>Alpha & Bravo (IBIS / Mercure)</p>
-            </div>
-          </div>
-          <div class="dash-item project" onclick="focusMap('pulp')">
-            <div class="dot"></div>
-            <div class="dash-item-info">
-              <h5>PULP Office</h5>
-              <p>80-A Sct. Castor St., QC (Renovation)</p>
-            </div>
-          </div>
-          <div class="dash-item project" onclick="focusMap('mitsukoshi')">
-            <div class="dot"></div>
-            <div class="dash-item-info">
-              <h5>Mitsukoshi BGC</h5>
-              <p>High-end technical installation</p>
-            </div>
-          </div>
-          <div class="dash-item project" onclick="focusMap('bhs')">
-            <div class="dot"></div>
-            <div class="dash-item-info">
-              <h5>Bonifacio High Street</h5>
-              <p>Prime retail infrastructure</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="map-overlay-banner">
@@ -882,23 +841,62 @@
       hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Registered HQ</h4><p>391 Lallana St., Brgy 93, Zone 8, Tondo, Manila</p></div>');
       const locations = {
         'tondo': { coords: tondoCoords, marker: hqMarker, zoom: 17 },
-        'subic': { coords: [14.822911, 120.280278], title: "Subic Int'l Hotel (GC)", body: "Rizal St. Cor. Labitan St.<br>Complete MEPF & Civil Works", zoom: 17 },
-        'pulp': { coords: [14.6360, 121.0330], title: "PULP Office (Renovation)", body: "80-A Sct. Castor St., QC<br>Plumbing, HVAC, & Firepro", zoom: 16 },
-        'novateur': { coords: [14.5516, 121.0494], title: "Novateur & Nespresso", body: "One World Place, BGC", type: 'client', zoom: 16 },
-        'mitsukoshi': { coords: [14.5583, 121.0543], title: "Mitsukoshi BGC", body: "High-end retail engineering", zoom: 16 },
-        'bhs': { coords: [14.5505, 121.0478], title: "Bonifacio High Street", body: "BGC infrastructure maintenance", zoom: 16 },
-        'manila_zone': { coords: tondoCoords, zoom: 11 },
+        'manila_zone': { coords: tondoCoords, zoom: 10 },
         'national': { coords: [12.5, 122.0], zoom: 6 }
       };
-      for (const key in locations) {
-        const loc = locations[key];
-        if (key !== 'tondo' && key !== 'manila_zone' && key !== 'national') {
-          const m = L.marker(loc.coords, { icon: loc.type === 'client' ? clientIcon : projectIcon }).addTo(map)
-            .bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:${loc.type === 'client' ? '#3b82f6' : '#1f8a4c'}; color:white;">${loc.type === 'client' ? 'Client HQ' : 'Project Site'}</span><h4>${loc.title}</h4><p>${loc.body}</p></div>`);
-          loc.marker = m;
+
+      // Load NCR boundary and shade it with hatch pattern
+      // Inject SVG hatch pattern definition first
+      setTimeout(function() {
+        const svg = document.querySelector('#ph-map svg');
+        if (svg) {
+          let defs = svg.querySelector('defs');
+          if (!defs) {
+            defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            svg.insertBefore(defs, svg.firstChild);
+          }
+          const patternEl = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
+          patternEl.setAttribute('id', 'hatch');
+          patternEl.setAttribute('width', '8');
+          patternEl.setAttribute('height', '8');
+          patternEl.setAttribute('patternTransform', 'rotate(45 0 0)');
+          patternEl.setAttribute('patternUnits', 'userSpaceOnUse');
+          const lineEl = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          lineEl.setAttribute('x1', '0');
+          lineEl.setAttribute('y1', '0');
+          lineEl.setAttribute('x2', '0');
+          lineEl.setAttribute('y2', '8');
+          lineEl.setAttribute('stroke', '#1f8a4c');
+          lineEl.setAttribute('stroke-width', '2.5');
+          patternEl.appendChild(lineEl);
+          defs.appendChild(patternEl);
         }
-      }
-      L.circle(tondoCoords, { radius: 17500, color: '#fbbf24', weight: 0, fillColor: '#fbbf24', fillOpacity: 0.2 }).addTo(map);
+      }, 100);
+
+      fetch('ncr.geojson')
+        .then(response => response.json())
+        .then(geojson => {
+          const ncrLayer = L.geoJSON(geojson, {
+            style: {
+              color: '#1f8a4c',
+              weight: 2,
+              opacity: 0.8,
+              fillColor: '#1f8a4c',
+              fillOpacity: 0.15,
+              className: 'ncr-hatch-fill'
+            }
+          }).addTo(map);
+
+          // Apply SVG pattern fill via direct DOM manipulation after render
+          setTimeout(function() {
+            document.querySelectorAll('.ncr-hatch-fill').forEach(function(el) {
+              el.setAttribute('fill', 'url(#hatch)');
+              el.style.fill = 'url(#hatch)';
+              el.style.fillOpacity = '0.6';
+            });
+          }, 200);
+        })
+        .catch(err => console.error("Error loading NCR GeoJSON boundary:", err));
       
       // Dashboard Toggle Logic
       const openBtn = document.getElementById('open-dash');
