@@ -13,7 +13,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
   <style>
     .contact-hero {
@@ -304,7 +306,7 @@
       color: #64748b;
       line-height: 1.4;
     }
-    .map-overlay-banner {
+    .map-search-card {
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
@@ -312,12 +314,162 @@
       background: rgba(30, 64, 42, 0.95);
       backdrop-filter: blur(8px);
       color: white;
-      padding: 1.25rem 2rem;
+      padding: 1.25rem 1.5rem;
       border-radius: 12px;
-      text-align: right;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      pointer-events: none;
       border-left: 4px solid var(--clr-yellow);
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-sizing: border-box;
+    }
+    .map-search-card *, .map-search-card *::before, .map-search-card *::after {
+      box-sizing: border-box;
+    }
+    .map-search-card p {
+      margin: 0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .map-search-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--clr-yellow);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 0.25rem 0.5rem;
+      transition: all 0.3s ease;
+    }
+    .search-input-wrapper:focus-within {
+      border-color: var(--clr-yellow);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+    }
+    .search-input-wrapper input {
+      background: transparent;
+      border: none;
+      color: white;
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.25rem;
+      width: 100%;
+      outline: none;
+    }
+    .search-input-wrapper input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .search-input-wrapper button {
+      background: transparent;
+      border: none;
+      color: var(--clr-yellow);
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+    .search-input-wrapper button:hover {
+      opacity: 0.8;
+    }
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #1e402a;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: none;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1010;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      display: none;
+    }
+    .suggestion-item {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background 0.2s;
+      text-align: left;
+    }
+    .suggestion-item:last-child {
+      border-bottom: none;
+    }
+    .suggestion-item:hover {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--clr-yellow);
+    }
+    .route-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .route-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0.25rem 0;
+    }
+    .route-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .route-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      text-align: left;
+    }
+    .route-stat-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .route-stat-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--clr-yellow);
+    }
+    .btn-clear-route {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .btn-clear-route:hover {
+      background: rgba(239, 68, 68, 0.4);
+      color: white;
     }
     /* Custom Scrollbar for Dashboard */
     .dash-body::-webkit-scrollbar {
@@ -466,16 +618,16 @@
       .map-section {
         height: 600px;
       }
-      .map-overlay-banner {
+      .map-search-card {
         right: 50%;
         transform: translateX(50%);
         top: 1.5rem;
-        text-align: center;
-        width: 85%;
+        width: 90%;
+        max-width: 380px;
         position: absolute;
         border-left: none;
         border-bottom: 4px solid var(--clr-yellow);
-        padding: 1rem;
+        padding: 1rem 1.25rem;
       }
       .contact-cards {
         grid-template-columns: repeat(2, 1fr);
@@ -702,9 +854,34 @@
         </div>
       </div>
     </div>
-    <div class="map-overlay-banner">
-      <p>Strategic Presence</p>
-      <h3>Metro Manila Hub</h3>
+    <div class="map-search-card">
+      <div class="search-header">
+        <p>Strategic Presence</p>
+        <h3>Metro Manila Hub</h3>
+      </div>
+      <div class="search-body">
+        <div class="search-input-wrapper">
+          <input type="text" id="map-search-input" placeholder="Search address to estimate route...">
+          <button id="map-search-btn"><i data-lucide="search" style="width: 18px; height: 18px;"></i></button>
+          <div id="search-suggestions" class="search-suggestions"></div>
+        </div>
+      </div>
+      <div id="route-details" class="route-details" style="display: none;">
+        <div class="route-divider"></div>
+        <div class="route-stat-grid">
+          <div class="route-stat">
+            <span class="route-stat-label">Distance</span>
+            <span class="route-stat-val" id="route-distance">-</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-label">Est. Driving Time</span>
+            <span class="route-stat-val" id="route-duration">-</span>
+          </div>
+        </div>
+        <button id="clear-route-btn" class="btn-clear-route">
+          <i data-lucide="x-circle" style="width: 16px; height: 16px;"></i> Clear Route
+        </button>
+      </div>
     </div>
     <button id="open-dash" class="map-toggle-btn mobile-only">
       <i data-lucide="layout-list" style="width: 18px;"></i> Explore Hub
@@ -918,7 +1095,177 @@
             }
           });
         });
+      // Geocoding and Routing Integration
+      const provider = new window.GeoSearch.OpenStreetMapProvider({
+        params: {
+          'accept-language': 'en',
+          countrycodes: 'ph'
+        }
+      });
+
+      const searchInput = document.getElementById('map-search-input');
+      const searchBtn = document.getElementById('map-search-btn');
+      const suggestionsDiv = document.getElementById('search-suggestions');
+      const routeDetailsDiv = document.getElementById('route-details');
+      const routeDistanceSpan = document.getElementById('route-distance');
+      const routeDurationSpan = document.getElementById('route-duration');
+      const clearRouteBtn = document.getElementById('clear-route-btn');
+
+      let searchMarker = null;
+      let routePolyline = null;
+
+      let debounceTimeout = null;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimeout);
+        const query = searchInput.value.trim();
+        if (query.length < 3) {
+          suggestionsDiv.innerHTML = '';
+          suggestionsDiv.style.display = 'none';
+          return;
+        }
+        debounceTimeout = setTimeout(async () => {
+          try {
+            const results = await provider.search({ query });
+            suggestionsDiv.innerHTML = '';
+            if (results && results.length > 0) {
+              suggestionsDiv.style.display = 'block';
+              results.slice(0, 5).forEach(result => {
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.textContent = result.label;
+                item.addEventListener('click', () => {
+                  searchInput.value = result.label;
+                  suggestionsDiv.innerHTML = '';
+                  suggestionsDiv.style.display = 'none';
+                  selectLocation(result.y, result.x, result.label);
+                });
+                suggestionsDiv.appendChild(item);
+              });
+            } else {
+              suggestionsDiv.style.display = 'none';
+            }
+          } catch (err) {
+            console.error('Error fetching suggestions:', err);
+          }
+        }, 300);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !suggestionsDiv.contains(e.target)) {
+          suggestionsDiv.style.display = 'none';
+        }
+      });
+
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          triggerSearch();
+        }
+      });
+      searchBtn.addEventListener('click', triggerSearch);
+
+      async function triggerSearch() {
+        const query = searchInput.value.trim();
+        if (!query) return;
+        suggestionsDiv.innerHTML = '';
+        suggestionsDiv.style.display = 'none';
+        try {
+          const results = await provider.search({ query });
+          if (results && results.length > 0) {
+            const first = results[0];
+            selectLocation(first.y, first.x, first.label);
+          } else {
+            alert('Location not found. Please try a more specific address.');
+          }
+        } catch (err) {
+          console.error('Search error:', err);
+        }
       }
+
+      async function selectLocation(lat, lon, label) {
+        if (searchMarker) map.removeLayer(searchMarker);
+        if (routePolyline) map.removeLayer(routePolyline);
+
+        const searchIcon = L.divIcon({
+          className: 'custom-search-marker',
+          html: `<div style="width: 32px; height: 32px; background: #3b82f6; border: 2.5px solid #fff; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><svg style="transform:rotate(45deg);" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg></div>`,
+          iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -32]
+        });
+        searchMarker = L.marker([lat, lon], { icon: searchIcon }).addTo(map);
+        searchMarker.bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:#3b82f6; color:#fff;">Searched Location</span><p>${label}</p></div>`).openPopup();
+
+        const bounds = L.latLngBounds([tondoCoords, [lat, lon]]);
+        map.fitBounds(bounds, { padding: [50, 50] });
+
+        const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${lon},${lat};${tondoCoords[1]},${tondoCoords[0]}?overview=full&geometries=geojson`;
+
+        try {
+          const response = await fetch(osrmUrl);
+          const data = await response.json();
+          if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+            const route = data.routes[0];
+            const coordinates = route.geometry.coordinates;
+            const latLngs = coordinates.map(coord => [coord[1], coord[0]]);
+            
+            const outerLine = L.polyline(latLngs, {
+              color: '#3b82f6',
+              weight: 7,
+              opacity: 0.5,
+              lineCap: 'round',
+              lineJoin: 'round'
+            });
+
+            const innerLine = L.polyline(latLngs, {
+              color: '#fbbf24',
+              weight: 3,
+              opacity: 0.9,
+              dashArray: '1, 8',
+              lineCap: 'round',
+              lineJoin: 'round'
+            });
+
+            routePolyline = L.featureGroup([outerLine, innerLine]).addTo(map);
+
+            const distanceKm = (route.distance / 1000).toFixed(1);
+            const durationSec = route.duration;
+            
+            let durationText = '';
+            if (durationSec < 60) {
+              durationText = 'Under a minute';
+            } else if (durationSec < 3600) {
+              durationText = `${Math.round(durationSec / 60)} mins`;
+            } else {
+              const hrs = Math.floor(durationSec / 3600);
+              const mins = Math.round((durationSec % 3600) / 60);
+              durationText = `${hrs} hr ${mins} mins`;
+            }
+
+            routeDistanceSpan.textContent = `${distanceKm} km`;
+            routeDurationSpan.textContent = durationText;
+            routeDetailsDiv.style.display = 'block';
+          } else {
+            console.error('OSRM route failed:', data);
+            alert('Could not calculate driving route to headquarters.');
+          }
+        } catch (err) {
+          console.error('Error fetching route:', err);
+          alert('Failed to connect to the routing server.');
+        }
+      }
+
+      clearRouteBtn.addEventListener('click', () => {
+        if (searchMarker) {
+          map.removeLayer(searchMarker);
+          searchMarker = null;
+        }
+        if (routePolyline) {
+          map.removeLayer(routePolyline);
+          routePolyline = null;
+        }
+        searchInput.value = '';
+        routeDetailsDiv.style.display = 'none';
+        map.setView(tondoCoords, 17);
+        hqMarker.openPopup();
+      });
 
       window.focusMap = function (key) {
         const loc = locations[key];
