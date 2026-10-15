@@ -531,15 +531,15 @@
     /* ─── CONNECTOR SYSTEM ───────────────────────────── */
     /*
       All .conn divs are DIRECT children of .org-canvas (full canvas width).
-      Percentages below are computed from canvas width (≈1200px gross, ≈1136px net).
+      Percentages below are computed from canvas width (≈1200px gross).
 
-      Tier 2 (max-width:620px, 2-col, gap:24px):
-        Card centers ≈ 36% and 64%
+      Tier 2 (max-width:920px, 3-col, gap:24px):
+        Card centers ≈ 24%, 50%, 76%
 
-      Tier 3 (full width, 4-col, gap:20px):
-        Card centers ≈ 12%, 37%, 63%, 88%
+      Tier 3 (full width, 3-col, gap:20px):
+        Card centers ≈ 17%, 50%, 83%
 
-      Tier 4 = same geometry as Tier 2: 36%, 64%
+      Tier 4 (max-width:620px, 2-col): 36%, 64%
     */
     .conn {
       position: relative;
@@ -563,16 +563,18 @@
     /* ─── TIER CARD ROWS ─────────────────────────────── */
     .tier2-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      max-width: 620px;
+      max-width: 920px;
       margin: 0 auto;
       width: 100%;
     }
     .tier3-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
+      max-width: 920px;
+      margin: 0 auto;
       width: 100%;
     }
     .tier4-row {
@@ -691,13 +693,14 @@
       <!-- ══════════════════════════════════════════════
            CONNECTOR: Tier 1 → Tier 2
            Trunk drops from Founder center (50%).
-           Bridge spans 36%–64% (Tier 2 card centers).
+           Bridge spans 24%–76% (Tier 2 card centers).
            ══════════════════════════════════════════════ -->
       <div class="conn">
         <div class="conn-v" style="left:50%;top:0;height:30px;"></div>
-        <div class="conn-h" style="left:36%;right:36%;top:29px;"></div>
-        <div class="conn-v" style="left:36%;top:29px;height:31px;"></div>
-        <div class="conn-v" style="left:64%;top:29px;height:31px;"></div>
+        <div class="conn-h" style="left:24%;right:24%;top:29px;"></div>
+        <div class="conn-v" style="left:24%;top:29px;height:31px;"></div>
+        <div class="conn-v" style="left:50%;top:29px;height:31px;"></div>
+        <div class="conn-v" style="left:76%;top:29px;height:31px;"></div>
       </div>
 
 
@@ -709,7 +712,7 @@
         <div class="org-node">
           <span class="org-badge">Project Operations</span>
           <div class="org-icon"><i data-lucide="folder-git-2" size="22"></i></div>
-          <h4>Senior Project Manager</h4>
+          <h4>Project Manager</h4>
           <p>End-to-end planning, scheduling, budgeting, and execution across plumbing, fire protection, and civil works. Coordinates CAD/SketchUp drawings and technical compliance.</p>
           <div class="org-tags">
             <span class="org-tag">Facilities</span>
@@ -722,7 +725,7 @@
         <div class="org-node">
           <span class="org-badge">Engineering Design</span>
           <div class="org-icon"><i data-lucide="cpu" size="22"></i></div>
-          <h4>Senior Electrical Engineer / Master Electrician</h4>
+          <h4>Electrical Engineer / Master Electrician</h4>
           <p>Licensed Electrical Engineer overseeing design, testing, safety compliance, and implementation of all electrical systems and auxiliary services.</p>
           <div class="org-tags">
             <span class="org-tag">Licensed EE</span>
@@ -731,23 +734,35 @@
           </div>
         </div>
 
+        <div class="org-node">
+          <span class="org-badge">Technical Lead</span>
+          <div class="org-icon"><i data-lucide="droplet" size="22"></i></div>
+          <h4>Master Plumber</h4>
+          <p>Technical certification and guidance for plumbing, sanitary, and fire protection systems ensuring full code compliance.</p>
+          <div class="org-tags">
+            <span class="org-tag">Plumbing</span>
+            <span class="org-tag">Firepro</span>
+            <span class="org-tag">Sanitary</span>
+          </div>
+        </div>
+
       </div><!-- /tier2-row -->
 
 
       <!-- ══════════════════════════════════════════════
            CONNECTOR: Tier 2 → Tier 3
-           Entry stubs at 36% and 64% (Tier 2 card centers).
-           Wide bridge spans 12%–88%.
-           Exit drops at 12%, 37%, 63%, 88% (Tier 3 card centers).
+           Entry stubs at 24%, 50%, 76% (Tier 2 card centers).
+           Bridge spans 17%–83%.
+           Exit drops at 17%, 50%, 83% (Tier 3 card centers).
            ══════════════════════════════════════════════ -->
       <div class="conn">
-        <div class="conn-v" style="left:36%;top:0;height:30px;"></div>
-        <div class="conn-v" style="left:64%;top:0;height:30px;"></div>
-        <div class="conn-h" style="left:12%;right:12%;top:29px;"></div>
-        <div class="conn-v" style="left:12%;top:29px;height:31px;"></div>
-        <div class="conn-v" style="left:37%;top:29px;height:31px;"></div>
-        <div class="conn-v" style="left:63%;top:29px;height:31px;"></div>
-        <div class="conn-v" style="left:88%;top:29px;height:31px;"></div>
+        <div class="conn-v" style="left:24%;top:0;height:30px;"></div>
+        <div class="conn-v" style="left:50%;top:0;height:30px;"></div>
+        <div class="conn-v" style="left:76%;top:0;height:30px;"></div>
+        <div class="conn-h" style="left:17%;right:17%;top:29px;"></div>
+        <div class="conn-v" style="left:17%;top:29px;height:31px;"></div>
+        <div class="conn-v" style="left:50%;top:29px;height:31px;"></div>
+        <div class="conn-v" style="left:83%;top:29px;height:31px;"></div>
       </div>
 
 
@@ -765,18 +780,6 @@
             <span class="org-tag">Site Ops</span>
             <span class="org-tag">Plumbing</span>
             <span class="org-tag">Firepro</span>
-          </div>
-        </div>
-
-        <div class="org-node">
-          <span class="org-badge">Technical Lead</span>
-          <div class="org-icon"><i data-lucide="droplet" size="22"></i></div>
-          <h4>Master Plumber</h4>
-          <p>Technical certification and guidance for plumbing, sanitary, and fire protection systems ensuring full code compliance.</p>
-          <div class="org-tags">
-            <span class="org-tag">Plumbing</span>
-            <span class="org-tag">Firepro</span>
-            <span class="org-tag">Sanitary</span>
           </div>
         </div>
 
@@ -809,16 +812,15 @@
 
       <!-- ══════════════════════════════════════════════
            CONNECTOR: Tier 3 → Tier 4
-           Entry stubs at 12%, 37%, 63%, 88% (Tier 3 card centers).
-           Wide bridge spans 12%–88%.
+           Entry stubs at 17%, 50%, 83% (Tier 3 card centers).
+           Bridge spans 36%–64%.
            Exit drops at 36% and 64% (Tier 4 card centers).
            ══════════════════════════════════════════════ -->
       <div class="conn">
-        <div class="conn-v" style="left:12%;top:0;height:30px;"></div>
-        <div class="conn-v" style="left:37%;top:0;height:30px;"></div>
-        <div class="conn-v" style="left:63%;top:0;height:30px;"></div>
-        <div class="conn-v" style="left:88%;top:0;height:30px;"></div>
-        <div class="conn-h" style="left:12%;right:12%;top:29px;"></div>
+        <div class="conn-v" style="left:17%;top:0;height:30px;"></div>
+        <div class="conn-v" style="left:50%;top:0;height:30px;"></div>
+        <div class="conn-v" style="left:83%;top:0;height:30px;"></div>
+        <div class="conn-h" style="left:36%;right:36%;top:29px;"></div>
         <div class="conn-v" style="left:36%;top:29px;height:31px;"></div>
         <div class="conn-v" style="left:64%;top:29px;height:31px;"></div>
       </div>

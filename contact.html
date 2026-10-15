@@ -1128,19 +1128,19 @@
             <span class="route-stat-val" id="route-distance">-</span>
           </div>
           <div class="route-stat">
-            <span class="route-stat-label">Motorcycle</span>
+            <span class="route-stat-label">Motorcycle (w/ traffic)</span>
             <span class="route-stat-val" id="route-motor">-</span>
           </div>
           <div class="route-stat">
-            <span class="route-stat-label">Four Wheels</span>
+            <span class="route-stat-label">Four Wheels (w/ traffic)</span>
             <span class="route-stat-val" id="route-car">-</span>
           </div>
           <div class="route-stat">
-            <span class="route-stat-label">Walk</span>
+            <span class="route-stat-label">Walk (w/ rests)</span>
             <span class="route-stat-val" id="route-walk">-</span>
           </div>
           <div class="route-stat">
-            <span class="route-stat-label">Running</span>
+            <span class="route-stat-label">Run (w/ fatigue)</span>
             <span class="route-stat-val" id="route-run">-</span>
           </div>
         </div>
@@ -1421,17 +1421,225 @@
       let routePolyline = null;
       let debounceTimeout = null;
 
-      // Metro Manila urban averages for modes without OSRM profiles:
-      // motorcycle 33 km/h (~1.5× car fallback) or 1.4× OSRM car speed when available;
-      // walk 5 km/h, running 9 km/h; four-wheels fallback 22 km/h when OSRM is unavailable.
-      const SPEED_MOTOR_KMH = 33;
-      const SPEED_CAR_FALLBACK_KMH = 22;
-      const SPEED_WALK_KMH = 5;
-      const SPEED_RUN_KMH = 9;
-      const MOTOR_VS_CAR_FACTOR = 1.4;
+      // Practical door-to-door ETAs (not athlete / free-flow ideal):
+      // vehicles = road path + congestion + fuel/meal stops + PH avg-speed ceiling
+      // walk/run = fatigue + rests + overnight days (never continuous marathon pace)
+      const ROAD_VS_STRAIGHT_FACTOR = 1.35;
 
       function minsFromKm(km, speedKmh) {
         return Math.round((km / speedKmh) * 60);
+      }
+
+      function getTimeOfDayBucket() {
+        const now = new Date();
+        const hour = now.getHours();
+        const day = now.getDay();
+        const weekend = day === 0 || day === 6;
+        if (!weekend && ((hour >= 6 && hour < 10) || (hour >= 16 && hour < 20))) return 'peak';
+        if (!weekend && ((hour >= 10 && hour < 16) || (hour >= 20 && hour < 22))) return 'day';
+        if (weekend && hour >= 10 && hour < 20) return 'weekend';
+        return 'night';
+      }
+
+      // Heavier PH congestion — expressways still lose time to tolls, slowdowns, density.
+      function getClassFactors(forMotorcycle) {
+        const bucket = getTimeOfDayBucket();
+        const tables = {
+          peak:    { local: 2.15, arterial: 1.85, highway: 1.55, express: 1.38 },
+          day:     { local: 1.85, arterial: 1.60, highway: 1.40, express: 1.28 },
+          weekend: { local: 1.70, arterial: 1.48, highway: 1.32, express: 1.22 },
+          night:   { local: 1.45, arterial: 1.30, highway: 1.20, express: 1.14 }
+        };
+        const base = tables[bucket];
+        if (!forMotorcycle) return base;
+        // Motorcycles filter traffic in cities; long highways only slightly faster.
+        return {
+          local: Math.max(1.25, base.local * 0.78),
+          arterial: Math.max(1.20, base.arterial * 0.84),
+          highway: Math.max(1.12, base.highway * 0.92),
+          express: Math.max(1.10, base.express * 0.94)
+        };
+      }
+
+      function classFromSpeedKmh(speedKmh) {
+        if (speedKmh >= 80) return 'express';
+        if (speedKmh >= 60) return 'highway';
+        if (speedKmh >= 40) return 'arterial';
+        return 'local';
+      }
+
+      // Ceiling only — never force a faster ETA. Conservative PH door-to-door averages.
+      function maxRealisticAvgSpeedKmh(km, forMotorcycle) {
+        let maxAvg;
+        if (km < 12) maxAvg = 18;
+        else if (km < 35) maxAvg = 26;
+        else if (km < 80) maxAvg = 33;
+        else if (km < 180) maxAvg = 38;
+        else maxAvg = 42;
+        if (forMotorcycle) maxAvg *= 1.06;
+        return maxAvg;
+      }
+
+      function fallbackAvgSpeedKmh(km, forMotorcycle) {
+        let avg;
+        if (km < 15) avg = 14;
+        else if (km < 40) avg = 20;
+        else if (km < 100) avg = 28;
+        else if (km < 200) avg = 34;
+        else avg = 38;
+        const bucket = getTimeOfDayBucket();
+        if (bucket === 'peak') avg *= 0.75;
+        else if (bucket === 'day') avg *= 0.86;
+        else if (bucket === 'weekend') avg *= 0.88;
+        if (forMotorcycle) avg *= 1.06;
+        return avg;
+      }
+
+      function countUrbanManeuvers(route) {
+        let count = 0;
+        (route.legs || []).forEach(leg => {
+          (leg.steps || []).forEach(step => {
+            const type = (step.maneuver && step.maneuver.type) || '';
+            const modifier = (step.maneuver && step.maneuver.modifier) || '';
+            const roadSpeed = step.duration > 0 ? (step.distance / step.duration) * 3.6 : 0;
+            if (type === 'depart' || type === 'arrive' || type === 'new name') return;
+            if (roadSpeed >= 60 && (type === 'merge' || type === 'on ramp' || type === 'off ramp' || type === 'fork')) return;
+            if (type === 'turn' || type === 'roundabout' || type === 'rotary' || type === 'end of road' ||
+                modifier === 'left' || modifier === 'right' || modifier === 'uturn') {
+              count += 1;
+            }
+          });
+        });
+        return count;
+      }
+
+      function durationFromAnnotations(route, forMotorcycle) {
+        const factors = getClassFactors(forMotorcycle);
+        let total = 0;
+        let covered = false;
+        (route.legs || []).forEach(leg => {
+          const ann = leg.annotation;
+          if (!ann || !ann.duration || !ann.duration.length) return;
+          covered = true;
+          const durs = ann.duration;
+          const speeds = ann.speed || [];
+          for (let i = 0; i < durs.length; i++) {
+            const speedKmh = (speeds[i] != null ? speeds[i] : 0) * 3.6;
+            const cls = classFromSpeedKmh(speedKmh);
+            total += durs[i] * factors[cls];
+          }
+        });
+        return covered ? total : null;
+      }
+
+      function durationFromDistanceBlend(freeFlowSec, distanceKm, forMotorcycle) {
+        const factors = getClassFactors(forMotorcycle);
+        const congestedKm = Math.min(distanceKm, 22 + Math.min(18, distanceKm * 0.12));
+        const urbanFrac = distanceKm > 0 ? congestedKm / distanceKm : 1;
+        const blended = urbanFrac * factors.local + (1 - urbanFrac) * factors.highway;
+        return freeFlowSec * blended;
+      }
+
+      function enforceMaxAvgSpeed(durationSec, distanceKm, forMotorcycle) {
+        if (!distanceKm || durationSec <= 0) return durationSec;
+        const maxAvg = maxRealisticAvgSpeedKmh(distanceKm, forMotorcycle);
+        const avgKmh = distanceKm / (durationSec / 3600);
+        if (avgKmh > maxAvg) return (distanceKm / maxAvg) * 3600;
+        return durationSec;
+      }
+
+      function addVehicleStopBuffer(movingSec, distanceKm, forMotorcycle) {
+        // Fuel / stretch / meal — longer trips need real stops, not continuous driving.
+        let buffer = 0;
+        const movingHours = movingSec / 3600;
+        if (movingHours > 1.25) {
+          // ~18 min stop every ~1.75h of driving
+          const stopCount = Math.floor(movingHours / 1.75);
+          buffer += stopCount * (forMotorcycle ? 14 * 60 : 18 * 60);
+        }
+        if (movingHours > 3.5) {
+          // Meal break on longer hauls
+          buffer += Math.floor(movingHours / 4) * (forMotorcycle ? 25 * 60 : 35 * 60);
+        }
+        if (distanceKm > 250) {
+          // Extra fatigue / checkpoint padding on very long PH routes
+          buffer += ((distanceKm - 250) / 50) * 12 * 60;
+        }
+        return movingSec + buffer;
+      }
+
+      function estimateRealisticDriveDuration(route, forMotorcycle) {
+        const distanceKm = (route.distance || 0) / 1000;
+        const freeFlowSec = route.duration || 0;
+
+        let adjusted = durationFromAnnotations(route, forMotorcycle);
+        if (adjusted == null) {
+          adjusted = durationFromDistanceBlend(freeFlowSec, distanceKm, forMotorcycle);
+        }
+
+        const urbanTurns = countUrbanManeuvers(route);
+        const turnPenalty = Math.min(urbanTurns * 15, Math.min(distanceKm * 14, 25 * 60));
+        adjusted += turnPenalty;
+        adjusted = addVehicleStopBuffer(adjusted, distanceKm, forMotorcycle);
+        return enforceMaxAvgSpeed(adjusted, distanceKm, forMotorcycle);
+      }
+
+      // Ordinary person walking — not continuous. Rests + overnight after a walking day.
+      function estimateWalkDurationSec(distanceKm) {
+        if (distanceKm <= 0) return 0;
+        const MOVING_KMH = 3.8; // comfortable pace, not race-walk
+        const DAY_WALK_HOURS = 7; // hours of walking effort before overnight
+        const OVERNIGHT_SEC = 10 * 3600; // sleep / recovery between days
+        const REST_EVERY_MOVING_SEC = 50 * 60;
+        const REST_DURATION_SEC = 12 * 60;
+
+        let remainingKm = distanceKm;
+        let totalSec = 0;
+
+        while (remainingKm > 0.0001) {
+          const dayBudgetKm = MOVING_KMH * DAY_WALK_HOURS;
+          const todayKm = Math.min(remainingKm, dayBudgetKm);
+          const movingSec = (todayKm / MOVING_KMH) * 3600;
+          const restBreaks = Math.max(0, Math.floor(movingSec / REST_EVERY_MOVING_SEC));
+          totalSec += movingSec + restBreaks * REST_DURATION_SEC;
+          remainingKm -= todayKm;
+          if (remainingKm > 0.0001) {
+            totalSec += OVERNIGHT_SEC;
+          }
+        }
+        return totalSec;
+      }
+
+      // Fit recreational runner — pace decays; beyond ~35 km treat remainder as hike days.
+      function estimateRunDurationSec(distanceKm) {
+        if (distanceKm <= 0) return 0;
+        if (distanceKm <= 3) return (distanceKm / 9.0) * 3600;
+
+        let sec = 0;
+        let covered = 0;
+
+        function addSegment(kmLen, speedKmh) {
+          const use = Math.min(kmLen, Math.max(0, distanceKm - covered));
+          if (use <= 0) return;
+          sec += (use / speedKmh) * 3600;
+          covered += use;
+        }
+
+        addSegment(5, 8.5);   // fresh
+        addSegment(10, 7.2);  // settling
+        addSegment(12, 6.2);  // tired
+        addSegment(8, 5.4);   // late marathon territory
+
+        // Walk breaks while still "running" the early distance
+        const runPortionKm = Math.min(distanceKm, 35);
+        const walkBreaks = Math.max(0, Math.floor((runPortionKm - 5) / 4));
+        sec += walkBreaks * 3 * 60;
+
+        if (distanceKm > 35) {
+          // Remaining distance is no longer runnable for a typical person — hike model
+          sec += estimateWalkDurationSec(distanceKm - 35);
+        }
+        return sec;
       }
 
       function formatDurationMins(mins, isEstimate) {
@@ -1440,10 +1648,19 @@
           text = '< 1 min';
         } else if (mins < 60) {
           text = `${mins} mins`;
-        } else {
+        } else if (mins < 24 * 60) {
           const hrs = Math.floor(mins / 60);
           const rem = mins % 60;
           text = rem === 0 ? `${hrs} hr` : `${hrs} hr ${rem} mins`;
+        } else {
+          const days = Math.floor(mins / (24 * 60));
+          const remMins = mins % (24 * 60);
+          const hrs = Math.floor(remMins / 60);
+          const rem = remMins % 60;
+          const dayLabel = days === 1 ? '1 day' : `${days} days`;
+          if (hrs === 0 && rem === 0) text = dayLabel;
+          else if (rem === 0) text = `${dayLabel} ${hrs} hr`;
+          else text = `${dayLabel} ${hrs} hr ${rem} mins`;
         }
         return isEstimate ? `${text} (est.)` : text;
       }
@@ -1452,18 +1669,19 @@
         return formatDurationMins(Math.round(durationSec / 60), isEstimate);
       }
 
-      function populateRouteTimes(distanceKm, carDurationSec, isEstimate) {
+      function populateRouteTimes(distanceKm, routeOrNull, isEstimate) {
         const km = parseFloat(distanceKm);
         routeDistanceSpan.textContent = isEstimate ? `~${distanceKm} km` : `${distanceKm} km`;
-        if (carDurationSec != null) {
-          routeCarSpan.textContent = formatDurationSec(carDurationSec, isEstimate);
-          routeMotorSpan.textContent = formatDurationSec(carDurationSec / MOTOR_VS_CAR_FACTOR, isEstimate);
+        if (routeOrNull) {
+          routeCarSpan.textContent = formatDurationSec(estimateRealisticDriveDuration(routeOrNull, false), true);
+          routeMotorSpan.textContent = formatDurationSec(estimateRealisticDriveDuration(routeOrNull, true), true);
         } else {
-          routeCarSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_CAR_FALLBACK_KMH), isEstimate);
-          routeMotorSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_MOTOR_KMH), isEstimate);
+          routeCarSpan.textContent = formatDurationMins(minsFromKm(km, fallbackAvgSpeedKmh(km, false)), true);
+          routeMotorSpan.textContent = formatDurationMins(minsFromKm(km, fallbackAvgSpeedKmh(km, true)), true);
         }
-        routeWalkSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_WALK_KMH), isEstimate);
-        routeRunSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_RUN_KMH), isEstimate);
+        // Always use fatigue models — OSRM foot assumes nonstop ideal pace (unrealistic).
+        routeWalkSpan.textContent = formatDurationSec(estimateWalkDurationSec(km), true);
+        routeRunSpan.textContent = formatDurationSec(estimateRunDurationSec(km), true);
         routeDetailsDiv.style.display = 'block';
       }
 
@@ -1564,18 +1782,20 @@
           const bounds = L.latLngBounds([tondoCoords, [lat, lon]]);
           map.fitBounds(bounds, { padding: [60, 60], maxZoom: 15 });
 
-          // Try OSRM driving route
-          const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${lon},${lat};${tondoCoords[1]},${tondoCoords[0]}?overview=full&geometries=geojson`;
+          // OSRM: road path + steps + speed annotations for vehicle ETA.
+          // Walk/run use separate fatigue models (not OSRM foot free-flow).
+          const coordsPath = `${lon},${lat};${tondoCoords[1]},${tondoCoords[0]}`;
+          const osrmDriveUrl = `https://router.project-osrm.org/route/v1/driving/${coordsPath}?overview=full&geometries=geojson&steps=true&annotations=duration,distance,speed`;
 
           let routeSucceeded = false;
           try {
-            const response = await fetch(osrmUrl);
-            const data = await response.json();
+            const driveRes = await fetch(osrmDriveUrl);
+            const data = await driveRes.json();
             if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
               const route = data.routes[0];
               const coordinates = route.geometry.coordinates;
               const latLngs = coordinates.map(coord => [coord[1], coord[0]]);
-              
+
               const outerLine = L.polyline(latLngs, {
                 color: '#2563eb',
                 weight: 6,
@@ -1596,7 +1816,7 @@
               routePolyline = L.featureGroup([outerLine, innerLine]).addTo(map);
 
               const distanceKm = (route.distance / 1000).toFixed(1);
-              populateRouteTimes(distanceKm, route.duration, false);
+              populateRouteTimes(distanceKm, route, true);
               routeSucceeded = true;
             }
           } catch (err) {
@@ -1612,7 +1832,7 @@
                       Math.cos(tondoCoords[0] * Math.PI / 180) * Math.cos(lat * Math.PI / 180) *
                       Math.sin(dLon/2) * Math.sin(dLon/2);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            const directKm = (R * c).toFixed(1);
+            const roadKm = (R * c * ROAD_VS_STRAIGHT_FACTOR).toFixed(1);
 
             const straightLine = L.polyline([[lat, lon], tondoCoords], {
               color: '#fbbf24',
@@ -1622,7 +1842,7 @@
             });
             routePolyline = straightLine.addTo(map);
 
-            populateRouteTimes(directKm, null, true);
+            populateRouteTimes(roadKm, null, true);
           }
           if (window.lucide) lucide.createIcons();
         }
