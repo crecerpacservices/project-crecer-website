@@ -188,6 +188,29 @@
       padding: 1.25rem;
       font-size: 1rem;
     }
+    .quote-track-btn {
+      background: white;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .quote-track-btn:hover {
+      border-color: var(--clr-green);
+      color: var(--clr-green);
+    }
+    .quote-track-btn.active {
+      background: var(--clr-green);
+      border-color: var(--clr-green);
+      color: white;
+      box-shadow: 0 2px 6px rgba(31, 138, 76, 0.25);
+    }
+
     .map-section {
       height: 650px;
       position: relative;
@@ -303,6 +326,172 @@
       font-size: 0.72rem;
       color: #64748b;
       line-height: 1.4;
+    }
+    .map-search-card {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      background: rgba(30, 64, 42, 0.95);
+      backdrop-filter: blur(8px);
+      color: white;
+      padding: 1.25rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      border-left: 4px solid var(--clr-yellow);
+      width: 360px;
+      max-width: calc(100vw - 3rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-sizing: border-box;
+    }
+    .map-search-card *, .map-search-card *::before, .map-search-card *::after {
+      box-sizing: border-box;
+    }
+    .map-search-card p {
+      margin: 0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .map-search-card h3 {
+      margin: 0.25rem 0 0;
+      font-size: 1.25rem;
+      color: var(--clr-yellow);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .search-input-wrapper:focus-within {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--clr-yellow);
+      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
+    }
+    .search-input-wrapper input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.65rem 0.85rem;
+      color: white;
+      font-size: 0.85rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .search-input-wrapper input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .search-input-wrapper button {
+      background: none;
+      border: none;
+      color: var(--clr-yellow);
+      padding: 0.65rem 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+    .search-input-wrapper button:hover {
+      opacity: 0.8;
+    }
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #1e402a;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: none;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+      z-index: 1050;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .suggestion-item {
+      padding: 0.6rem 0.85rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background 0.15s ease;
+      line-height: 1.3;
+    }
+    .suggestion-item:last-child {
+      border-bottom: none;
+    }
+    .suggestion-item:hover {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--clr-yellow);
+    }
+    .route-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .route-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0.2rem 0;
+    }
+    .route-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+    }
+    .route-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .route-stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 700;
+    }
+    .route-stat-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--clr-yellow);
+    }
+    .btn-clear-route {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      font-family: inherit;
+    }
+    .btn-clear-route:hover {
+      background: rgba(239, 68, 68, 0.4);
+      color: white;
     }
     .map-overlay-banner {
       position: absolute;
@@ -466,12 +655,13 @@
       .map-section {
         height: 600px;
       }
+      .map-search-card,
       .map-overlay-banner {
         right: 50%;
         transform: translateX(50%);
-        top: 1.5rem;
-        text-align: center;
-        width: 85%;
+        top: 1rem;
+        width: 90%;
+        max-width: 380px;
         position: absolute;
         border-left: none;
         border-bottom: 4px solid var(--clr-yellow);
@@ -543,16 +733,20 @@
     <div class="container">
       <div class="contact-cards">
         <div class="cc-card">
-          <div class="cc-header">CALL & VIBER <i data-lucide="phone"></i></div>
+          <div class="cc-header">CALL &amp; VIBER <i data-lucide="phone"></i></div>
           <div class="cc-body">
-            <p>Direct Line & Viber</p>
+            <p>Direct Line &amp; Viber</p>
             <h3><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a></h3>
-            <div style="margin-top: 0.5rem; display: flex; gap: 1rem; align-items: center;">
+            <div style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <a href="viber://chat?number=639260586209"
+                style="text-decoration: none; color: #7360F2; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                <svg style="width: 16px; height: 16px; flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.12 20.36h.003l-.004 2.416s-.037.977.61 1.177c.777.242 1.234-.5 1.98-1.302.407-.44.972-1.084 1.397-1.58 3.85.326 6.812-.416 7.15-.525.776-.252 5.176-.816 5.892-6.657.74-6.02-.36-9.83-2.34-11.85C18.666.452 13.328-.028 11.4 0zm6.985 16.52c-.524 4.304-4.225 4.54-5.352 4.908-.432.14-3.328.84-6.72-.422-.53-.2-1.056-.475-1.527-.812l-.71-.505-.59.58c-.596.587-1.01 1.002-1.35 1.346l.044-1.897-.478-.014c-4.947-.138-5.01-5.328-4.948-8.15.06-2.735.59-4.928 2.05-6.388C4.853 1.895 8.71 1.604 11.36 1.566c2.47-.035 7.135.342 9.208 2.378 1.77 1.794 2.76 5.23 2.1 10.456-.008.068-.02.138-.033.208-1.282 2.228-3.082 1.83-4.15 1.912zM6.924 5.922c-.41 0-.82.16-1.13.48-.9 1-.72 4.1.7 6.4 1.4 2.3 4.1 3.9 6.2 4.3 2.2.4 4.8-.2 5.6-1.1.3-.3.4-.7.4-1.1 0-.5-.2-.9-.6-1.2l-1.9-1.4c-.4-.3-.9-.3-1.3 0l-1.1.9c-.4.3-.9.3-1.3 0-1.2-.8-2.3-1.8-3.1-3-.3-.4-.3-.9 0-1.3l.9-1.1c.3-.4.3-.9 0-1.3L8.2 6.4c-.3-.3-.8-.5-1.3-.5z"/></svg>
+                Viber (Direct Line)
+              </a>
               <a href="tel:+639260586209"
-                style="font-size: 0.75rem; font-weight: 700; color: var(--clr-green); text-transform: uppercase;">Call
-                Now</a>
-              <a href="viber://chat?number=%2B639260586209"
-                style="font-size: 0.75rem; font-weight: 700; color: var(--clr-green); text-transform: uppercase;">Viber</a>
+                style="font-size: 0.8rem; font-weight: 700; color: var(--clr-green); text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem; text-decoration: none;">
+                <i data-lucide="phone-call" style="width: 14px;"></i> Call Now (09260586209)
+              </a>
             </div>
           </div>
         </div>
@@ -574,11 +768,17 @@
                 style="text-decoration: none; color: var(--clr-heading); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
                 <i data-lucide="facebook" style="width: 16px;"></i> Facebook
               </a>
+              <a href="https://m.me/projectcrecer" target="_blank" rel="noopener noreferrer"
+                style="text-decoration: none; color: #0084FF; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="message-circle" style="width: 16px;"></i> Messenger (Direct Chat)
+              </a>
+              <a href="viber://chat?number=639260586209"
+                style="text-decoration: none; color: #7360F2; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                <svg style="width: 16px; height: 16px; flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.12 20.36h.003l-.004 2.416s-.037.977.61 1.177c.777.242 1.234-.5 1.98-1.302.407-.44.972-1.084 1.397-1.58 3.85.326 6.812-.416 7.15-.525.776-.252 5.176-.816 5.892-6.657.74-6.02-.36-9.83-2.34-11.85C18.666.452 13.328-.028 11.4 0zm6.985 16.52c-.524 4.304-4.225 4.54-5.352 4.908-.432.14-3.328.84-6.72-.422-.53-.2-1.056-.475-1.527-.812l-.71-.505-.59.58c-.596.587-1.01 1.002-1.35 1.346l.044-1.897-.478-.014c-4.947-.138-5.01-5.328-4.948-8.15.06-2.735.59-4.928 2.05-6.388C4.853 1.895 8.71 1.604 11.36 1.566c2.47-.035 7.135.342 9.208 2.378 1.77 1.794 2.76 5.23 2.1 10.456-.008.068-.02.138-.033.208-1.282 2.228-3.082 1.83-4.15 1.912zM6.924 5.922c-.41 0-.82.16-1.13.48-.9 1-.72 4.1.7 6.4 1.4 2.3 4.1 3.9 6.2 4.3 2.2.4 4.8-.2 5.6-1.1.3-.3.4-.7.4-1.1 0-.5-.2-.9-.6-1.2l-1.9-1.4c-.4-.3-.9-.3-1.3 0l-1.1.9c-.4.3-.9.3-1.3 0-1.2-.8-2.3-1.8-3.1-3-.3-.4-.3-.9 0-1.3l.9-1.1c.3-.4.3-.9 0-1.3L8.2 6.4c-.3-.3-.8-.5-1.3-.5z"/></svg>
+                Viber (Direct Line)
+              </a>
               <span style="color: #9ca3af; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
                 <i data-lucide="instagram" style="width: 16px;"></i> Instagram <small>(Coming Soon)</small>
-              </span>
-              <span style="color: #9ca3af; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
-                <i data-lucide="youtube" style="width: 16px;"></i> YouTube <small>(Coming Soon)</small>
               </span>
             </div>
           </div>
@@ -608,15 +808,47 @@
             <i data-lucide="clock" style="width: 30px; height: 30px; color: var(--clr-yellow);"></i>
           </div>
           <div>
-            <span style="display: inline-block; background: rgba(251, 191, 36, 0.12); color: #b45309; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 0.9rem; border-radius: 4px; margin-bottom: 1rem;">Online Submission — Coming Soon</span>
+            <span style="display: inline-block; background: rgba(251, 191, 36, 0.12); color: #b45309; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 0.9rem; border-radius: 4px; margin-bottom: 1rem;">Online Submission &mdash; Coming Soon</span>
             <h3 style="font-size: 1.5rem; color: var(--clr-heading); margin-bottom: 1rem;">Online Form Temporarily Unavailable</h3>
             <p style="color: #64748b; line-height: 1.8; max-width: 420px; margin: 0 auto 0.5rem;">
               Our online inquiry and quote request system is currently being set up and is not yet active.
-              In the meantime, please reach us directly through any of the channels above — we're ready to assist you.
+              In the meantime, please reach us directly through any of the channels above &mdash; we're ready to assist you.
             </p>
           </div>
-          <div style="width: 100%; max-width: 420px; background: var(--clr-light); border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; text-align: left;">
-            <p style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #9ca3af; margin: 0;">For Submit Inquiry &amp; Request a Quote, please use:</p>
+
+          <!-- QUOTE TRACK SELECTORS -->
+          <div style="width: 100%; max-width: 420px; background: var(--clr-light); border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; text-align: left;">
+            <p style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #9ca3af; margin: 0;">Quick Inquiry &mdash; Send via direct channel below:</p>
+
+            <!-- Project Scale Selector -->
+            <div>
+              <label for="project-scale" style="display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; margin-bottom: 0.5rem;">Project Scale</label>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button id="scale-residential" onclick="selectScale(this,'Residential')" class="quote-track-btn active" style="flex:1; min-width:90px;">Residential</button>
+                <button id="scale-commercial" onclick="selectScale(this,'Commercial')" class="quote-track-btn">Commercial</button>
+                <button id="scale-industrial" onclick="selectScale(this,'Industrial')" class="quote-track-btn">Industrial</button>
+              </div>
+            </div>
+
+            <!-- Contract Track Selector -->
+            <div>
+              <label for="contract-track" style="display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; margin-bottom: 0.5rem;">Contract Track</label>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button id="track-direct" onclick="selectTrack(this,'Direct Client')" class="quote-track-btn active" style="flex:1;">Direct Client</button>
+                <button id="track-contractor" onclick="selectTrack(this,'Third-Party Contractor')" class="quote-track-btn" style="flex:1;">Third-Party Contractor</button>
+              </div>
+            </div>
+
+            <p id="quote-message-preview" style="font-size: 0.75rem; color: #4b5563; background: white; border-radius: 6px; padding: 0.75rem; border: 1px solid #e5e7eb; margin: 0;">Project Inquiry &mdash; Residential &bull; Direct Client</p>
+
+            <a id="viber-quote-link" href="viber://chat?number=639260586209" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1rem; background: #7360F2; border-radius: 8px; box-shadow: 0 2px 8px rgba(115,96,242,0.3); transition: box-shadow 0.2s; justify-content: center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(115,96,242,0.5)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(115,96,242,0.3)'">
+              <svg style="width:20px;height:20px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 1.003C7.96.96 3.81 2.68 2.19 6.26c-.87 1.95-1.03 4.22-.76 6.32.27 2.1.97 4.15 2.14 5.86l.08.12-.33 3.71 3.83-.99.1.06c1.59.97 3.44 1.56 5.32 1.64 1.89.08 3.82-.33 5.46-1.18 1.65-.85 3.04-2.15 3.98-3.73.93-1.57 1.36-3.4 1.26-5.21-.09-1.81-.72-3.58-1.79-5.04C20.32 6 18.92 4.8 17.29 4 15.68 3.21 13.87 2.87 12.2 3.09L11.4 1.003zm.56 1.9c1.37-.2 2.8.08 4.08.73 1.29.65 2.43 1.65 3.24 2.89 1.24 1.87 1.63 4.22 1.1 6.39-.52 2.16-2.04 4.05-4.01 5.15-1.95 1.08-4.23 1.38-6.35.88l-.14-.03-2.33.6.2-2.26-.13-.16c-1.28-1.6-2.04-3.63-2.19-5.69-.14-2.06.33-4.18 1.51-5.89 1.18-1.71 3.05-2.98 5.02-3.37v.03l-.01-.27z"/></svg>
+              Send Inquiry via Viber
+            </a>
+            <a id="messenger-quote-link" href="https://m.me/projectcrecer" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1rem; background: #0084FF; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,132,255,0.3); transition: box-shadow 0.2s; justify-content: center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,132,255,0.5)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,132,255,0.3)'">
+              <svg style="width:20px;height:20px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 4.975 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.626 0 12-4.974 12-11.111S18.626 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.26L19.752 8l-6.561 6.963z"/></svg>
+              Send Inquiry via Messenger
+            </a>
             <a href="tel:+639260586209" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--clr-heading); font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'">
               <span style="width: 36px; height: 36px; background: var(--clr-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <i data-lucide="phone" style="width: 16px; height: 16px; color: white;"></i>
@@ -633,15 +865,6 @@
               <div>
                 <span style="display: block; font-size: 0.7rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Email Us</span>
                 crecerpacservices@gmail.com
-              </div>
-            </a>
-            <a href="https://www.facebook.com/projectcrecer" target="_blank" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--clr-heading); font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'">
-              <span style="width: 36px; height: 36px; background: var(--clr-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i data-lucide="facebook" style="width: 16px; height: 16px; color: white;"></i>
-              </span>
-              <div>
-                <span style="display: block; font-size: 0.7rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Visit Us</span>
-                Facebook: Project Crecer
               </div>
             </a>
           </div>
@@ -687,11 +910,77 @@
             </div>
           </div>
         </div>
+        <div class="dash-category">
+          <span class="category-label">Client Headquarters</span>
+          <div class="dash-item client" onclick="focusMap('novateur')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Novateur &amp; Nespresso</h5>
+              <p>One World Place, BGC</p>
+            </div>
+          </div>
+        </div>
+        <div class="dash-category">
+          <span class="category-label">Proven Project Locations</span>
+          <div class="dash-item project" onclick="focusMap('subic')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Subic Int'l Hotel Complex</h5>
+              <p>Alpha &amp; Bravo (IBIS / Mercure)</p>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('pulp')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>PULP Office</h5>
+              <p>80-A Sct. Castor St., QC (Renovation)</p>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('mitsukoshi')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Mitsukoshi BGC</h5>
+              <p>High-end technical installation</p>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('bhs')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Bonifacio High Street</h5>
+              <p>Prime retail infrastructure</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="map-overlay-banner">
-      <p>Strategic Presence</p>
-      <h3>Metro Manila Hub</h3>
+    <div class="map-search-card">
+      <div class="search-header">
+        <p>Strategic Presence</p>
+        <h3>Metro Manila Hub</h3>
+      </div>
+      <div class="search-body">
+        <div class="search-input-wrapper">
+          <input type="text" id="map-search-input" placeholder="Search address to estimate route..." autocomplete="off">
+          <button id="map-search-btn" type="button" title="Search Location"><i data-lucide="search" style="width: 18px; height: 18px;"></i></button>
+          <div id="search-suggestions" class="search-suggestions" style="display: none;"></div>
+        </div>
+      </div>
+      <div id="route-details" class="route-details" style="display: none;">
+        <div class="route-divider"></div>
+        <div class="route-stat-grid">
+          <div class="route-stat">
+            <span class="route-stat-label">Distance</span>
+            <span class="route-stat-val" id="route-distance">-</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-label">Est. Driving Time</span>
+            <span class="route-stat-val" id="route-duration">-</span>
+          </div>
+        </div>
+        <button id="clear-route-btn" type="button" class="btn-clear-route">
+          <i data-lucide="x-circle" style="width: 16px; height: 16px;"></i> Clear Route
+        </button>
+      </div>
     </div>
     <button id="open-dash" class="map-toggle-btn mobile-only">
       <i data-lucide="layout-list" style="width: 18px;"></i> Explore Hub
@@ -826,11 +1115,28 @@
       const tondoCoords = [14.6215, 120.9665];
       const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
       hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Registered HQ</h4><p>Lallana St., Brgy 93, Zone 8, 1012 Tondo I/II, NCR, City of Manila, First District, Philippines</p></div>');
+      
       const locations = {
         'tondo': { coords: tondoCoords, marker: hqMarker, zoom: 17 },
+        'subic': { coords: [14.822911, 120.280278], title: "Subic Int'l Hotel (GC)", body: "Rizal St. Cor. Labitan St.<br>Complete MEPF & Civil Works", zoom: 17 },
+        'pulp': { coords: [14.6360, 121.0330], title: "PULP Office (Renovation)", body: "80-A Sct. Castor St., QC<br>Plumbing, HVAC, & Firepro", zoom: 16 },
+        'novateur': { coords: [14.5516, 121.0494], title: "Novateur & Nespresso", body: "One World Place, BGC", type: 'client', zoom: 16 },
+        'mitsukoshi': { coords: [14.5583, 121.0543], title: "Mitsukoshi BGC", body: "High-end technical installation", zoom: 16 },
+        'bhs': { coords: [14.5505, 121.0478], title: "Bonifacio High Street", body: "BGC infrastructure maintenance", zoom: 16 },
         'manila_zone': { coords: tondoCoords, zoom: 10 },
         'national': { coords: [12.5, 122.0], zoom: 6 }
       };
+
+      for (const key in locations) {
+        const loc = locations[key];
+        if (key !== 'tondo' && key !== 'manila_zone' && key !== 'national') {
+          const m = L.marker(loc.coords, { icon: loc.type === 'client' ? clientIcon : projectIcon }).addTo(map)
+            .bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:${loc.type === 'client' ? '#3b82f6' : '#1f8a4c'}; color:white;">${loc.type === 'client' ? 'Client HQ' : 'Project Site'}</span><h4>${loc.title}</h4><p>${loc.body}</p></div>`);
+          loc.marker = m;
+        }
+      }
+
+      L.circle(tondoCoords, { radius: 17500, color: '#fbbf24', weight: 1, fillColor: '#fbbf24', fillOpacity: 0.12 }).addTo(map);
 
       // Load NCR boundary and shade it with hatch pattern
       // Inject SVG hatch pattern definition first
@@ -910,11 +1216,245 @@
       window.focusMap = function (key) {
         const loc = locations[key];
         if (loc) {
-          map.setView(loc.coords, loc.zoom);
+          map.setView(loc.coords, loc.zoom || 16);
           if (loc.marker) loc.marker.openPopup();
+          if (dashboard && window.innerWidth <= 1024) {
+            dashboard.classList.remove('active');
+          }
         }
       };
+
+      // Real-time Geocoding and Routing Integration
+      const searchInput = document.getElementById('map-search-input');
+      const searchBtn = document.getElementById('map-search-btn');
+      const suggestionsDiv = document.getElementById('search-suggestions');
+      const routeDetailsDiv = document.getElementById('route-details');
+      const routeDistanceSpan = document.getElementById('route-distance');
+      const routeDurationSpan = document.getElementById('route-duration');
+      const clearRouteBtn = document.getElementById('clear-route-btn');
+
+      let searchMarker = null;
+      let routePolyline = null;
+      let debounceTimeout = null;
+
+      if (searchInput && searchBtn) {
+        searchInput.addEventListener('input', () => {
+          clearTimeout(debounceTimeout);
+          const query = searchInput.value.trim();
+          if (query.length < 2) {
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.style.display = 'none';
+            return;
+          }
+          debounceTimeout = setTimeout(async () => {
+            try {
+              const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=ph&limit=5&addressdetails=1`;
+              const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+              const results = await res.json();
+              suggestionsDiv.innerHTML = '';
+              if (results && results.length > 0) {
+                suggestionsDiv.style.display = 'block';
+                results.forEach(result => {
+                  const item = document.createElement('div');
+                  item.className = 'suggestion-item';
+                  item.textContent = result.display_name;
+                  item.addEventListener('click', () => {
+                    searchInput.value = result.display_name;
+                    suggestionsDiv.innerHTML = '';
+                    suggestionsDiv.style.display = 'none';
+                    selectLocation(parseFloat(result.lat), parseFloat(result.lon), result.display_name);
+                  });
+                  suggestionsDiv.appendChild(item);
+                });
+              } else {
+                suggestionsDiv.style.display = 'none';
+              }
+            } catch (err) {
+              console.error('Error fetching suggestions:', err);
+            }
+          }, 300);
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!searchInput.contains(e.target) && !suggestionsDiv.contains(e.target)) {
+            suggestionsDiv.style.display = 'none';
+          }
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            triggerSearch();
+          }
+        });
+
+        searchBtn.addEventListener('click', triggerSearch);
+
+        async function triggerSearch() {
+          const query = searchInput.value.trim();
+          if (!query) return;
+          suggestionsDiv.innerHTML = '';
+          suggestionsDiv.style.display = 'none';
+          try {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=ph&limit=1`;
+            const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+            const results = await res.json();
+            if (results && results.length > 0) {
+              const first = results[0];
+              selectLocation(parseFloat(first.lat), parseFloat(first.lon), first.display_name);
+            } else {
+              alert('Location not found. Please try entering a city or landmark in the Philippines.');
+            }
+          } catch (err) {
+            console.error('Search error:', err);
+            alert('Search failed. Please check your internet connection.');
+          }
+        }
+
+        async function selectLocation(lat, lon, label) {
+          if (searchMarker) map.removeLayer(searchMarker);
+          if (routePolyline) map.removeLayer(routePolyline);
+
+          const searchIcon = L.divIcon({
+            className: 'custom-search-marker',
+            html: `<div style="width: 34px; height: 34px; background: #2563eb; border: 2.5px solid #fff; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 4px 12px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center;"><svg style="transform:rotate(45deg);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>`,
+            iconSize: [34, 34], iconAnchor: [17, 34], popupAnchor: [0, -34]
+          });
+          searchMarker = L.marker([lat, lon], { icon: searchIcon }).addTo(map);
+          searchMarker.bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:#2563eb; color:#fff;">Searched Destination</span><h4>${label.split(',')[0]}</h4><p>${label}</p></div>`).openPopup();
+
+          const bounds = L.latLngBounds([tondoCoords, [lat, lon]]);
+          map.fitBounds(bounds, { padding: [60, 60], maxZoom: 15 });
+
+          // Try OSRM driving route
+          const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${lon},${lat};${tondoCoords[1]},${tondoCoords[0]}?overview=full&geometries=geojson`;
+
+          let routeSucceeded = false;
+          try {
+            const response = await fetch(osrmUrl);
+            const data = await response.json();
+            if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+              const route = data.routes[0];
+              const coordinates = route.geometry.coordinates;
+              const latLngs = coordinates.map(coord => [coord[1], coord[0]]);
+              
+              const outerLine = L.polyline(latLngs, {
+                color: '#2563eb',
+                weight: 6,
+                opacity: 0.6,
+                lineCap: 'round',
+                lineJoin: 'round'
+              });
+
+              const innerLine = L.polyline(latLngs, {
+                color: '#fbbf24',
+                weight: 3,
+                opacity: 0.95,
+                dashArray: '3, 8',
+                lineCap: 'round',
+                lineJoin: 'round'
+              });
+
+              routePolyline = L.featureGroup([outerLine, innerLine]).addTo(map);
+
+              const distanceKm = (route.distance / 1000).toFixed(1);
+              const durationSec = route.duration;
+              
+              let durationText = '';
+              if (durationSec < 60) {
+                durationText = '< 1 min';
+              } else if (durationSec < 3600) {
+                durationText = `${Math.round(durationSec / 60)} mins`;
+              } else {
+                const hrs = Math.floor(durationSec / 3600);
+                const mins = Math.round((durationSec % 3600) / 60);
+                durationText = `${hrs} hr ${mins} mins`;
+              }
+
+              routeDistanceSpan.textContent = `${distanceKm} km`;
+              routeDurationSpan.textContent = durationText;
+              routeDetailsDiv.style.display = 'block';
+              routeSucceeded = true;
+            }
+          } catch (err) {
+            console.warn('OSRM routing failed, using direct estimate:', err);
+          }
+
+          // Fallback if driving route failed (e.g., across water or service timeout)
+          if (!routeSucceeded) {
+            const R = 6371; // km
+            const dLat = (lat - tondoCoords[0]) * Math.PI / 180;
+            const dLon = (lon - tondoCoords[1]) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(tondoCoords[0] * Math.PI / 180) * Math.cos(lat * Math.PI / 180) *
+                      Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            const directKm = (R * c).toFixed(1);
+            const estMin = Math.round((directKm / 30) * 60);
+            const estDurationText = estMin < 60 ? `${estMin} mins (est.)` : `${Math.floor(estMin / 60)}h ${estMin % 60}m (est.)`;
+
+            const straightLine = L.polyline([[lat, lon], tondoCoords], {
+              color: '#fbbf24',
+              weight: 3,
+              dashArray: '6, 6',
+              opacity: 0.8
+            });
+            routePolyline = straightLine.addTo(map);
+
+            routeDistanceSpan.textContent = `~${directKm} km`;
+            routeDurationSpan.textContent = estDurationText;
+            routeDetailsDiv.style.display = 'block';
+          }
+          if (window.lucide) lucide.createIcons();
+        }
+
+        if (clearRouteBtn) {
+          clearRouteBtn.addEventListener('click', () => {
+            if (searchMarker) {
+              map.removeLayer(searchMarker);
+              searchMarker = null;
+            }
+            if (routePolyline) {
+              map.removeLayer(routePolyline);
+              routePolyline = null;
+            }
+            searchInput.value = '';
+            routeDetailsDiv.style.display = 'none';
+            map.setView(tondoCoords, 10);
+            hqMarker.openPopup();
+          });
+        }
+      }
     })();
+
+    // Dynamic Quote Track Logic
+    let currentScale = 'Residential';
+    let currentTrack = 'Direct Client';
+
+    function updateQuotePreview() {
+      const preview = document.getElementById('quote-message-preview');
+      const viberLink = document.getElementById('viber-quote-link');
+      const messengerLink = document.getElementById('messenger-quote-link');
+      const text = `Project Inquiry — ${currentScale} • ${currentTrack}`;
+      if (preview) preview.textContent = text;
+      const encodedMsg = encodeURIComponent(`Hi Crecer Team! I'm inquiring about a ${currentScale} project (${currentTrack}).`);
+      if (viberLink) viberLink.href = `viber://chat?number=639260586209`;
+      if (messengerLink) messengerLink.href = `https://m.me/projectcrecer`;
+    }
+
+    function selectScale(btn, scale) {
+      document.querySelectorAll('#scale-residential, #scale-commercial, #scale-industrial').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentScale = scale;
+      updateQuotePreview();
+    }
+
+    function selectTrack(btn, track) {
+      document.querySelectorAll('#track-direct, #track-contractor').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentTrack = track;
+      updateQuotePreview();
+    }
   </script>
 </body>
 </html>

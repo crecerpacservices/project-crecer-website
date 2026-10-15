@@ -27,7 +27,12 @@
     
     .featured-card { display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 4rem; align-items: stretch; border: 1px solid var(--clr-gray-border); }
     .fc-image-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0 2rem 2rem; }
-    .fc-main-img { background: #f3f4f6; aspect-ratio: 4/3; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #9ca3af; overflow: hidden; border: 1px dashed #d1d5db; }
+    .fc-main-img { background: #0f1c16; aspect-ratio: 4/3; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #9ca3af; overflow: hidden; border: 1px solid rgba(251,191,36,0.25); position: relative; }
+    .fc-gate-overlay { position: absolute; inset: 0; background: rgba(15, 28, 22, 0.9); backdrop-filter: blur(6px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; gap: 1rem; opacity: 0; transition: opacity 0.35s ease; }
+    .fc-main-img:hover .fc-gate-overlay { opacity: 1; }
+    .fc-gate-overlay p { color: rgba(255,255,255,0.85); font-size: 0.85rem; line-height: 1.5; margin: 0; }
+    .btn-gate { background: var(--clr-yellow); color: var(--clr-heading); padding: 0.7rem 1.3rem; border-radius: 6px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.25s; }
+    .btn-gate:hover { background: var(--clr-yellow-hover); }
     .fc-sub-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .fc-sub-img { background: #e5e7eb; aspect-ratio: 16/9; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af; overflow: hidden; border: 1px dashed #d1d5db; }
     
@@ -139,7 +144,12 @@
       <div class="featured-card reveal filter-item mepf commercial-improvements">
         <div class="fc-image-grid">
           <div class="fc-main-img">
-            <div style="text-align: center;"><i data-lucide="image" style="width: 40px; margin-bottom: 0.5rem; display: inline-block;"></i><br>Primary Site Progress Photo</div>
+            <div style="text-align: center; color: rgba(255,255,255,0.4);"><i data-lucide="building-2" style="width: 50px; height: 50px; margin-bottom: 0.5rem; display: inline-block;"></i><br><span style="font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;">Primary Site Photo</span></div>
+            <div class="fc-gate-overlay">
+              <i data-lucide="lock" style="width:28px;height:28px;color:var(--clr-yellow);"></i>
+              <p>Full case study, photo documentation, and approved inspection results available on request.</p>
+              <a href="mailto:crecerpacservices@gmail.com?subject=Portfolio%20Access%20Request%20-%20Subic%20Hotel" class="btn-gate">Request Access to Full Case Studies &amp; Approved Results</a>
+            </div>
           </div>
           <div class="fc-sub-imgs">
             <div class="fc-sub-img"><i data-lucide="image" style="width: 24px;"></i></div>
@@ -148,7 +158,7 @@
         </div>
         
         <div class="fc-content">
-          <span class="fc-tag">Commercial & Hospitality</span>
+          <span class="fc-tag">Commercial &amp; Hospitality</span>
           <h3>Subic International Hotel Complex</h3>
           
           <div class="fc-meta">
@@ -160,18 +170,19 @@
           <div class="fc-data-grid">
             <div class="fc-data-box">
               <div class="fc-data-title">Project Overview</div>
-              <div class="fc-data-text"></div>
+              <div class="fc-data-text">Full-scale commercial hospitality renovation and MEPFS overhaul managed under rigorous life-safety and municipal engineering standards.</div>
             </div>
             
             <div class="fc-data-box">
-              <div class="fc-data-title">Execution & Scope</div>
-              <div class="fc-data-text"></div>
+              <div class="fc-data-title">Execution &amp; Scope</div>
+              <div class="fc-data-text">Lead General Contracting management overseeing mechanical systems modernization, automatic fire suppression sprinklers (AFSS), high-capacity water supply networks, and architectural fit-outs.</div>
             </div>
           </div>
           
-          <div class="fc-results">
-            <div class="fc-results-title"><i data-lucide="check-circle" style="width: 16px;"></i> Verified Results</div>
-            <p class="fc-results-text"></p>
+          <div class="fc-results" style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div class="fc-results-title"><i data-lucide="shield-check" style="width: 16px;"></i> Protected Case Study</div>
+            <p class="fc-results-text">Complete inspection logs, architectural schematics, and approved milestone documentation available under NDA.</p>
+            <a href="mailto:crecerpacservices@gmail.com?subject=Portfolio%20Access%20Request%20-%20Subic%20Hotel" class="btn btn-yellow" style="font-size:0.75rem;padding:0.7rem 1.25rem;align-self:flex-start;text-transform:uppercase;letter-spacing:1px;font-weight:800;">Request Access to Full Case Studies &amp; Approved Results</a>
           </div>
         </div>
       </div>
@@ -180,7 +191,12 @@
       <div class="featured-card reveal filter-item mepf renovation">
         <div class="fc-image-grid" style="padding: 2rem 2rem 2rem 0;">
           <div class="fc-main-img">
-            <div style="text-align: center;"><i data-lucide="image" style="width: 40px; margin-bottom: 0.5rem; display: inline-block;"></i><br>Main Corporate HQ Photo</div>
+            <div style="text-align: center; color: rgba(255,255,255,0.4);"><i data-lucide="layout" style="width: 50px; height: 50px; margin-bottom: 0.5rem; display: inline-block;"></i><br><span style="font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;">Main Corporate HQ Photo</span></div>
+            <div class="fc-gate-overlay">
+              <i data-lucide="lock" style="width:28px;height:28px;color:var(--clr-yellow);"></i>
+              <p>Full case study, photo documentation, and approved inspection results available on request.</p>
+              <a href="mailto:crecerpacservices@gmail.com?subject=Portfolio%20Access%20Request%20-%20PULP%20Office" class="btn-gate">Request Access to Full Case Studies &amp; Approved Results</a>
+            </div>
           </div>
           <div class="fc-sub-imgs">
             <div class="fc-sub-img"><i data-lucide="image" style="width: 24px;"></i></div>
@@ -200,18 +216,19 @@
           <div class="fc-data-grid">
             <div class="fc-data-box">
               <div class="fc-data-title">Project Overview</div>
-              <div class="fc-data-text"></div>
+              <div class="fc-data-text">High-performance corporate headquarters development featuring synchronized MEPF architecture and precision life-safety engineering.</div>
             </div>
             
             <div class="fc-data-box">
-              <div class="fc-data-title">Execution & Scope</div>
-              <div class="fc-data-text">Prior to the founding of Crecer, our core leadership served as the Core MEPF Execution Team for this development. We directly executed and oversaw the full-scale MEPF infrastructure, including complete plumbing & sanitary system, automated fire protection sprinklers (AFSS), rigorous as-built plans, comprehensive site inspections, and precise design alignment to actual site conditions.</div>
+              <div class="fc-data-title">Execution &amp; Scope</div>
+              <div class="fc-data-text">Prior to the founding of Crecer, our core leadership served as the Core MEPF Execution Team for this development. We directly executed and oversaw the full-scale MEPF infrastructure, including complete plumbing &amp; sanitary system, automated fire protection sprinklers (AFSS), rigorous as-built plans, comprehensive site inspections, and precise design alignment to actual site conditions.</div>
             </div>
           </div>
           
-          <div class="fc-results">
-            <div class="fc-results-title"><i data-lucide="zap" style="width: 16px;"></i> Verified Results</div>
-            <p class="fc-results-text"></p>
+          <div class="fc-results" style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div class="fc-results-title"><i data-lucide="shield-check" style="width: 16px;"></i> Protected Case Study</div>
+            <p class="fc-results-text">Complete inspection logs, architectural schematics, and approved milestone documentation available under NDA.</p>
+            <a href="mailto:crecerpacservices@gmail.com?subject=Portfolio%20Access%20Request%20-%20PULP%20Office" class="btn btn-yellow" style="font-size:0.75rem;padding:0.7rem 1.25rem;align-self:flex-start;text-transform:uppercase;letter-spacing:1px;font-weight:800;">Request Access to Full Case Studies &amp; Approved Results</a>
           </div>
         </div>
       </div>
@@ -316,7 +333,7 @@
           <h4>Contact Us</h4>
           <ul style="gap: 1.5rem;">
             <li style="display: flex; gap: 1rem; align-items: flex-start;"><i data-lucide="map-pin" style="margin-top: 3px;"></i> <div>Lallana St., Brgy 93, Zone 8, 1012 Tondo I/II, NCR, City of Manila, First District, Philippines</div></li>
-            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <div><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a> <small style="display: block; font-size: 0.75rem; color: #4ade80;">Available on Viber</small></div></li>
+            <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="phone"></i> <div><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a> <a href="viber://chat?number=639260586209" style="display:flex;align-items:center;gap:.35rem;font-size:.78rem;color:#7360F2;font-weight:700;text-decoration:none;margin-top:.2rem;"><svg style="width:14px;height:14px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.12 20.36h.003l-.004 2.416s-.037.977.61 1.177c.777.242 1.234-.5 1.98-1.302.407-.44.972-1.084 1.397-1.58 3.85.326 6.812-.416 7.15-.525.776-.252 5.176-.816 5.892-6.657.74-6.02-.36-9.83-2.34-11.85C18.666.452 13.328-.028 11.4 0zm6.985 16.52c-.524 4.304-4.225 4.54-5.352 4.908-.432.14-3.328.84-6.72-.422-.53-.2-1.056-.475-1.527-.812l-.71-.505-.59.58c-.596.587-1.01 1.002-1.35 1.346l.044-1.897-.478-.014c-4.947-.138-5.01-5.328-4.948-8.15.06-2.735.59-4.928 2.05-6.388C4.853 1.895 8.71 1.604 11.36 1.566c2.47-.035 7.135.342 9.208 2.378 1.77 1.794 2.76 5.23 2.1 10.456-.008.068-.02.138-.033.208-1.282 2.228-3.082 1.83-4.15 1.912zM6.924 5.922c-.41 0-.82.16-1.13.48-.9 1-.72 4.1.7 6.4 1.4 2.3 4.1 3.9 6.2 4.3 2.2.4 4.8-.2 5.6-1.1.3-.3.4-.7.4-1.1 0-.5-.2-.9-.6-1.2l-1.9-1.4c-.4-.3-.9-.3-1.3 0l-1.1.9c-.4.3-.9.3-1.3 0-1.2-.8-2.3-1.8-3.1-3-.3-.4-.3-.9 0-1.3l.9-1.1c.3-.4.3-.9 0-1.3L8.2 6.4c-.3-.3-.8-.5-1.3-.5z"/></svg> Viber (Direct Line)</a></div></li>
             <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="mail"></i> <div><a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="color: inherit; text-decoration: none;">crecerpacservices@gmail.com</a></div></li>
             <li style="display: flex; gap: 1rem; align-items: center;"><i data-lucide="clock"></i> <div>Mon - Fri: 8:00 AM - 6:00 PM</div></li>
           </ul>
