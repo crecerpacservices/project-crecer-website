@@ -37,6 +37,8 @@
 html {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,6 +49,14 @@ body {
   line-height: 1.6;
   background-color: var(--clr-white);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  min-width: 0;
+}
+
+/* Prevent iOS zoom-on-focus; keep readable controls */
+input, select, textarea {
+  font-size: 16px;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-heading); line-height: 1.2; }
@@ -77,8 +87,9 @@ button, .btn, .filter-btn, .menu-toggle, [role="button"] {
   border: 1px solid var(--glass-border);
   color: white;
   border-radius: 12px;
-  padding: 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   transition: border-color var(--duration-hover) var(--ease-hover), transform var(--duration-hover) var(--ease-out);
+  min-width: 0;
 }
 
 .img-placeholder {
@@ -167,7 +178,19 @@ button, .btn, .filter-btn, .menu-toggle, [role="button"] {
   .dash-container { grid-template-columns: 1fr; }
 }
 
-.container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; }
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 768px) {
+  .container {
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
+}
 .flex-between { display: flex; justify-content: space-between; align-items: flex-end; }
 .bg-light { background-color: var(--clr-light); }
 .bg-green-dark { background-color: var(--clr-green-dark); }
@@ -259,9 +282,9 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
 
 /* Base Layout */
 .section-padding { padding: 6rem 0; }
-.section-title { text-align: center; margin-bottom: 4rem; }
-.section-title h2 { font-size: 2.5rem; margin-bottom: 1rem; overflow-wrap: anywhere; }
-.section-title p { color: var(--clr-text); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+.section-title { text-align: center; margin-bottom: clamp(2rem, 5vw, 4rem); }
+.section-title h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; overflow-wrap: anywhere; }
+.section-title p { color: var(--clr-text); max-width: 600px; margin: 0 auto; font-size: clamp(0.95rem, 2vw, 1.1rem); }
 
 .main-content,
 .services-grid,
@@ -345,8 +368,8 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
 .why-icon { width: 70px; height: 70px; background: var(--clr-yellow); color: var(--clr-heading); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; filter: drop-shadow(0 8px 12px rgba(251,191,36,0.25)); }
 
 .cta-floating { position: relative; top: 100px; z-index: 10; margin-bottom: 100px; }
-.cta-box { background: var(--clr-white); padding: 4rem; border-radius: var(--radius); text-align: center; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
-.cta-box h2 { font-size: 2.5rem; margin-bottom: 1rem; overflow-wrap: anywhere; }
+.cta-box { background: var(--clr-white); padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius); text-align: center; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
+.cta-box h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; overflow-wrap: anywhere; }
 
 /* Hover-capable devices only */
 @media (hover: hover) and (pointer: fine) {
@@ -369,18 +392,29 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
 
 /* --- RESPONSIVE BASE & UTILITIES --- */
 @media (max-width: 1200px) {
-  :root { --max-width: 1000px; }
+  :root { --max-width: 1100px; }
 }
 
 @media (max-width: 1024px) {
   .services-grid, .why-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .cred-grid { grid-template-columns: repeat(3, 1fr); }
+  .cred-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
   .section-padding { padding: 4rem 0; }
+  .nav-links { gap: 1.5rem; }
+  .faq-section { padding: 5rem 0; }
+  .lean-box { padding: 2rem; }
+}
+
+/* Tablets / large phones in landscape */
+@media (max-width: 900px) {
+  .nav-container { height: 72px; gap: 1rem; }
+  .nav-links { gap: 1.1rem; }
+  .nav-links a { font-size: 0.88rem; }
 }
 
 @media (max-width: 768px) {
-  .nav-container { height: 70px; }
+  .nav-container { height: 70px; justify-content: space-between; }
+  .logo { margin: 0; }
   .nav-links {
     position: fixed;
     top: calc(70px + env(safe-area-inset-top, 0px));
@@ -398,15 +432,14 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
     box-shadow: 0 10px 15px rgba(0,0,0,0.05);
     overflow-y: auto;
     overscroll-behavior: contain;
+    gap: 0.5rem;
   }
   .nav-links.active { left: 0; }
   .nav-links a { font-size: 1.25rem; padding: 0.5rem 1rem; min-height: 44px; display: inline-flex; align-items: center; }
   .nav-container .btn-yellow { display: none; }
   .menu-toggle { display: flex !important; }
 
-  .container { padding: 0 1.5rem; }
-  .section-title h2 { font-size: 2rem; }
-  .hero { padding: 7rem 0 5rem; min-height: 0; }
+  .hero { padding: 6rem 0 4rem; min-height: 0; }
   .hero-lead, .hero p { font-size: 1.05rem; margin-bottom: 2rem; }
 
   .services-grid, .why-grid, .cred-grid { grid-template-columns: 1fr; }
@@ -419,14 +452,21 @@ footer { background-color: var(--clr-dark); color: rgba(255,255,255,0.7); paddin
   .footer-col ul { align-items: center; }
   .footer-socials { justify-content: center; }
   .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .footer-bottom > div { flex-wrap: wrap; justify-content: center; gap: 1rem !important; }
 
   .flex-between { flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+  .faq-item { padding: 1.5rem; }
+  .faq-section { padding: 4rem 0; }
+  .cta-floating { top: 40px; margin-bottom: 60px; }
+  .lean-compare { gap: 2rem; }
+  .lean-box { margin-top: 2.5rem; padding: 1.5rem; }
 }
 
 @media (max-width: 480px) {
-  .section-title h2 { font-size: 1.75rem; }
   .btn { width: 100%; }
   .hero-buttons { flex-direction: column; width: 100%; }
+  .section-padding { padding: 3rem 0; }
+  .dash-widget { padding: 1.35rem; }
 }
 
 /* --- CLIENT LOGO BAR --- */

@@ -39,7 +39,8 @@
     .map-toggle-btn { display: none; }
     .mobile-only { display: none; }
     .contact-hero h1 {
-      font-size: 4rem;
+      font-size: clamp(2.25rem, 7vw, 4rem);
+      overflow-wrap: anywhere;
       color: white;
       margin-bottom: 1.5rem;
     }
@@ -757,15 +758,21 @@
       }
     }
     @media (max-width: 768px) {
-      .contact-hero h1 {
-        font-size: 2.8rem;
-      }
       .form-left,
       .form-right {
-        padding: 2.5rem 1.5rem;
+        padding: 2rem 1.25rem;
       }
       .contact-cards {
         grid-template-columns: 1fr;
+      }
+      .map-section {
+        height: min(70vh, 520px);
+      }
+    }
+    @media (max-width: 480px) {
+      .form-submit,
+      .btn {
+        width: 100%;
       }
     }
   </style>

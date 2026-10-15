@@ -96,10 +96,15 @@
       .ap-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .portfolio-hero h1 { font-size: 2.5rem; }
       .ap-grid { grid-template-columns: 1fr; }
-      .portfolio-cta { padding: 3rem 1.5rem; }
-      .portfolio-cta h2 { font-size: 2rem; }
+      .portfolio-cta { padding: 3rem 1.25rem; }
+      .portfolio-cta h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+      .fc-content { padding: 1rem 1.25rem 2.5rem; }
+      .fc-image-grid { padding: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .portfolio-cta .btn,
+      .btn-gate { width: 100%; }
     }
   </style>
 </head>
@@ -279,27 +284,27 @@
       
       <div class="ap-grid reveal">
         <div class="ap-card filter-item mepf">
-          <div class="ap-img"><i data-lucide="image" style="width: 30px;"></i></div>
+          <div class="ap-img"><i data-lucide="pen-tool" style="width: 30px;"></i></div>
           <div class="ap-content">
-            <span class="ap-tag">Manufacturing Facility</span>
-            <h4>Advanced Plant HVAC Integration</h4>
-            <p>Executed high-efficiency climate and exhaust mechanisms for a large-scale industrial plant ensuring stringent occupational air quality standards.</p>
+            <span class="ap-tag">Design &amp; Documentation</span>
+            <h4>As-Built &amp; Fire Evacuation Plans</h4>
+            <p>Drawing plans including as-built and fire evacuation layouts — scoped with actual site inspection, full templates, and layout updates for accurate field coordination.</p>
           </div>
         </div>
-        <div class="ap-card filter-item mepf">
-          <div class="ap-img"><i data-lucide="image" style="width: 30px;"></i></div>
+        <div class="ap-card filter-item renovation">
+          <div class="ap-img"><i data-lucide="wrench" style="width: 30px;"></i></div>
           <div class="ap-content">
-            <span class="ap-tag">Commercial Retail</span>
-            <h4>Mall Fire Protection Deployment</h4>
-            <p>Designed and installed code-compliant automatic fire sprinkler systems (AFSS) for a retail expansion, passing immediate regulatory inspection.</p>
+            <span class="ap-tag">Residential &amp; Commercial</span>
+            <h4>Targeted Renovation Works</h4>
+            <p>Focused residential and commercial renovation covering repiping, open-ceiling works, repairs, leak location, and rooftop water tank repair and testing.</p>
           </div>
         </div>
-        <div class="ap-card filter-item renovation commercial-improvements">
-          <div class="ap-img"><i data-lucide="image" style="width: 30px;"></i></div>
+        <div class="ap-card filter-item commercial-improvements">
+          <div class="ap-img"><i data-lucide="hammer" style="width: 30px;"></i></div>
           <div class="ap-content">
-            <span class="ap-tag">Civil Engineering</span>
-            <h4>Strategic Structural Demolition</h4>
-            <p>Managed controlled partition-demolitions and heavy-load site clearances with zero recorded safety incidents or workflow delays.</p>
+            <span class="ap-tag">Commercial Improvements</span>
+            <h4>Fit-Out Works</h4>
+            <p>Commercial improvements for fit-out works — repair, installation, and maintenance to keep spaces operational and turnover-ready.</p>
           </div>
         </div>
       </div>
