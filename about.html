@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
   <title>Crecer - About Us | Engineering Excellence</title>
   <meta name="description" content="Learn about Crecer PAC Services — our mission, founding vision, leadership team, and commitment to quality engineering across the Philippines.">
@@ -12,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <style>
     /* ABOUT HERO - Dark Tech */
     .about-hero { padding: 8rem 0 6rem; background-color: var(--clr-dark-green); background-image: linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.95)), url('https://images.unsplash.com/photo-1541888081198-5cb70f3f5082?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; color: white; position: relative; overflow: hidden; }
@@ -400,35 +401,37 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: all 0.3s ease;
+      transition: transform 160ms var(--ease-out), border-color 160ms var(--ease-hover), filter 160ms var(--ease-hover);
       position: relative;
       backdrop-filter: blur(14px);
       height: 100%;
-    }
-    .org-node:hover {
-      transform: translateY(-4px);
-      border-color: rgba(34, 197, 94, 0.45);
-      border-bottom-color: #22c55e;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
+      min-width: 0;
     }
     .org-node.featured {
       border-color: rgba(251, 191, 36, 0.35);
       border-bottom: 3px solid var(--clr-yellow);
       background: linear-gradient(145deg, rgba(8, 18, 12, 0.95), rgba(251, 191, 36, 0.05));
-      box-shadow: 0 0 45px rgba(251, 191, 36, 0.07), 0 8px 24px rgba(0,0,0,0.5);
-    }
-    .org-node.featured:hover {
-      border-color: rgba(251, 191, 36, 0.6);
-      box-shadow: 0 0 55px rgba(251, 191, 36, 0.13), 0 16px 36px rgba(0,0,0,0.55);
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.45));
     }
     .org-node.advisory {
       border-color: rgba(96, 165, 250, 0.18);
       border-bottom-color: rgba(96, 165, 250, 0.35);
       background: rgba(8, 18, 12, 0.72);
     }
-    .org-node.advisory:hover {
-      border-color: rgba(96, 165, 250, 0.45);
-      border-bottom-color: #60a5fa;
+    @media (hover: hover) and (pointer: fine) {
+      .org-node:hover {
+        transform: translateY(-3px);
+        border-color: rgba(34, 197, 94, 0.45);
+        border-bottom-color: #22c55e;
+      }
+      .org-node.featured:hover {
+        border-color: rgba(251, 191, 36, 0.6);
+      }
+      .org-node.advisory:hover {
+        border-color: rgba(96, 165, 250, 0.45);
+        border-bottom-color: #60a5fa;
+      }
+      .org-node:hover .org-icon { transform: scale(1.06); }
     }
 
     /* Badges */
@@ -457,12 +460,12 @@
     .org-node.featured  .org-icon { color: var(--clr-yellow); background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.18); }
     .org-node.advisory  .org-icon { color: #93c5fd;           background: rgba(96,165,250,0.06);  border-color: rgba(96,165,250,0.15); }
     .org-node           .org-icon { color: #4ade80;            background: rgba(34,197,94,0.06);   border-color: rgba(34,197,94,0.15); }
-    .org-node:hover .org-icon { transform: scale(1.1); }
 
     /* Text */
     .org-node h4 {
       font-size: 0.9rem; font-weight: 700; color: #fff;
       margin: 0 0 0.45rem; line-height: 1.3; font-family: var(--font-heading);
+      overflow-wrap: anywhere;
     }
     .org-node.featured h4 { font-size: 1.05rem; }
     .org-node p {

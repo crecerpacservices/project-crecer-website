@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/png" href="assets/logo-transparent.png">
   <title>Crecer - Contact Us | Request a Quote</title>
   <meta name="description" content="Get in touch with Crecer PAC Services. Request a free quote for plumbing, fire protection, electrical, and construction projects.">
@@ -14,7 +15,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <style>
     .contact-hero {
       background-color: var(--clr-dark-green);
@@ -156,26 +157,24 @@
       margin-bottom: 0.5rem;
     }
     .form-group input,
-    .form-group select {
-      padding: 1rem;
-      border: 1px solid var(--clr-gray-border);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      transition: 0.3s;
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: var(--clr-green);
-    }
+    .form-group select,
     .form-group textarea {
       padding: 1rem;
       border: 1px solid var(--clr-gray-border);
       border-radius: 4px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 16px;
       outline: none;
+      transition: border-color 160ms var(--ease-hover);
+      width: 100%;
+      max-width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--clr-green);
+    }
+    .form-group textarea {
       resize: vertical;
       min-height: 150px;
     }
@@ -195,20 +194,27 @@
       font-weight: 700;
       font-size: 0.8rem;
       padding: 0.65rem 0.9rem;
+      min-height: 44px;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: border-color 160ms var(--ease-hover), color 160ms var(--ease-hover), background-color 160ms var(--ease-hover), transform 100ms var(--ease-out);
       font-family: inherit;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
     }
-    .quote-track-btn:hover {
-      border-color: var(--clr-green);
-      color: var(--clr-green);
-    }
+    .quote-track-btn:active { transform: scale(0.97); }
     .quote-track-btn.active {
       background: var(--clr-green);
       border-color: var(--clr-green);
       color: white;
       box-shadow: 0 2px 6px rgba(31, 138, 76, 0.25);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .quote-track-btn:hover {
+        border-color: var(--clr-green);
+        color: var(--clr-green);
+      }
     }
 
     .map-section {
@@ -297,15 +303,54 @@
       padding: 0.85rem;
       border-radius: 10px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: background-color 160ms var(--ease-hover), border-color 160ms var(--ease-hover), transform 160ms var(--ease-out);
       margin-bottom: 0.4rem;
       border: 1px solid transparent;
+      min-width: 0;
+      touch-action: manipulation;
     }
-    .dash-item:hover {
-      background: white;
-      transform: translateX(8px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border-color: #f1f5f9;
+    .dash-item:active { transform: scale(0.99); }
+    @media (hover: hover) and (pointer: fine) {
+      .dash-item:hover {
+        background: white;
+        transform: translateX(3px);
+        border-color: #f1f5f9;
+      }
+    }
+    .channel-link {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 160ms var(--ease-out);
+      touch-action: manipulation;
+    }
+    .channel-link:active { opacity: 0.8; }
+    .quote-channel {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      min-height: 48px;
+      border-radius: 8px;
+      justify-content: center;
+      transition: filter 160ms var(--ease-hover), transform 100ms var(--ease-out);
+      touch-action: manipulation;
+    }
+    .quote-channel:active { transform: scale(0.97); }
+    .quote-channel.viber { color: white; background: #7360F2; filter: drop-shadow(0 2px 8px rgba(115,96,242,0.3)); }
+    .quote-channel.messenger { color: white; background: #0084FF; filter: drop-shadow(0 2px 8px rgba(0,132,255,0.3)); }
+    .quote-channel.neutral { color: var(--clr-heading); background: white; font-weight: 600; justify-content: flex-start; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06)); }
+    @media (hover: hover) and (pointer: fine) {
+      .channel-link:hover { opacity: 0.8; }
+      .quote-channel.viber:hover { filter: drop-shadow(0 4px 16px rgba(115,96,242,0.45)); }
+      .quote-channel.messenger:hover { filter: drop-shadow(0 4px 16px rgba(0,132,255,0.45)); }
+      .quote-channel.neutral:hover { filter: drop-shadow(0 4px 16px rgba(0,0,0,0.1)); }
     }
     .dash-item .dot {
       width: 10px;
@@ -396,9 +441,10 @@
       border: none;
       padding: 0.65rem 0.85rem;
       color: white;
-      font-size: 0.85rem;
+      font-size: 16px;
       outline: none;
       font-family: inherit;
+      min-width: 0;
     }
     .search-input-wrapper input::placeholder {
       color: rgba(255, 255, 255, 0.5);
@@ -414,8 +460,10 @@
       justify-content: center;
       transition: opacity 0.2s;
     }
-    .search-input-wrapper button:hover {
-      opacity: 0.8;
+    @media (hover: hover) and (pointer: fine) {
+      .search-input-wrapper button:hover {
+        opacity: 0.8;
+      }
     }
     .search-suggestions {
       position: absolute;
@@ -444,7 +492,13 @@
     .suggestion-item:last-child {
       border-bottom: none;
     }
-    .suggestion-item:hover {
+    @media (hover: hover) and (pointer: fine) {
+      .suggestion-item:hover {
+        background: rgba(251, 191, 36, 0.15);
+        color: var(--clr-yellow);
+      }
+    }
+    .suggestion-item:active {
       background: rgba(251, 191, 36, 0.15);
       color: var(--clr-yellow);
     }
@@ -637,21 +691,24 @@
         margin: 0;
         border-radius: 0;
         z-index: 2000;
-        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex; /* Override display: none */
+        transition: left var(--duration-drawer) var(--ease-drawer);
+        display: flex;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
       }
       .map-dashboard.active {
         left: 0;
       }
       .map-toggle-btn {
         position: absolute;
-        bottom: 2rem;
+        bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
         left: 50%;
         transform: translateX(-50%);
         z-index: 1000;
         background: var(--clr-dark-green);
         color: white;
         padding: 0.8rem 1.5rem;
+        min-height: 44px;
         border-radius: 50px;
         border: 2px solid var(--clr-yellow);
         font-weight: 800;
@@ -663,6 +720,9 @@
         gap: 0.75rem;
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         cursor: pointer;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
       }
       .mobile-only { display: flex !important; }
       .desktop-only { display: none !important; }
@@ -753,13 +813,11 @@
             <p>Direct Line &amp; Viber</p>
             <h3><a href="tel:+639260586209" style="color: inherit; text-decoration: none;">09260586209</a></h3>
             <div style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
-              <a href="viber://chat?number=639260586209"
-                style="text-decoration: none; color: #7360F2; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+              <a href="viber://chat?number=639260586209" class="channel-link" style="color: #7360F2;">
                 <svg style="width: 16px; height: 16px; flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.12 20.36h.003l-.004 2.416s-.037.977.61 1.177c.777.242 1.234-.5 1.98-1.302.407-.44.972-1.084 1.397-1.58 3.85.326 6.812-.416 7.15-.525.776-.252 5.176-.816 5.892-6.657.74-6.02-.36-9.83-2.34-11.85C18.666.452 13.328-.028 11.4 0zm6.985 16.52c-.524 4.304-4.225 4.54-5.352 4.908-.432.14-3.328.84-6.72-.422-.53-.2-1.056-.475-1.527-.812l-.71-.505-.59.58c-.596.587-1.01 1.002-1.35 1.346l.044-1.897-.478-.014c-4.947-.138-5.01-5.328-4.948-8.15.06-2.735.59-4.928 2.05-6.388C4.853 1.895 8.71 1.604 11.36 1.566c2.47-.035 7.135.342 9.208 2.378 1.77 1.794 2.76 5.23 2.1 10.456-.008.068-.02.138-.033.208-1.282 2.228-3.082 1.83-4.15 1.912zM6.924 5.922c-.41 0-.82.16-1.13.48-.9 1-.72 4.1.7 6.4 1.4 2.3 4.1 3.9 6.2 4.3 2.2.4 4.8-.2 5.6-1.1.3-.3.4-.7.4-1.1 0-.5-.2-.9-.6-1.2l-1.9-1.4c-.4-.3-.9-.3-1.3 0l-1.1.9c-.4.3-.9.3-1.3 0-1.2-.8-2.3-1.8-3.1-3-.3-.4-.3-.9 0-1.3l.9-1.1c.3-.4.3-.9 0-1.3L8.2 6.4c-.3-.3-.8-.5-1.3-.5z"/></svg>
                 Viber (Direct Line)
               </a>
-              <a href="tel:+639260586209"
-                style="font-size: 0.8rem; font-weight: 700; color: var(--clr-green); text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem; text-decoration: none;">
+              <a href="tel:+639260586209" class="channel-link" style="font-size: 0.8rem; color: var(--clr-green); text-transform: uppercase;">
                 <i data-lucide="phone-call" style="width: 14px;"></i> Call Now (09260586209)
               </a>
             </div>
@@ -787,8 +845,7 @@
                 style="text-decoration: none; color: #0084FF; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
                 <i data-lucide="message-circle" style="width: 16px;"></i> Messenger (Direct Chat)
               </a>
-              <a href="viber://chat?number=639260586209"
-                style="text-decoration: none; color: #7360F2; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+              <a href="viber://chat?number=639260586209" class="channel-link" style="color: #7360F2;">
                 <svg style="width: 16px; height: 16px; flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.12 20.36h.003l-.004 2.416s-.037.977.61 1.177c.777.242 1.234-.5 1.98-1.302.407-.44.972-1.084 1.397-1.58 3.85.326 6.812-.416 7.15-.525.776-.252 5.176-.816 5.892-6.657.74-6.02-.36-9.83-2.34-11.85C18.666.452 13.328-.028 11.4 0zm6.985 16.52c-.524 4.304-4.225 4.54-5.352 4.908-.432.14-3.328.84-6.72-.422-.53-.2-1.056-.475-1.527-.812l-.71-.505-.59.58c-.596.587-1.01 1.002-1.35 1.346l.044-1.897-.478-.014c-4.947-.138-5.01-5.328-4.948-8.15.06-2.735.59-4.928 2.05-6.388C4.853 1.895 8.71 1.604 11.36 1.566c2.47-.035 7.135.342 9.208 2.378 1.77 1.794 2.76 5.23 2.1 10.456-.008.068-.02.138-.033.208-1.282 2.228-3.082 1.83-4.15 1.912zM6.924 5.922c-.41 0-.82.16-1.13.48-.9 1-.72 4.1.7 6.4 1.4 2.3 4.1 3.9 6.2 4.3 2.2.4 4.8-.2 5.6-1.1.3-.3.4-.7.4-1.1 0-.5-.2-.9-.6-1.2l-1.9-1.4c-.4-.3-.9-.3-1.3 0l-1.1.9c-.4.3-.9.3-1.3 0-1.2-.8-2.3-1.8-3.1-3-.3-.4-.3-.9 0-1.3l.9-1.1c.3-.4.3-.9 0-1.3L8.2 6.4c-.3-.3-.8-.5-1.3-.5z"/></svg>
                 Viber (Direct Line)
               </a>
@@ -856,15 +913,15 @@
 
             <p id="quote-message-preview" style="font-size: 0.75rem; color: #4b5563; background: white; border-radius: 6px; padding: 0.75rem; border: 1px solid #e5e7eb; margin: 0;">Project Inquiry &mdash; Residential &bull; Direct Client</p>
 
-            <a id="viber-quote-link" href="viber://chat?number=639260586209" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1rem; background: #7360F2; border-radius: 8px; box-shadow: 0 2px 8px rgba(115,96,242,0.3); transition: box-shadow 0.2s; justify-content: center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(115,96,242,0.5)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(115,96,242,0.3)'">
+            <a id="viber-quote-link" href="viber://chat?number=639260586209" class="quote-channel viber">
               <svg style="width:20px;height:20px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 1.003C7.96.96 3.81 2.68 2.19 6.26c-.87 1.95-1.03 4.22-.76 6.32.27 2.1.97 4.15 2.14 5.86l.08.12-.33 3.71 3.83-.99.1.06c1.59.97 3.44 1.56 5.32 1.64 1.89.08 3.82-.33 5.46-1.18 1.65-.85 3.04-2.15 3.98-3.73.93-1.57 1.36-3.4 1.26-5.21-.09-1.81-.72-3.58-1.79-5.04C20.32 6 18.92 4.8 17.29 4 15.68 3.21 13.87 2.87 12.2 3.09L11.4 1.003zm.56 1.9c1.37-.2 2.8.08 4.08.73 1.29.65 2.43 1.65 3.24 2.89 1.24 1.87 1.63 4.22 1.1 6.39-.52 2.16-2.04 4.05-4.01 5.15-1.95 1.08-4.23 1.38-6.35.88l-.14-.03-2.33.6.2-2.26-.13-.16c-1.28-1.6-2.04-3.63-2.19-5.69-.14-2.06.33-4.18 1.51-5.89 1.18-1.71 3.05-2.98 5.02-3.37v.03l-.01-.27z"/></svg>
               Send Inquiry via Viber
             </a>
-            <a id="messenger-quote-link" href="https://m.me/projectcrecer" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white; font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1rem; background: #0084FF; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,132,255,0.3); transition: box-shadow 0.2s; justify-content: center;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,132,255,0.5)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,132,255,0.3)'">
+            <a id="messenger-quote-link" href="https://m.me/projectcrecer" target="_blank" rel="noopener noreferrer" class="quote-channel messenger">
               <svg style="width:20px;height:20px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 4.975 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.626 0 12-4.974 12-11.111S18.626 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.26L19.752 8l-6.561 6.963z"/></svg>
               Send Inquiry via Messenger
             </a>
-            <a href="tel:+639260586209" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--clr-heading); font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'">
+            <a href="tel:+639260586209" class="quote-channel neutral">
               <span style="width: 36px; height: 36px; background: var(--clr-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <i data-lucide="phone" style="width: 16px; height: 16px; color: white;"></i>
               </span>
@@ -873,7 +930,7 @@
                 09260586209
               </div>
             </a>
-            <a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--clr-heading); font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.06)'">
+            <a href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry" class="quote-channel neutral">
               <span style="width: 36px; height: 36px; background: var(--clr-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <i data-lucide="mail" style="width: 16px; height: 16px; color: white;"></i>
               </span>
@@ -968,6 +1025,84 @@
             <div class="dot"></div>
             <div class="dash-item-info">
               <h5>SM San Lazaro</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('robinsons_manila')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Robinsons Place Manila</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('power_plant_rockwell')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Power Plant Mall / Rockwell</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('greenbelt_5')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Greenbelt 5</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('sm_aura')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>SM Aura</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('sm_megamall')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>SM Megamall</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('estancia')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Estancia Mall</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('eastwood')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Eastwood</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('opus_mall')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Opus Mall</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('robinsons_magnolia')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Robinsons Magnolia</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('trinoma')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Ayala Malls Trinoma</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('vertis_north')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Vertis North</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('sm_north_edsa')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>SM North EDSA</h5>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('fairview_terraces')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>Ayala Fairview Terraces</h5>
             </div>
           </div>
         </div>
@@ -1155,6 +1290,19 @@
         'mitsukoshi': { coords: [14.5583, 121.0543], title: "Mitsukoshi BGC", zoom: 16 },
         'bhs': { coords: [14.5505, 121.0478], title: "Bonifacio High Street", zoom: 16 },
         'sm_san_lazaro': { coords: [14.6181, 120.9858], title: "SM San Lazaro", zoom: 16 },
+        'robinsons_manila': { coords: [14.5758, 120.9839], title: "Robinsons Place Manila", zoom: 16 },
+        'power_plant_rockwell': { coords: [14.5647, 121.0364], title: "Power Plant Mall / Rockwell", zoom: 16 },
+        'greenbelt_5': { coords: [14.5530, 121.0211], title: "Greenbelt 5", zoom: 16 },
+        'sm_aura': { coords: [14.5471, 121.0543], title: "SM Aura", zoom: 16 },
+        'sm_megamall': { coords: [14.5854, 121.0567], title: "SM Megamall", zoom: 16 },
+        'estancia': { coords: [14.5763, 121.0631], title: "Estancia Mall", zoom: 16 },
+        'eastwood': { coords: [14.6103, 121.0797], title: "Eastwood", zoom: 16 },
+        'opus_mall': { coords: [14.5929, 121.0810], title: "Opus Mall", zoom: 16 },
+        'robinsons_magnolia': { coords: [14.6150, 121.0378], title: "Robinsons Magnolia", zoom: 16 },
+        'trinoma': { coords: [14.6531, 121.0334], title: "Ayala Malls Trinoma", zoom: 16 },
+        'vertis_north': { coords: [14.6519, 121.0356], title: "Vertis North", zoom: 16 },
+        'sm_north_edsa': { coords: [14.6568, 121.0304], title: "SM North EDSA", zoom: 16 },
+        'fairview_terraces': { coords: [14.7367, 121.0600], title: "Ayala Fairview Terraces", zoom: 16 },
         'manila_zone': { coords: tondoCoords, zoom: 10 },
         'national': { coords: [12.5, 122.0], zoom: 6 }
       };
