@@ -280,6 +280,16 @@
       border-bottom: 1px solid #f1f5f9;
       padding-bottom: 0.5rem;
     }
+    .category-note {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #6b7280;
+      line-height: 1.4;
+      margin: -0.55rem 0 1rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
     .dash-item {
       display: flex;
       align-items: flex-start;
@@ -451,7 +461,7 @@
     .route-stat-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      gap: 0.65rem 0.75rem;
       background: rgba(0, 0, 0, 0.2);
       padding: 0.65rem 0.85rem;
       border-radius: 8px;
@@ -459,19 +469,24 @@
     .route-stat {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.15rem;
+      min-width: 0;
     }
     .route-stat-label {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       color: rgba(255, 255, 255, 0.6);
       font-weight: 700;
+      line-height: 1.25;
+      word-break: break-word;
     }
     .route-stat-val {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--clr-yellow);
+      line-height: 1.2;
+      word-break: break-word;
     }
     .btn-clear-route {
       display: flex;
@@ -891,8 +906,8 @@
           <div class="dash-item hq" onclick="focusMap('tondo')">
             <div class="dot"></div>
             <div class="dash-item-info">
-              <h5>Registered Address</h5>
-              <p>Lallana St., Brgy 93, Zone 8, 1012 Tondo I/II, NCR, City of Manila, First District, Philippines</p>
+              <h5>Technical Base</h5>
+              <p>Tondo, Manila</p>
             </div>
           </div>
           <div class="dash-item project" onclick="focusMap('manila_zone')">
@@ -921,7 +936,8 @@
           </div>
         </div>
         <div class="dash-category">
-          <span class="category-label">Proven Project Locations</span>
+          <span class="category-label">Project Footprints</span>
+          <span class="category-note">Includes recent work and prior experience before the company was founded.</span>
           <div class="dash-item project" onclick="focusMap('subic')">
             <div class="dot"></div>
             <div class="dash-item-info">
@@ -933,21 +949,25 @@
             <div class="dot"></div>
             <div class="dash-item-info">
               <h5>PULP Office</h5>
-              <p>80-A Sct. Castor St., QC (Renovation)</p>
+              <p>80-A Sct. Castor St., QC</p>
             </div>
           </div>
           <div class="dash-item project" onclick="focusMap('mitsukoshi')">
             <div class="dot"></div>
             <div class="dash-item-info">
               <h5>Mitsukoshi BGC</h5>
-              <p>High-end technical installation</p>
             </div>
           </div>
           <div class="dash-item project" onclick="focusMap('bhs')">
             <div class="dot"></div>
             <div class="dash-item-info">
               <h5>Bonifacio High Street</h5>
-              <p>Prime retail infrastructure</p>
+            </div>
+          </div>
+          <div class="dash-item project" onclick="focusMap('sm_san_lazaro')">
+            <div class="dot"></div>
+            <div class="dash-item-info">
+              <h5>SM San Lazaro</h5>
             </div>
           </div>
         </div>
@@ -973,8 +993,20 @@
             <span class="route-stat-val" id="route-distance">-</span>
           </div>
           <div class="route-stat">
-            <span class="route-stat-label">Est. Driving Time</span>
-            <span class="route-stat-val" id="route-duration">-</span>
+            <span class="route-stat-label">Motorcycle</span>
+            <span class="route-stat-val" id="route-motor">-</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-label">Four Wheels</span>
+            <span class="route-stat-val" id="route-car">-</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-label">Walk</span>
+            <span class="route-stat-val" id="route-walk">-</span>
+          </div>
+          <div class="route-stat">
+            <span class="route-stat-label">Running</span>
+            <span class="route-stat-val" id="route-run">-</span>
           </div>
         </div>
         <button id="clear-route-btn" type="button" class="btn-clear-route">
@@ -1092,9 +1124,8 @@
         zoomControl: false
       });
       L.control.zoom({ position: 'bottomright' }).addTo(map);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OSM &copy; CARTO',
-        subdomains: 'abcd',
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19
       }).addTo(map);
       const hqIcon = L.divIcon({
@@ -1114,15 +1145,16 @@
       });
       const tondoCoords = [14.6215, 120.9665];
       const hqMarker = L.marker(tondoCoords, { icon: hqIcon }).addTo(map);
-      hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Registered HQ</h4><p>Lallana St., Brgy 93, Zone 8, 1012 Tondo I/II, NCR, City of Manila, First District, Philippines</p></div>');
+      hqMarker.bindPopup('<div class="popup-content"><span class="popup-badge" style="background:#fbbf24; color:#1e402a;">Technical Base</span><h4>Technical Base</h4><p>Tondo, Manila</p></div>');
       
       const locations = {
         'tondo': { coords: tondoCoords, marker: hqMarker, zoom: 17 },
-        'subic': { coords: [14.822911, 120.280278], title: "Subic Int'l Hotel (GC)", body: "Rizal St. Cor. Labitan St.<br>Complete MEPF & Civil Works", zoom: 17 },
-        'pulp': { coords: [14.6360, 121.0330], title: "PULP Office (Renovation)", body: "80-A Sct. Castor St., QC<br>Plumbing, HVAC, & Firepro", zoom: 16 },
+        'subic': { coords: [14.822911, 120.280278], title: "Subic Int'l Hotel Complex", body: "Alpha & Bravo (IBIS / Mercure)", zoom: 17 },
+        'pulp': { coords: [14.6360, 121.0330], title: "PULP Office", body: "80-A Sct. Castor St., QC", zoom: 16 },
         'novateur': { coords: [14.5516, 121.0494], title: "Novateur & Nespresso", body: "One World Place, BGC", type: 'client', zoom: 16 },
-        'mitsukoshi': { coords: [14.5583, 121.0543], title: "Mitsukoshi BGC", body: "High-end technical installation", zoom: 16 },
-        'bhs': { coords: [14.5505, 121.0478], title: "Bonifacio High Street", body: "BGC infrastructure maintenance", zoom: 16 },
+        'mitsukoshi': { coords: [14.5583, 121.0543], title: "Mitsukoshi BGC", zoom: 16 },
+        'bhs': { coords: [14.5505, 121.0478], title: "Bonifacio High Street", zoom: 16 },
+        'sm_san_lazaro': { coords: [14.6181, 120.9858], title: "SM San Lazaro", zoom: 16 },
         'manila_zone': { coords: tondoCoords, zoom: 10 },
         'national': { coords: [12.5, 122.0], zoom: 6 }
       };
@@ -1130,8 +1162,9 @@
       for (const key in locations) {
         const loc = locations[key];
         if (key !== 'tondo' && key !== 'manila_zone' && key !== 'national') {
+          const bodyHtml = loc.body ? `<p>${loc.body}</p>` : '';
           const m = L.marker(loc.coords, { icon: loc.type === 'client' ? clientIcon : projectIcon }).addTo(map)
-            .bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:${loc.type === 'client' ? '#3b82f6' : '#1f8a4c'}; color:white;">${loc.type === 'client' ? 'Client HQ' : 'Project Site'}</span><h4>${loc.title}</h4><p>${loc.body}</p></div>`);
+            .bindPopup(`<div class="popup-content"><span class="popup-badge" style="background:${loc.type === 'client' ? '#3b82f6' : '#1f8a4c'}; color:white;">${loc.type === 'client' ? 'Client HQ' : 'Project Site'}</span><h4>${loc.title}</h4>${bodyHtml}</div>`);
           loc.marker = m;
         }
       }
@@ -1230,12 +1263,69 @@
       const suggestionsDiv = document.getElementById('search-suggestions');
       const routeDetailsDiv = document.getElementById('route-details');
       const routeDistanceSpan = document.getElementById('route-distance');
-      const routeDurationSpan = document.getElementById('route-duration');
+      const routeMotorSpan = document.getElementById('route-motor');
+      const routeCarSpan = document.getElementById('route-car');
+      const routeWalkSpan = document.getElementById('route-walk');
+      const routeRunSpan = document.getElementById('route-run');
       const clearRouteBtn = document.getElementById('clear-route-btn');
 
       let searchMarker = null;
       let routePolyline = null;
       let debounceTimeout = null;
+
+      // Metro Manila urban averages for modes without OSRM profiles:
+      // motorcycle 33 km/h (~1.5× car fallback) or 1.4× OSRM car speed when available;
+      // walk 5 km/h, running 9 km/h; four-wheels fallback 22 km/h when OSRM is unavailable.
+      const SPEED_MOTOR_KMH = 33;
+      const SPEED_CAR_FALLBACK_KMH = 22;
+      const SPEED_WALK_KMH = 5;
+      const SPEED_RUN_KMH = 9;
+      const MOTOR_VS_CAR_FACTOR = 1.4;
+
+      function minsFromKm(km, speedKmh) {
+        return Math.round((km / speedKmh) * 60);
+      }
+
+      function formatDurationMins(mins, isEstimate) {
+        let text;
+        if (mins < 1) {
+          text = '< 1 min';
+        } else if (mins < 60) {
+          text = `${mins} mins`;
+        } else {
+          const hrs = Math.floor(mins / 60);
+          const rem = mins % 60;
+          text = rem === 0 ? `${hrs} hr` : `${hrs} hr ${rem} mins`;
+        }
+        return isEstimate ? `${text} (est.)` : text;
+      }
+
+      function formatDurationSec(durationSec, isEstimate) {
+        return formatDurationMins(Math.round(durationSec / 60), isEstimate);
+      }
+
+      function populateRouteTimes(distanceKm, carDurationSec, isEstimate) {
+        const km = parseFloat(distanceKm);
+        routeDistanceSpan.textContent = isEstimate ? `~${distanceKm} km` : `${distanceKm} km`;
+        if (carDurationSec != null) {
+          routeCarSpan.textContent = formatDurationSec(carDurationSec, isEstimate);
+          routeMotorSpan.textContent = formatDurationSec(carDurationSec / MOTOR_VS_CAR_FACTOR, isEstimate);
+        } else {
+          routeCarSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_CAR_FALLBACK_KMH), isEstimate);
+          routeMotorSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_MOTOR_KMH), isEstimate);
+        }
+        routeWalkSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_WALK_KMH), isEstimate);
+        routeRunSpan.textContent = formatDurationMins(minsFromKm(km, SPEED_RUN_KMH), isEstimate);
+        routeDetailsDiv.style.display = 'block';
+      }
+
+      function resetRouteStats() {
+        routeDistanceSpan.textContent = '-';
+        routeMotorSpan.textContent = '-';
+        routeCarSpan.textContent = '-';
+        routeWalkSpan.textContent = '-';
+        routeRunSpan.textContent = '-';
+      }
 
       if (searchInput && searchBtn) {
         searchInput.addEventListener('input', () => {
@@ -1358,22 +1448,7 @@
               routePolyline = L.featureGroup([outerLine, innerLine]).addTo(map);
 
               const distanceKm = (route.distance / 1000).toFixed(1);
-              const durationSec = route.duration;
-              
-              let durationText = '';
-              if (durationSec < 60) {
-                durationText = '< 1 min';
-              } else if (durationSec < 3600) {
-                durationText = `${Math.round(durationSec / 60)} mins`;
-              } else {
-                const hrs = Math.floor(durationSec / 3600);
-                const mins = Math.round((durationSec % 3600) / 60);
-                durationText = `${hrs} hr ${mins} mins`;
-              }
-
-              routeDistanceSpan.textContent = `${distanceKm} km`;
-              routeDurationSpan.textContent = durationText;
-              routeDetailsDiv.style.display = 'block';
+              populateRouteTimes(distanceKm, route.duration, false);
               routeSucceeded = true;
             }
           } catch (err) {
@@ -1390,8 +1465,6 @@
                       Math.sin(dLon/2) * Math.sin(dLon/2);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
             const directKm = (R * c).toFixed(1);
-            const estMin = Math.round((directKm / 30) * 60);
-            const estDurationText = estMin < 60 ? `${estMin} mins (est.)` : `${Math.floor(estMin / 60)}h ${estMin % 60}m (est.)`;
 
             const straightLine = L.polyline([[lat, lon], tondoCoords], {
               color: '#fbbf24',
@@ -1401,9 +1474,7 @@
             });
             routePolyline = straightLine.addTo(map);
 
-            routeDistanceSpan.textContent = `~${directKm} km`;
-            routeDurationSpan.textContent = estDurationText;
-            routeDetailsDiv.style.display = 'block';
+            populateRouteTimes(directKm, null, true);
           }
           if (window.lucide) lucide.createIcons();
         }
@@ -1419,6 +1490,7 @@
               routePolyline = null;
             }
             searchInput.value = '';
+            resetRouteStats();
             routeDetailsDiv.style.display = 'none';
             map.setView(tondoCoords, 10);
             hqMarker.openPopup();
