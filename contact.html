@@ -775,6 +775,394 @@
         width: 100%;
       }
     }
+
+    .calling-card-section {
+      margin-bottom: 4rem;
+    }
+    .calling-card-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 36rem) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+      background: white;
+      border: 1px solid var(--clr-gray-border);
+      border-radius: 16px;
+      padding: clamp(1.25rem, 3vw, 2.25rem);
+      box-shadow: 0 20px 40px -12px rgba(15, 28, 22, 0.12);
+    }
+    .calling-card-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-width: 0;
+    }
+    .calling-card-flip {
+      align-self: flex-end;
+      min-height: 44px;
+      margin-bottom: 0.75rem;
+      padding: 0.55rem 1rem;
+      border: 2px solid var(--clr-yellow);
+      border-radius: 999px;
+      background: var(--clr-dark-green);
+      color: var(--clr-yellow);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .calling-card-flip:active {
+      transform: scale(0.97);
+    }
+    .calling-card-scene {
+      perspective: 1200px;
+    }
+    .calling-card-inner {
+      display: grid;
+      transform-style: preserve-3d;
+      transition: transform 280ms var(--ease-in-out);
+    }
+    .calling-card-inner.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .calling-card-face {
+      grid-area: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 18rem;
+      padding: 1.35rem 1.25rem 1.15rem 1.45rem;
+      border-radius: 14px;
+      background: var(--clr-dark-green);
+      color: white;
+      box-shadow: 0 16px 36px rgba(15, 28, 22, 0.28);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      pointer-events: none;
+    }
+    .calling-card-front {
+      transform: rotateY(0deg);
+    }
+    .calling-card-back {
+      transform: rotateY(180deg);
+      justify-content: flex-start;
+      gap: 1.15rem;
+    }
+    .calling-card-inner:not(.is-flipped) .calling-card-front,
+    .calling-card-inner.is-flipped .calling-card-back {
+      pointer-events: auto;
+    }
+    .calling-card-face::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: var(--clr-yellow);
+    }
+    .calling-card-back-note {
+      margin: 0;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .calling-card-back-email {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: white;
+      overflow-wrap: anywhere;
+    }
+    .calling-card-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .calling-card-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+    .calling-card-company {
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      font-size: 1.45rem;
+      line-height: 1;
+      color: var(--clr-yellow);
+      letter-spacing: 0.02em;
+    }
+    .calling-card-sub {
+      margin-top: 0.25rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .calling-card-person,
+    .calling-card-role {
+      font-family: "Outfit", sans-serif;
+      color: white;
+    }
+    .calling-card-person {
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .calling-card-person:empty,
+    .calling-card-person[hidden] {
+      display: none;
+    }
+    .calling-card-role {
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .calling-card-accepted-label {
+      margin-bottom: 0.3rem;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-yellow);
+    }
+    .calling-card-accepted p:last-child {
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.84);
+    }
+    .calling-card-triggers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.65rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .calling-card-triggers li {
+      padding: 0.3rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid rgba(74, 222, 128, 0.55);
+      color: #4ade80;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+    .calling-card-back .calling-card-triggers {
+      margin-top: 0.15rem;
+      flex: 1;
+      align-content: flex-start;
+    }
+    .calling-card-foot {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .calling-card-qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+    }
+    .calling-card-qr {
+      width: 96px;
+      height: 96px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .calling-card-qr-caption {
+      max-width: 96px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.03em;
+      text-align: center;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .calling-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      min-width: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .calling-card-meta a {
+      overflow-wrap: anywhere;
+      color: white;
+      text-decoration: none;
+    }
+    .calling-card-kicker {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 4px;
+      background: rgba(31, 138, 76, 0.1);
+      color: var(--clr-green-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .calling-card-copy h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin-bottom: 0.6rem;
+    }
+    .calling-card-lead {
+      margin-bottom: 1.25rem;
+      color: var(--clr-text);
+      max-width: 36rem;
+    }
+    .calling-card-facts {
+      display: grid;
+      gap: 0.9rem;
+      margin: 0;
+    }
+    .card-fact dt {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 0.15rem;
+    }
+    .card-fact dd {
+      margin: 0;
+      color: var(--clr-heading);
+      font-weight: 650;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .card-fact a {
+      color: var(--clr-green-dark);
+      font-weight: 700;
+    }
+    .card-fact--person[hidden] {
+      display: none;
+    }
+    .calling-card-service-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.15rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .calling-card-service-list li {
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid rgba(31, 138, 76, 0.35);
+      background: rgba(31, 138, 76, 0.06);
+      color: var(--clr-green-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .calling-card-note {
+      margin: 0 0 0.5rem;
+      color: var(--clr-text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .calling-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+    }
+    .calling-card-actions .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      padding: 0.75rem 1.15rem;
+    }
+    .calling-card-btn-outline {
+      background: transparent;
+      border: 2px solid var(--clr-green);
+      color: var(--clr-green-dark);
+    }
+    .calling-card-btn-outline:active {
+      transform: scale(0.97);
+    }
+    .calling-card-status {
+      min-height: 1.25rem;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--clr-green-dark);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .calling-card-flip:hover {
+        background: var(--clr-yellow);
+        color: var(--clr-heading);
+      }
+      .calling-card-meta a:hover,
+      .calling-card-back-email:hover {
+        color: var(--clr-yellow);
+      }
+      .card-fact a:hover {
+        color: var(--clr-green);
+      }
+      .calling-card-btn-outline:hover {
+        background: var(--clr-green);
+        color: white;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .calling-card-inner,
+      .calling-card-inner.is-flipped,
+      .calling-card-front,
+      .calling-card-back {
+        transform: none;
+        transition: opacity 200ms var(--ease-out);
+      }
+      .calling-card-back {
+        opacity: 0;
+      }
+      .calling-card-inner.is-flipped .calling-card-front {
+        opacity: 0;
+      }
+      .calling-card-inner.is-flipped .calling-card-back {
+        opacity: 1;
+      }
+    }
+    @media (max-width: 1100px) {
+      .calling-card-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .calling-card-flip {
+        align-self: stretch;
+      }
+      .calling-card-foot {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .calling-card-actions {
+        flex-direction: column;
+      }
+      .calling-card-actions .btn {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -871,6 +1259,146 @@
           </div>
         </div>
       </div>
+
+      <section class="calling-card-section" aria-labelledby="calling-card-title">
+        <div class="calling-card-layout">
+          <div class="calling-card-stage">
+            <button type="button" class="calling-card-flip" id="calling-card-flip" aria-pressed="false" aria-controls="calling-card-faces">Flip to back</button>
+            <div class="calling-card-scene" id="calling-card-faces">
+              <div class="calling-card-inner" id="calling-card-inner">
+                <article class="calling-card-face calling-card-front" id="calling-card-front" aria-label="Front of the calling card for Mark Angelo Dela Cruz">
+                  <div class="calling-card-brand">
+                    <img src="assets/logo-transparent.png" alt="" width="42" height="42">
+                    <div>
+                      <p class="calling-card-company">Crecer</p>
+                      <p class="calling-card-sub">Plumbing and Construction Services</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="calling-card-person" id="card-person-visual">Mark Angelo Dela Cruz</p>
+                    <p class="calling-card-role" id="card-role-visual">Proprietor &amp; Strategic Operator</p>
+                  </div>
+                  <div class="calling-card-accepted">
+                    <p class="calling-card-accepted-label">Currently accepted</p>
+                    <p id="card-accepted-visual">Commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon, including installation, replacement, refurbishment, and repainting.</p>
+                    <ul class="calling-card-triggers" aria-label="Currently accepted service triggers">
+                      <li>Asset Upkeep</li>
+                      <li>Fixtures &amp; Equipment</li>
+                      <li>Aircon</li>
+                      <li>MEPFS Maintenance</li>
+                      <li>Installation</li>
+                      <li>Replacement</li>
+                      <li>Refurbishment</li>
+                      <li>Repainting</li>
+                    </ul>
+                  </div>
+                  <div class="calling-card-foot">
+                    <div class="calling-card-qr-wrap">
+                      <img class="calling-card-qr" src="assets/calling-card-qr.svg" width="96" height="96" alt="QR code that opens the Crecer website">
+                      <p class="calling-card-qr-caption">Scan to open the website</p>
+                    </div>
+                    <div class="calling-card-meta">
+                      <a href="tel:+639260586209">09260586209</a>
+                      <a href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer">facebook.com/projectcrecer</a>
+                      <a href="https://crecerpacservices.github.io/project-crecer-website/">crecerpacservices.github.io/project-crecer-website</a>
+                    </div>
+                  </div>
+                </article>
+                <article class="calling-card-face calling-card-back" id="calling-card-back" aria-hidden="true" inert aria-label="Back of the calling card">
+                  <div>
+                    <p class="calling-card-accepted-label">Capability list</p>
+                    <p class="calling-card-back-note">Within our capability and available for discussion. Engagement may proceed through licensed partners, or after applicable licensing and requirements are completed on our side when the project and conditions allow.</p>
+                  </div>
+                  <ul class="calling-card-triggers" aria-label="Capability service triggers">
+                    <li>Plumbing &amp; Sanitary</li>
+                    <li>Fire Protection</li>
+                    <li>Electrical &amp; Auxiliary</li>
+                    <li>On-Grid / Net Metering</li>
+                    <li>Hybrid Battery Banks</li>
+                    <li>Off-Grid Standalone</li>
+                    <li>Civil Works &amp; Fit-Outs</li>
+                  </ul>
+                  <a class="calling-card-back-email" href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry">crecerpacservices@gmail.com</a>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="calling-card-copy">
+            <p class="calling-card-kicker">Calling card</p>
+            <h2 id="calling-card-title">Company card</h2>
+            <p class="calling-card-lead">The front is shown first. Flip the card for the back, then download the card or the company brochure.</p>
+            <dl class="calling-card-facts">
+              <div class="card-fact">
+                <dt>Company</dt>
+                <dd id="card-company">Crecer Plumbing and Construction Services</dd>
+              </div>
+              <div class="card-fact">
+                <dt>Name</dt>
+                <dd id="card-person">Mark Angelo Dela Cruz</dd>
+              </div>
+              <div class="card-fact">
+                <dt>Position</dt>
+                <dd id="card-position">Proprietor &amp; Strategic Operator</dd>
+              </div>
+              <div class="card-fact">
+                <dt>Currently accepted</dt>
+                <dd id="card-accepted">
+                  <p style="margin:0 0 0.5rem;">Commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon, including installation, replacement, refurbishment, and repainting.</p>
+                  <ul class="calling-card-service-list" aria-label="Currently accepted service triggers">
+                    <li>Asset Upkeep</li>
+                    <li>Fixtures &amp; Equipment</li>
+                    <li>Aircon</li>
+                    <li>MEPFS Maintenance</li>
+                    <li>Installation</li>
+                    <li>Replacement</li>
+                    <li>Refurbishment</li>
+                    <li>Repainting</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="card-fact">
+                <dt>Capability list</dt>
+                <dd>
+                  <p class="calling-card-note">Within our capability and available for discussion. Engagement may proceed through licensed partners, or after applicable licensing and requirements are completed on our side when the project and conditions allow.</p>
+                  <ul class="calling-card-service-list" id="card-services">
+                    <li>Plumbing &amp; Sanitary</li>
+                    <li>Fire Protection</li>
+                    <li>Electrical &amp; Auxiliary</li>
+                    <li>On-Grid / Net Metering</li>
+                    <li>Hybrid Battery Banks</li>
+                    <li>Off-Grid Standalone</li>
+                    <li>Civil Works &amp; Fit-Outs</li>
+                  </ul>
+                </dd>
+              </div>
+              <div class="card-fact">
+                <dt>Contact number</dt>
+                <dd><a id="card-phone" href="tel:+639260586209">09260586209</a></dd>
+              </div>
+              <div class="card-fact">
+                <dt>Facebook page</dt>
+                <dd><a id="card-facebook" href="https://www.facebook.com/projectcrecer" target="_blank" rel="noopener noreferrer">facebook.com/projectcrecer</a></dd>
+              </div>
+              <div class="card-fact">
+                <dt>Website</dt>
+                <dd><a id="card-website" href="https://crecerpacservices.github.io/project-crecer-website/">crecerpacservices.github.io/project-crecer-website</a></dd>
+              </div>
+              <div class="card-fact">
+                <dt>Email</dt>
+                <dd><a id="card-email" href="mailto:crecerpacservices@gmail.com?subject=Project%20Inquiry">crecerpacservices@gmail.com</a></dd>
+              </div>
+            </dl>
+            <div class="calling-card-actions">
+              <button type="button" class="btn btn-yellow" id="download-calling-card">Download calling card</button>
+              <button type="button" class="btn btn-green" id="download-brochure">Download brochure</button>
+              <button type="button" class="btn calling-card-btn-outline" id="download-vcard">Save contact</button>
+            </div>
+            <p class="calling-card-status" id="calling-card-status" role="status"></p>
+          </div>
+        </div>
+      </section>
+
       <div class="form-wrapper">
         <div class="form-left">
           <h2>Let's Build Together</h2>
@@ -1902,6 +2430,564 @@
       currentTrack = track;
       updateQuotePreview();
     }
+  </script>
+  <script>
+    (function () {
+      var WEBSITE = "https://crecerpacservices.github.io/project-crecer-website/";
+      var FACEBOOK = "https://www.facebook.com/projectcrecer";
+      var ACCEPTED = "Commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon, including installation, replacement, refurbishment, and repainting.";
+      var ACCEPTED_TRIGGERS = [
+        "Asset Upkeep",
+        "Fixtures & Equipment",
+        "Aircon",
+        "MEPFS Maintenance",
+        "Installation",
+        "Replacement",
+        "Refurbishment",
+        "Repainting"
+      ];
+      var CAPABLE = [
+        "Plumbing & Sanitary",
+        "Fire Protection",
+        "Electrical & Auxiliary",
+        "On-Grid / Net Metering",
+        "Hybrid Battery Banks",
+        "Off-Grid Standalone",
+        "Civil Works & Fit-Outs"
+      ];
+      var QR_BITS = "111111101100110010111111001111111100000101000010001101101101000001101110100111000000101000101011101101110101111101101000010101011101101110100111111000010010101011101100000100011010010011110101000001111111101010101010101010101111111000000001000001001110001100000000101101110110001001111101001001011101101001011101010111111001101101010111101110001010001101110111011000100000010011010000011001101011100010110010000001001010110111011011111011110100001110000000101110101011110001101001011010001001000100101000111010010001100011101100010000110010111100110111011011100010011000001110100001011111011011100110110011110111101110001110100101010011101010111100011100010000001111101101000011110100100101110111101001110110000110101001001001001000100001010011101001101000111011101011011001000100001001010001101010110101110101000010111110001000000001110001110110001100011000111111101010011010011111101010000100000101011111010010111100011110101110100110010100100111111110111101110101001100100101010100101101101110101100000101101000111101000100000100101010011100011111110001111111101011100011011101000011100";
+      var QR_SIZE = 33;
+
+      function setStatus(message) {
+        var status = document.getElementById("calling-card-status");
+        if (status) status.textContent = message;
+      }
+
+      function saveBlob(blob, filename) {
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      }
+
+      function vEscape(value) {
+        return String(value).replace(/\\/g, "\\\\").replace(/\r?\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\\;");
+      }
+
+      function wrapLines(ctx, text, maxWidth) {
+        var words = text.split(" ");
+        var lines = [];
+        var line = "";
+        words.forEach(function (word) {
+          var test = line ? line + " " + word : word;
+          if (ctx.measureText(test).width > maxWidth && line) {
+            lines.push(line);
+            line = word;
+          } else {
+            line = test;
+          }
+        });
+        if (line) lines.push(line);
+        return lines;
+      }
+
+      function roundRect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+      }
+
+      function drawQr(ctx, x, y, pixel) {
+        var quiet = 2;
+        var total = QR_SIZE + quiet * 2;
+        ctx.fillStyle = "#ffffff";
+        roundRect(ctx, x, y, total * pixel, total * pixel, 12);
+        ctx.fill();
+        ctx.fillStyle = "#0f1c16";
+        for (var row = 0; row < QR_SIZE; row++) {
+          for (var col = 0; col < QR_SIZE; col++) {
+            if (QR_BITS.charAt(row * QR_SIZE + col) === "1") {
+              ctx.fillRect(x + (col + quiet) * pixel, y + (row + quiet) * pixel, pixel, pixel);
+            }
+          }
+        }
+      }
+
+      function drawTriggers(ctx, labels, x, y, maxWidth) {
+        var gap = 12;
+        var padX = 16;
+        var padY = 12;
+        var rowH = 42;
+        var cursorX = x;
+        var cursorY = y;
+        ctx.font = "800 16px Inter, sans-serif";
+        labels.forEach(function (label) {
+          var tw = ctx.measureText(label).width;
+          var chipW = tw + padX * 2;
+          if (cursorX + chipW > x + maxWidth && cursorX > x) {
+            cursorX = x;
+            cursorY += rowH + gap;
+          }
+          ctx.strokeStyle = "rgba(74, 222, 128, 0.7)";
+          ctx.lineWidth = 2;
+          roundRect(ctx, cursorX, cursorY, chipW, rowH, 6);
+          ctx.stroke();
+          ctx.fillStyle = "#4ade80";
+          ctx.fillText(label, cursorX + padX, cursorY + 27);
+          cursorX += chipW + gap;
+        });
+        return cursorY + rowH;
+      }
+
+      function downloadCard() {
+        var width = 1200;
+        var pad = 52;
+        var textX = 88;
+        var textW = width - textX - pad;
+        var measure = document.createElement("canvas").getContext("2d");
+        measure.font = "500 26px Inter, sans-serif";
+        var acceptedLines = wrapLines(measure, ACCEPTED, textW);
+        var lineH = 36;
+        var qrPixel = 7;
+        var qrBox = (QR_SIZE + 4) * qrPixel;
+        var acceptedTop = 348;
+        var triggerStart = acceptedTop + acceptedLines.length * lineH + 24;
+        var triggerEnd = triggerStart + 150;
+        var qrY = triggerEnd + 28;
+        var height = qrY + qrBox + 72;
+
+        var frontH = height;
+        var gap = 28;
+        var backTop = frontH + gap;
+        var noteMeasure = document.createElement("canvas").getContext("2d");
+        noteMeasure.font = "500 24px Inter, sans-serif";
+        var noteLines = wrapLines(noteMeasure, "Within our capability and available for discussion. Engagement may proceed through licensed partners, or after applicable licensing and requirements are completed on our side when the project and conditions allow.", textW);
+        var backH = 150 + noteLines.length * 34 + 150 + 80;
+        var canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = backTop + backH;
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#f4f4f5";
+        ctx.fillRect(0, 0, width, canvas.height);
+        ctx.fillStyle = "#0f1c16";
+        ctx.fillRect(0, 0, width, frontH);
+        ctx.fillStyle = "#fbbf24";
+        ctx.fillRect(0, 0, 16, frontH);
+
+        ctx.fillStyle = "#fbbf24";
+        ctx.font = "800 58px Outfit, sans-serif";
+        ctx.fillText("Crecer", textX, 96);
+        ctx.fillStyle = "rgba(255,255,255,0.78)";
+        ctx.font = "600 26px Inter, sans-serif";
+        ctx.fillText("Plumbing and Construction Services", textX, 136);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "700 42px Outfit, sans-serif";
+        ctx.fillText("Mark Angelo Dela Cruz", textX, 214);
+        ctx.fillStyle = "rgba(255,255,255,0.88)";
+        ctx.font = "600 28px Outfit, sans-serif";
+        ctx.fillText("Proprietor & Strategic Operator", textX, 258);
+
+        var y = acceptedTop;
+        ctx.fillStyle = "#fbbf24";
+        ctx.font = "800 18px Inter, sans-serif";
+        ctx.fillText("CURRENTLY ACCEPTED", textX, y - 36);
+        ctx.fillStyle = "rgba(255,255,255,0.86)";
+        ctx.font = "500 26px Inter, sans-serif";
+        acceptedLines.forEach(function (line) {
+          ctx.fillText(line, textX, y);
+          y += lineH;
+        });
+        drawTriggers(ctx, ACCEPTED_TRIGGERS, textX, y + 12, textW);
+
+        drawQr(ctx, textX, qrY, qrPixel);
+        var infoX = textX + qrBox + 36;
+        var infoY = qrY + 78;
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "700 28px Inter, sans-serif";
+        ctx.fillText("09260586209", infoX, infoY);
+        ctx.font = "600 24px Inter, sans-serif";
+        ctx.fillText("facebook.com/projectcrecer", infoX, infoY + 42);
+        var siteLines = wrapLines(ctx, "crecerpacservices.github.io/project-crecer-website", width - infoX - pad);
+        siteLines.forEach(function (line, index) {
+          ctx.fillText(line, infoX, infoY + 84 + index * 32);
+        });
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        ctx.font = "700 16px Inter, sans-serif";
+        ctx.fillText("SCAN TO OPEN THE WEBSITE", textX, qrY + qrBox + 28);
+
+        ctx.fillStyle = "#0f1c16";
+        ctx.fillRect(0, backTop, width, backH);
+        ctx.fillStyle = "#fbbf24";
+        ctx.fillRect(0, backTop, 16, backH);
+        var by = backTop + 72;
+        ctx.fillStyle = "#fbbf24";
+        ctx.font = "800 18px Inter, sans-serif";
+        ctx.fillText("CAPABILITY LIST", textX, by);
+        by += 40;
+        ctx.fillStyle = "rgba(255,255,255,0.78)";
+        ctx.font = "500 24px Inter, sans-serif";
+        noteLines.forEach(function (line) {
+          ctx.fillText(line, textX, by);
+          by += 34;
+        });
+        by = drawTriggers(ctx, CAPABLE, textX, by + 18, textW);
+        by += 36;
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "700 24px Inter, sans-serif";
+        ctx.fillText("crecerpacservices@gmail.com", textX, by);
+
+        canvas.toBlob(function (blob) {
+          if (!blob) {
+            setStatus("The calling card could not be saved. Try again.");
+            return;
+          }
+          saveBlob(blob, "Crecer-Plumbing-and-Construction-Services-calling-card.png");
+          setStatus("Calling card downloaded.");
+        }, "image/png");
+      }
+
+      function loadImage(src) {
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () { resolve(img); };
+          img.onerror = function () { resolve(null); };
+          img.src = src;
+        });
+      }
+
+      function measureTriggerBlock(labels, maxWidth) {
+        var m = document.createElement("canvas").getContext("2d");
+        m.font = "800 15px Inter, sans-serif";
+        var gap = 10;
+        var padX = 14;
+        var rowH = 38;
+        var x = 0;
+        var rows = 1;
+        labels.forEach(function (label) {
+          var chipW = m.measureText(label).width + padX * 2;
+          if (x + chipW > maxWidth && x > 0) {
+            x = 0;
+            rows += 1;
+          }
+          x += chipW + gap;
+        });
+        return rows * (rowH + gap) - gap;
+      }
+
+      function drawBrochureTriggers(ctx, labels, x, y, maxWidth) {
+        var gap = 10;
+        var padX = 14;
+        var padY = 10;
+        var rowH = 38;
+        var cursorX = x;
+        var cursorY = y;
+        ctx.font = "800 15px Inter, sans-serif";
+        labels.forEach(function (label) {
+          var tw = ctx.measureText(label).width;
+          var chipW = tw + padX * 2;
+          if (cursorX + chipW > x + maxWidth && cursorX > x) {
+            cursorX = x;
+            cursorY += rowH + gap;
+          }
+          ctx.fillStyle = "rgba(31, 138, 76, 0.08)";
+          roundRect(ctx, cursorX, cursorY, chipW, rowH, 6);
+          ctx.fill();
+          ctx.strokeStyle = "rgba(31, 138, 76, 0.45)";
+          ctx.lineWidth = 1.5;
+          roundRect(ctx, cursorX, cursorY, chipW, rowH, 6);
+          ctx.stroke();
+          ctx.fillStyle = "#12542d";
+          ctx.fillText(label, cursorX + padX, cursorY + 25);
+          cursorX += chipW + gap;
+        });
+        return cursorY + rowH;
+      }
+
+      function downloadBrochure() {
+        var CAPABILITY_NOTE = "Within our capability and available for discussion. Engagement may proceed through licensed partners, or after applicable licensing and requirements are completed on our side when the project and conditions allow.";
+        var PRIORITY = "We are currently prioritizing short-duration small projects: commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon.";
+
+        loadImage("assets/logo-transparent.png").then(function (logo) {
+          var width = 1400;
+          var outer = 48;
+          var gutter = 28;
+          var contentW = width - outer * 2;
+          var colGap = 24;
+          var colW = (contentW - colGap) / 2;
+          var colPad = 36;
+          var innerW = colW - colPad * 2;
+
+          var measure = document.createElement("canvas").getContext("2d");
+          measure.font = "500 22px Inter, sans-serif";
+          var acceptedLines = wrapLines(measure, ACCEPTED, innerW);
+          var noteLines = wrapLines(measure, CAPABILITY_NOTE, innerW);
+          measure.font = "500 24px Inter, sans-serif";
+          var priorityLines = wrapLines(measure, PRIORITY, contentW - 420);
+
+          var triggerH1 = measureTriggerBlock(ACCEPTED_TRIGGERS, innerW);
+          var triggerH2 = measureTriggerBlock(CAPABLE, innerW);
+          var phaseBody1 = 150 + acceptedLines.length * 30 + 20 + triggerH1;
+          var phaseBody2 = 150 + noteLines.length * 30 + 20 + triggerH2;
+          var phasesH = Math.max(phaseBody1, phaseBody2) + 48;
+          var coverH = 620;
+          var contactH = 340;
+          var height = outer + coverH + gutter + phasesH + gutter + contactH + outer;
+
+          var canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+          var ctx = canvas.getContext("2d");
+
+          var pageGrad = ctx.createLinearGradient(0, 0, width, height);
+          pageGrad.addColorStop(0, "#dce8e1");
+          pageGrad.addColorStop(0.5, "#eef3f0");
+          pageGrad.addColorStop(1, "#d7e4dc");
+          ctx.fillStyle = pageGrad;
+          ctx.fillRect(0, 0, width, height);
+
+          var coverX = outer;
+          var coverY = outer;
+          ctx.save();
+          roundRect(ctx, coverX, coverY, contentW, coverH, 28);
+          ctx.clip();
+          var coverGrad = ctx.createLinearGradient(0, coverY, width, coverY + coverH);
+          coverGrad.addColorStop(0, "#0a1611");
+          coverGrad.addColorStop(0.45, "#0f1c16");
+          coverGrad.addColorStop(1, "#12542d");
+          ctx.fillStyle = coverGrad;
+          ctx.fillRect(coverX, coverY, contentW, coverH);
+          var glow = ctx.createRadialGradient(width * 0.82, coverY + 80, 20, width * 0.82, coverY + 120, 420);
+          glow.addColorStop(0, "rgba(251, 191, 36, 0.22)");
+          glow.addColorStop(1, "rgba(251, 191, 36, 0)");
+          ctx.fillStyle = glow;
+          ctx.fillRect(coverX, coverY, contentW, coverH);
+          var glow2 = ctx.createRadialGradient(coverX + 120, coverY + coverH - 40, 10, coverX + 180, coverY + coverH, 360);
+          glow2.addColorStop(0, "rgba(31, 138, 76, 0.35)");
+          glow2.addColorStop(1, "rgba(31, 138, 76, 0)");
+          ctx.fillStyle = glow2;
+          ctx.fillRect(coverX, coverY, contentW, coverH);
+          ctx.strokeStyle = "rgba(255,255,255,0.05)";
+          ctx.lineWidth = 1;
+          for (var gx = coverX - 40; gx < coverX + contentW + 80; gx += 42) {
+            ctx.beginPath();
+            ctx.moveTo(gx, coverY);
+            ctx.lineTo(gx + coverH * 0.35, coverY + coverH);
+            ctx.stroke();
+          }
+          ctx.fillStyle = "#fbbf24";
+          ctx.fillRect(coverX, coverY, 10, coverH);
+
+          var cx = coverX + 56;
+          var cy = coverY + 54;
+          if (logo) {
+            ctx.drawImage(logo, cx, cy, 78, 78);
+            ctx.fillStyle = "#fbbf24";
+            ctx.font = "800 64px Outfit, sans-serif";
+            ctx.fillText("Crecer", cx + 96, cy + 56);
+          } else {
+            ctx.fillStyle = "#fbbf24";
+            ctx.font = "800 64px Outfit, sans-serif";
+            ctx.fillText("Crecer", cx, cy + 56);
+          }
+          ctx.fillStyle = "rgba(255,255,255,0.78)";
+          ctx.font = "600 24px Inter, sans-serif";
+          ctx.fillText("Plumbing and Construction Services", cx + (logo ? 96 : 0), cy + 92);
+
+          ctx.fillStyle = "rgba(251,191,36,0.14)";
+          roundRect(ctx, cx, cy + 128, 210, 36, 18);
+          ctx.fill();
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "800 13px Inter, sans-serif";
+          ctx.fillText("COMPANY BROCHURE", cx + 22, cy + 151);
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "700 46px Outfit, sans-serif";
+          ctx.fillText("Intentional. Resilient.", cx, cy + 240);
+          ctx.fillText("True to its roots.", cx, cy + 296);
+          ctx.fillStyle = "rgba(255,255,255,0.72)";
+          ctx.font = "500 24px Inter, sans-serif";
+          ctx.fillText("To grow. To shape. To endure.", cx, cy + 352);
+
+          ctx.fillStyle = "rgba(255,255,255,0.08)";
+          roundRect(ctx, cx, coverY + coverH - 168, 560, 118, 18);
+          ctx.fill();
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "700 30px Outfit, sans-serif";
+          ctx.fillText("Mark Angelo Dela Cruz", cx + 28, coverY + coverH - 112);
+          ctx.fillStyle = "rgba(255,255,255,0.78)";
+          ctx.font = "600 20px Inter, sans-serif";
+          ctx.fillText("Proprietor & Strategic Operator", cx + 28, coverY + coverH - 74);
+
+          ctx.fillStyle = "#4ade80";
+          ctx.font = "800 14px Inter, sans-serif";
+          ctx.fillText("PHASE 1 ACTIVE NOW", coverX + contentW - 420, coverY + coverH - 108);
+          ctx.fillStyle = "rgba(255,255,255,0.55)";
+          ctx.fillText("PHASE 2 SUBJECT TO REQUIREMENTS", coverX + contentW - 420, coverY + coverH - 76);
+          ctx.restore();
+
+          var phasesY = coverY + coverH + gutter;
+          function phaseCard(x, badge, badgeColor, title, lines, triggers) {
+            ctx.fillStyle = "#ffffff";
+            roundRect(ctx, x, phasesY, colW, phasesH, 24);
+            ctx.fill();
+            ctx.strokeStyle = "rgba(15, 28, 22, 0.08)";
+            ctx.lineWidth = 1.5;
+            roundRect(ctx, x, phasesY, colW, phasesH, 24);
+            ctx.stroke();
+            ctx.fillStyle = "#fbbf24";
+            ctx.fillRect(x, phasesY, colW, 6);
+            ctx.fillStyle = badgeColor;
+            ctx.font = "800 13px Inter, sans-serif";
+            ctx.fillText(badge, x + colPad, phasesY + 52);
+            ctx.fillStyle = "#111827";
+            ctx.font = "800 34px Outfit, sans-serif";
+            ctx.fillText(title, x + colPad, phasesY + 100);
+            var ty = phasesY + 148;
+            ctx.fillStyle = "#4b5563";
+            ctx.font = "500 22px Inter, sans-serif";
+            lines.forEach(function (line) {
+              ctx.fillText(line, x + colPad, ty);
+              ty += 30;
+            });
+            drawBrochureTriggers(ctx, triggers, x + colPad, ty + 18, innerW);
+          }
+
+          phaseCard(outer, "PHASE 1  ·  ACTIVE NOW", "#1f8a4c", "Currently accepted", acceptedLines, ACCEPTED_TRIGGERS);
+          phaseCard(outer + colW + colGap, "PHASE 2  ·  SUBJECT TO REQUIREMENTS", "#64748b", "Capability list", noteLines, CAPABLE);
+
+          var contactY = phasesY + phasesH + gutter;
+          roundRect(ctx, outer, contactY, contentW, contactH, 28);
+          ctx.save();
+          ctx.clip();
+          var contactGrad = ctx.createLinearGradient(outer, contactY, outer + contentW, contactY + contactH);
+          contactGrad.addColorStop(0, "#0f1c16");
+          contactGrad.addColorStop(1, "#12542d");
+          ctx.fillStyle = contactGrad;
+          ctx.fillRect(outer, contactY, contentW, contactH);
+          ctx.fillStyle = "#fbbf24";
+          ctx.fillRect(outer, contactY, 10, contactH);
+          ctx.restore();
+
+          var contactX = outer + 56;
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "800 13px Inter, sans-serif";
+          ctx.fillText("CONTACT", contactX, contactY + 48);
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "800 36px Outfit, sans-serif";
+          ctx.fillText("Start a project conversation", contactX, contactY + 98);
+          var py = contactY + 140;
+          ctx.fillStyle = "rgba(255,255,255,0.78)";
+          ctx.font = "500 22px Inter, sans-serif";
+          priorityLines.forEach(function (line) {
+            ctx.fillText(line, contactX, py);
+            py += 30;
+          });
+
+          var qrPixel = 5;
+          var qrBox = (QR_SIZE + 4) * qrPixel;
+          var qrX = outer + contentW - qrBox - 72;
+          var qrY = contactY + 72;
+          ctx.fillStyle = "#ffffff";
+          roundRect(ctx, qrX - 16, qrY - 16, qrBox + 32, qrBox + 58, 16);
+          ctx.fill();
+          drawQr(ctx, qrX, qrY, qrPixel);
+          ctx.fillStyle = "#12542d";
+          ctx.font = "800 12px Inter, sans-serif";
+          ctx.fillText("SCAN THE WEBSITE", qrX + 8, qrY + qrBox + 28);
+
+          var infoY = contactY + contactH - 78;
+          ctx.fillStyle = "rgba(255,255,255,0.9)";
+          ctx.font = "700 22px Inter, sans-serif";
+          ctx.fillText("09260586209", contactX, infoY);
+          ctx.font = "600 18px Inter, sans-serif";
+          ctx.fillText("crecerpacservices@gmail.com", contactX + 210, infoY);
+          ctx.fillStyle = "rgba(255,255,255,0.7)";
+          ctx.fillText("facebook.com/projectcrecer", contactX, infoY + 34);
+          ctx.fillText("crecerpacservices.github.io/project-crecer-website", contactX + 310, infoY + 34);
+
+          canvas.toBlob(function (blob) {
+            if (!blob) {
+              setStatus("The brochure could not be saved. Try again.");
+              return;
+            }
+            saveBlob(blob, "Crecer-Plumbing-and-Construction-Services-brochure.png");
+            setStatus("Brochure downloaded.");
+          }, "image/png");
+        });
+      }
+
+      function downloadVCard() {
+        var note = [
+          "Facebook: " + FACEBOOK,
+          "Website: " + WEBSITE,
+          "Currently accepted: " + ACCEPTED,
+          "Capability list, available for discussion through licensed partners or after applicable licensing and requirements are completed: " + CAPABLE.join("; ")
+        ].join("\n");
+        var lines = [
+          "BEGIN:VCARD",
+          "VERSION:3.0",
+          "N:Dela Cruz;Mark Angelo;;;",
+          "FN:Mark Angelo Dela Cruz",
+          "ORG:Crecer Plumbing and Construction Services",
+          "TITLE:Proprietor & Strategic Operator",
+          "TEL;TYPE=CELL,VOICE:+639260586209",
+          "EMAIL;TYPE=INTERNET:crecerpacservices@gmail.com",
+          "URL:" + WEBSITE,
+          "NOTE:" + vEscape(note),
+          "END:VCARD"
+        ];
+        var blob = new Blob([lines.join("\r\n") + "\r\n"], { type: "text/vcard;charset=utf-8" });
+        saveBlob(blob, "Mark-Angelo-Dela-Cruz.vcf");
+        setStatus("Contact file downloaded.");
+      }
+
+      var cardButton = document.getElementById("download-calling-card");
+      var brochureButton = document.getElementById("download-brochure");
+      var vcardButton = document.getElementById("download-vcard");
+      function runWhenFontsReady(fn) {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(fn).catch(fn);
+        } else {
+          fn();
+        }
+      }
+      if (cardButton) {
+        cardButton.addEventListener("click", function () {
+          runWhenFontsReady(downloadCard);
+        });
+      }
+      if (brochureButton) {
+        brochureButton.addEventListener("click", function () {
+          runWhenFontsReady(downloadBrochure);
+        });
+      }
+      if (vcardButton) vcardButton.addEventListener("click", downloadVCard);
+
+      var flipButton = document.getElementById("calling-card-flip");
+      var cardInner = document.getElementById("calling-card-inner");
+      var cardFront = document.getElementById("calling-card-front");
+      var cardBack = document.getElementById("calling-card-back");
+      if (flipButton && cardInner && cardFront && cardBack) {
+        flipButton.addEventListener("click", function () {
+          var flipped = cardInner.classList.toggle("is-flipped");
+          flipButton.setAttribute("aria-pressed", flipped ? "true" : "false");
+          flipButton.textContent = flipped ? "Flip to front" : "Flip to back";
+          cardFront.setAttribute("aria-hidden", flipped ? "true" : "false");
+          cardBack.setAttribute("aria-hidden", flipped ? "false" : "true");
+          cardFront.inert = flipped;
+          cardBack.inert = !flipped;
+        });
+      }
+    })();
   </script>
 </body>
 </html>

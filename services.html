@@ -135,6 +135,9 @@
     .dp-card h3 { font-size: 1.35rem; color: var(--clr-heading); margin-bottom: 0.35rem; }
     .dp-phase-label { font-size: 0.8rem; font-weight: 700; color: var(--clr-text); margin-bottom: 1.25rem; display: block; }
     .dp-card p { font-size: 0.95rem; color: var(--clr-text); line-height: 1.7; margin: 0; }
+    .dp-list { margin: 1rem 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .dp-list li { position: relative; padding-left: 0.95rem; font-size: 0.9rem; color: var(--clr-text); line-height: 1.4; }
+    .dp-list li::before { content: ''; position: absolute; left: 0; top: 0.45rem; width: 6px; height: 6px; border-radius: 50%; background: #94a3b8; }
     .dp-priority { max-width: 1000px; margin: 2rem auto 0; background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-left: 4px solid var(--clr-yellow); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
     .dp-priority i { color: var(--clr-yellow); flex-shrink: 0; margin-top: 2px; }
     .dp-priority p { font-size: 0.95rem; color: var(--clr-heading); line-height: 1.6; margin: 0; }
@@ -278,27 +281,34 @@
       <div class="dp-intro">
         <span class="ey">Engagement Model</span>
         <h2>Project Workflow &amp; Coverage</h2>
-        <p>To ensure complete regulatory compliance, Crecer operates under a two-phase delivery system.</p>
+        <p>Phase 1 is the work we currently accept. Phase 2 lists services we can discuss. Engagement for Phase 2 is subject to applicable requirements.</p>
       </div>
 
       <div class="dp-grid">
         <div class="dp-card">
           <span class="dp-badge active"><i data-lucide="circle-check" style="width:12px;height:12px;"></i> Active Now</span>
           <h3>Phase 1</h3>
-          <span class="dp-phase-label">Design, Planning &amp; Management</span>
-          <p>We immediately accept architectural drafting, CAD/SketchUp layouts, engineering designs, and project management consultation.</p>
+          <span class="dp-phase-label">Currently accepted</span>
+          <p>Commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon, including installation, replacement, refurbishment, and repainting.</p>
         </div>
         <div class="dp-card phase-2">
-          <span class="dp-badge pending"><i data-lucide="clock" style="width:12px;height:12px;"></i> After Permits</span>
+          <span class="dp-badge pending"><i data-lucide="clock" style="width:12px;height:12px;"></i> Subject to requirements</span>
           <h3>Phase 2</h3>
-          <span class="dp-phase-label">Execution &amp; Build</span>
-          <p>Physical mobilization, labor, and material packages are initiated once all project-specific permits and licensing paperwork are finalized.</p>
+          <span class="dp-phase-label">Capability list</span>
+          <p>These services are within our capability and available for discussion. Engagement may proceed through licensed partners, or after applicable licensing and requirements are completed on our side when the project and conditions allow.</p>
+          <ul class="dp-list">
+            <li>Plumbing and sanitary systems</li>
+            <li>Fire protection and suppression</li>
+            <li>Electrical, lighting, and auxiliary systems</li>
+            <li>Solar power systems</li>
+            <li>Civil works, fit-outs, and general construction</li>
+          </ul>
         </div>
       </div>
 
       <div class="dp-priority">
         <i data-lucide="info" style="width:20px;height:20px;"></i>
-        <p>We are currently prioritizing <strong>short-duration small projects</strong> and serious private clients ready to begin Phase 1.</p>
+        <p>We are currently prioritizing <strong>short-duration small projects</strong>: commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon.</p>
       </div>
     </div>
   </section>
@@ -624,7 +634,7 @@
 
         <div class="faq-item reveal">
           <h4><i data-lucide="layers"></i> How does your two-phase delivery work?</h4>
-          <p>Phase 1 covers design, planning, and management — available immediately. Phase 2 (physical build, labor, and materials) begins only after project-specific permits and licensing are finalized, ensuring full regulatory compliance before mobilization.</p>
+          <p>Phase 1 is the work we currently accept: commercial facility asset upkeep and MEPFS maintenance for fixtures, equipment, fit-outs, and aircon, including installation, replacement, refurbishment, and repainting. Phase 2 lists plumbing, fire protection, electrical, solar, and civil works as services within our capability and available for discussion. Engagement for Phase 2 may proceed through licensed partners, or after applicable licensing and requirements are completed on our side when the project and conditions allow.</p>
         </div>
       </div>
     </div>
